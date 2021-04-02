@@ -1,29 +1,56 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class='h-screen w-full bg-gray-100 flex flex-col font-sans'>
+  <div class='grid place-items-center mx-2 my-auto'>
+    <div class='w-11/12 p-12 bg-white rounded-lg shadow-md'>
+      <h2 class='text-3xl font-bold text-center text-gray-800'>ユーザ新規登録</h2>
+      <%= form_with model: @user, url: user_registration_path, class: 'mt-10',local: true do |f| %>
+        <label class="text-xl text-gray-600 uppercase mr-1">ニックネーム</label>
+        <span class='text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/name_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :nickname, placeholder:'こみんちゅ', autofocus: true,
+                                     class:'w-full text-lg text-gray-800 border-b-2 border-gray-100 
+                                            focus:text-gray-600 focus:outline-none focus:border-gray-400
+                                            py-2 px-1'%>
+        </div>
+        <label class="text-xl text-gray-600 uppercase mr-1">メールアドレス</label>
+        <span class='text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/mail_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.email_field :email, placeholder:'your_addres@email.com', autofocus: true,
+                                    class:'w-full text-lg text-gray-800 border-b-2 border-gray-100 
+                                          focus:text-gray-600 focus:outline-none focus:border-gray-400
+                                          py-2 px-1'%>
+        </div>
+        <label class="text-xl text-gray-600 uppercase mr-1">パスワード</label>
+        <span class='text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2'>
+          <%= f.password_field :password, placeholder:'パスワード', autofocus: true,
+                                          class:'w-full text-lg text-gray-800 border-b-2 border-gray-100 
+                                                focus:text-gray-600 focus:outline-none focus:border-gray-400
+                                                py-2 px-1'%>
+        </div>
+        <label class="text-xl text-gray-600 uppercase mr-1">パスワード確認</label>
+        <span class='text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2'>
+          <%= f.password_field :password_confirmation, placeholder:'パスワード確認', autofocus: true,
+                                                       class:'w-full text-lg text-gray-800 border-b-2 border-gray-100 
+                                                              focus:text-gray-600 focus:outline-none focus:border-gray-400
+                                                              py-2 px-1'%>
+        </div>
+        <%= f.submit '登録' , class:'w-full text-lg text-white uppercase bg-gray-800 
+                                   rounded-sm py-2 mt-10
+                                   focus:outline-none hover:bg-gray-700 hover:shadow-none' %>
+      <% end %>
+      <div class="mt-8 text-sm text-center">
+        <%= link_to 'ゲストユーザーでログイン' ,'/', class:'text-blue-500 hover:text-blue-400 hover:underline' %>
+        <div class='mt-4'>
+          <span>アカウントをお持ちですか？</span>
+          <%= link_to 'ログイン' ,new_user_session_path, class:'text-blue-500 hover:text-blue-400 hover:underline' %>
+        </div>            
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
