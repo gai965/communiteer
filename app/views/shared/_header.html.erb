@@ -8,7 +8,7 @@
         <div class='w-40 hover:bg-gray-400'>
           <%= link_to(destroy_user_session_path, method: :delete, class:'h-full w-full flex justify-around place-items-center') do %>
             <img src='/assets/user_icon.png' class='h-1/2' >
-            <span class='text-2xl whitespace-normal'>current_user.nickname</span>
+            <span class='text-2xl whitespace-normal'><%= current_user.nickname %></span>
           <% end %>
         </div>
         <div class='w-40 hover:bg-gray-400'>
