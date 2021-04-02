@@ -1,17 +1,23 @@
 <header>
   <div class='h-20 w-full bg-gray-300 bg-opacity-50 fixed flex justify-between place-items-center'>
     <div class='h-full w-1/4 min-w-max flex justify-center text-opacity-100'>
-      <img src='/assets/logo_image.png' class='h-full w-56 hover:bg-gray-400' >
+      <%= link_to image_tag('logo_image.png', class:'h-full w-56 hover:bg-gray-400'), '/' %>
     </div> 
     <div class='h-full w-120 flex justify-center'>
-      <div class='w-40 hover:bg-gray-400 flex justify-around place-items-center'>
-        <img src='/assets/registration_icon.png' class='h-1/2' >
-        <span class='text-2xl whitespace-nowrap'>新規登録</span>
+      <div class='w-40 hover:bg-gray-400'>
+        <%= link_to(new_user_registration_path, class:'h-full w-full flex justify-around place-items-center') do%>
+          <img src='/assets/registration_icon.png' class='h-1/2' >
+          <span class='text-2xl whitespace-nowrap'>新規登録</span>
+        <% end %>
       </div>
-      <div class='w-40 hover:bg-gray-400 flex justify-around place-items-center'>
-        <img src='/assets/login_icon.png' class='h-1/2' >
-        <span class='text-2xl whitespace-nowrap'>ログイン</span>
-      </div> 
+
+      <div class='w-40 hover:bg-gray-400'>
+        <%= link_to(new_user_session_path, class:'h-full w-full flex justify-around place-items-center') do%>
+          <img src='/assets/login_icon.png' class='h-1/2' >
+          <span class='text-2xl whitespace-nowrap'>ログイン</span>
+        <% end %>
+      </div>
+
       <div class='w-20 hover:bg-gray-400 flex justify-center'>
         <img src='/assets/menu_icon.png' class='h-1/3 my-auto' >
       </div> 
