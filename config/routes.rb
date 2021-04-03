@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   root 'mains#index'
   resources :mains, only: :index
 
-  # /usersにリダイレクトの場合「registrattions」のindexアクション
+  
   devise_scope :user do
+    # /usersにリダイレクトの場合「registrattions」のindexアクション
     get '/users' => 'users/registrations#reject'
+
+    # ゲストユーザログイン用のルーティング
+    post '/users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
-  # ゲストユーザログイン用のルーティング
-  post '/mains/guest_sign_in', to: 'mains#guest_sign_in'
+  
 end
