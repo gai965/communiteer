@@ -1,4 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # 半角英数字および大文字を含む
+  validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/.freeze, message: 'Include all uppercase and lowercase letters and numbers'
+
+  with_options presence: true, uniqueness: true do
+    validates :nickname
+  end
 end
