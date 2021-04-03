@@ -1,3 +1,23 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+@layer components {
+
+  /* 新規登録・ログイン画面のコンポーネント */
+  .reg_info_field {
+    @apply w-full text-lg text-gray-800 border-b-2 border-gray-100 py-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400;
+  }
+  .mandatory_display {
+    @apply text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1;
+  }
+  .registration_btn {
+    @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-2 mt-10 focus:outline-none hover:bg-gray-700 hover:shadow-none;
+  }
+
+  /*「field_with_errorr」によるレイアウト崩れを防ぐ */
+  .field_with_errors {
+    @apply contents;
+  } 
+}
