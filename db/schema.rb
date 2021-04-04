@@ -13,8 +13,12 @@
 ActiveRecord::Schema.define(version: 2021_04_04_033225) do
 
   create_table "groups", charset: "utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "email", default: ""
     t.string "encrypted_password", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "base_address", default: "", null: false
+    t.string "url", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

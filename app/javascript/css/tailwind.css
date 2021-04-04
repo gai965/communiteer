@@ -12,6 +12,9 @@
   .mandatory_display {
     @apply text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1;
   }
+  .any_display {
+    @apply text-sm font-bold text-white bg-gray-500 bg-opacity-80 py-1 px-1;
+  }
   .choice_block {
     @apply h-full bg-white border-b-4 border-gray-400 flex flex-col py-12 px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
   }

@@ -4,8 +4,13 @@ class DeviseCreateGroups < ActiveRecord::Migration[6.1]
   def change
     create_table :groups do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
+      t.string :name,               null: false, default: ""
+      t.string :email,                           default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :phone_number,       null: false, default: ""
+      t.string :base_address,       null: false, default: ""
+      t.string :url,                             default: ""
+
 
       ## Recoverable
       t.string   :reset_password_token
