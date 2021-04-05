@@ -15,7 +15,7 @@ class Group < ApplicationRecord
     validates :name
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'Applies to character restrictions' } # 「-」を除く10-11桁の数字
     validates :base_address
-    validates :group_category, numericality: { less_than: 4, message: 'Select'}
+    validates :group_category, numericality: { less_than: 4, message: 'Select' }
   end
 
   def self.guest

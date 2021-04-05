@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Group, type: :model do
   before do
-    @group= FactoryBot.build(:group)
+    @group = FactoryBot.build(:group)
   end
 
   describe '新規登録/団体情報' do
