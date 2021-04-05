@@ -5,7 +5,7 @@
       <%= link_to(root_path, class:'grid justify-items-end place-items-center') do %>
           <img src='/assets/close_icon.png', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
       <% end %> 
-      <h2 class='text-3xl font-bold text-center text-gray-800'>新規登録</h2>
+      <h2 class='text-3xl font-bold text-center text-gray-800'>新規登録(団体用)</h2>
       <%= form_with model: @group, url: group_registration_path, class: 'mt-10',local: true do |f| %>
         <label class='text-xl text-gray-600 uppercase mr-1'>名前</label>
         <span class='mandatory_display'>必須</span>
@@ -37,16 +37,39 @@
           <img src='/assets/url_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <%= f.text_field :url, class:'reg_info_field', placeholder:'http://www.communiteer.co.jp/', autofocus: true %>
         </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>カテゴリー</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mt-2 mb-4'>
+          <img src='/assets/category_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <div class='w-2/3 flex justify-around place-content-center'>
+            <label class='flex items-center'>
+              <%= f.radio_button :group_category, '0', class:'h-4 w-4' %>
+              <span class='text-xl ml-2 hover:bg-gray-200 '>社会福祉法人</span>
+            </label>
+            <label class='flex items-center'>
+              <%= f.radio_button :group_category, '1', class:'h-4 w-4' %>
+              <span class='text-xl ml-2 hover:bg-gray-200'>学校法人</span>
+            </label>
+             <label class='flex items-center'>
+              <%= f.radio_button :group_category, '2', class:'h-4 w-4' %>
+              <span class='text-xl ml-2 hover:bg-gray-200'>市民活動団体</span>
+            </label>
+             <label class='flex items-center'>
+              <%= f.radio_button :group_category, '3', class:'h-4 w-4' %>
+              <span class='text-xl ml-2 hover:bg-gray-200'>その他</span>
+            </label>
+          </div>
+        </div>
         <label class='text-xl text-gray-600 uppercase mr-1'>パスワード</label>
         <span class='mandatory_display'>必須</span>
         <div class='flex mb-4'>
-          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2'>
+          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2 opacity-70 '>
           <%= f.password_field :password, class:'reg_info_field', placeholder:'Password00 (6文字以上・半角英数字・大文字含む)', autofocus: true %>
         </div>
         <label class='text-xl text-gray-600 uppercase mr-1'>パスワード確認</label>
         <span class='mandatory_display'>必須</span>
         <div class='flex mb-4'>
-          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2'>
+          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2 opacity-70 '>
           <%= f.password_field :password_confirmation, class:'reg_info_field', placeholder:'Password00', autofocus: true %>
         </div>
         <%= f.submit '登録', class:'registration_btn' %>

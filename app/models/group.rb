@@ -11,6 +11,7 @@ class Group < ApplicationRecord
     validates :name
     validates :phone_number, format:{ with: /\A\d{10,11}\z/, message: 'Applies to character restrictions'} # 「-」を除く10-11桁の数字
     validates :base_address
+    validates :group_category
   end
 
   def self.guest
@@ -19,6 +20,7 @@ class Group < ApplicationRecord
       group.phone_number = '0000000000'
       group.base_address = '東京都新宿区西新宿2丁目8-1'
       group.url = 'http://www.communiteer.co.jp/'
+      group.group_category = '3'
       group.password = 'GroupGuest01'
     end
   end

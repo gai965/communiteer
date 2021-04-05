@@ -15,7 +15,7 @@ class Groups::RegistrationsController < Devise::RegistrationsController
 
   private
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_number, :base_address, :url])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone_number, :base_address, :url, :group_category])
   end
 
   # protected
