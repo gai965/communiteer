@@ -59,3 +59,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails' # デバッグツールgem
 gem 'devise'    # ユーザ登録用gem
+gem 'gimei'     # 日本語版Faker

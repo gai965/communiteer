@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
-    
+
     context '新規登録がうまくいかないとき' do
       it 'ニックネームが「空」だと登録できない' do
         @user.nickname = ''
@@ -73,6 +73,13 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password Include all uppercase and lowercase letters and numbers')
       end
 
+      it 'パスワードは「半角英字のみ」だと登録できない' do
+        @user.password = 'abcABC'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include all uppercase and lowercase letters and numbers')
+      end
+
       it 'パスワードは「半角英小文字のみ」だと登録できない' do
         @user.password = 'abcdef'
         @user.password_confirmation = @user.password
@@ -82,6 +89,20 @@ RSpec.describe User, type: :model do
 
       it 'パスワードは「半角英大文字のみ」だと登録できない' do
         @user.password = 'ABCDEF'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include all uppercase and lowercase letters and numbers')
+      end
+
+      it 'パスワードは「半角英数字の小文字のみ」だと登録できない' do
+        @user.password = '123abc'
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include all uppercase and lowercase letters and numbers')
+      end
+
+      it 'パスワードは「半角英数字の大文字のみ」だと登録できない' do
+        @user.password = '123ABC'
         @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include all uppercase and lowercase letters and numbers')
