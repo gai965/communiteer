@@ -1,0 +1,62 @@
+
+<div class='w-full bg-gray-100 flex flex-col font-sans'>
+  <div class='grid place-items-center mx-2 my-20'>
+    <div class='w-11/12 p-12 bg-white rounded-lg shadow-md'>
+      <%= link_to(root_path, class:'grid justify-items-end place-items-center') do %>
+          <img src='/assets/close_icon.png', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
+      <% end %> 
+      <h2 class='text-3xl font-bold text-center text-gray-800'>ボランティア募集</h2>
+      <%= form_with model: @volunteer, class: 'mt-10', local: true do |f| %>
+        <label class='text-xl text-gray-600 uppercase mr-1'>募集名</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/name_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :name, class:'reg_info_field', placeholder:'ハロウィン後の渋谷のゴミ拾い', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>活動場所</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/address_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :place, class:'reg_info_field', placeholder:'渋谷スクランブル交差点付近', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>内容詳細</label>
+        <span class='any_display'>任意</span>
+        <div class='flex mb-4'>
+          <img src='/assets/details_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_area :details, class:'reg_info_field', placeholder:'ゴミ袋や手袋・トング等はこちらで準備します。', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>活動日</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/schedule_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :schedule, class:'reg_info_field', placeholder:'11月1日 13:00〜14:00', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>必要経費</label>
+        <span class='any_display'>任意</span>
+        <div class='flex mb-4'>
+          <img src='/assets/expenses_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :expenses, class:'reg_info_field', placeholder:'無料(※ 移動費自己負担)', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>募集人数</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/application_people_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :application_people, class:'reg_info_field', placeholder:'1人〜20人', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>応募条件</label>
+        <span class='any_display'>任意</span>
+        <div class='flex mb-4'>
+          <img src='/assets/conditions_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :conditions, class:'reg_info_field', placeholder:'当日、渋谷駅まで来れる人', autofocus: true %>
+        </div>
+        <label class='text-xl text-gray-600 uppercase mr-1'>募集締切日</label>
+        <span class='mandatory_display'>必須</span>
+        <div class='flex mb-4'>
+          <img src='/assets/deadline_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <%= f.text_field :deadline, class:'reg_info_field', placeholder:'10月30日まで', autofocus: true %>
+        </div>
+        <%= f.submit '登録', class:'registration_btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>

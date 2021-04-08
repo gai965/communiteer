@@ -1,7 +1,36 @@
 <%= render 'shared/header' %>
 
 <div class='h-screen w-full font-sans bg-white flex flex-col'>
-  <div>
-    <img src='/assets/top_image.jpg' class='h-4/5 w-full'>
+  <div class='h-screen w-full'>
+    <img src='/assets/top_image.jpg' class='h-2/3 w-full'>
+    <div class='bg-gray-100 pt-20'>
+      <p class='w-full text-4xl font-bold text-center pb-3'>募集ページ</p>
+      <div class='bg-white flex'>
+        <img src='/assets/volunteer_recruit_image.jpg' class='h-1/2 w-1/2'>
+        <div class='w-1/2 p-10'>
+          <p class='text-3xl font-bold '>ボランティア募集</p>
+
+
+
+          <%= link_to(new_volunteer_path, class:'h-full w-full flex justify-around place-items-center') do %>
+              <span class='registration_btn'>募集</span>
+            <% end %>
+
+
+
+        </div>
+      </div>
+      <div class='bg-gray-100 flex'>
+        <div class='w-1/2'>
+        </div>
+        <img src='/assets/provide_image2.jpg' class='h-1/2 w-1/2'>
+      </div>
+       <div class='bg-white flex'>
+        <img src='/assets/participate_image.jpg' class='h-1/2 w-1/2'>
+        <div class='w-1/2'>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

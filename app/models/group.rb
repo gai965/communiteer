@@ -2,6 +2,8 @@ class Group < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :volunteers, as: :postable
+
   # 半角英数字および大文字を含む
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,

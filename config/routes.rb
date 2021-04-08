@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'mains#index'
   resources :mains, only: :index
+  resources :volunteers, only: [:new, :create]
 
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'

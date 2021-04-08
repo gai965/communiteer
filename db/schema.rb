@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_033225) do
+ActiveRecord::Schema.define(version: 2021_04_08_114612) do
 
   create_table "groups", charset: "utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 2021_04_04_033225) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "volunteers", charset: "utf8", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "place", default: "", null: false
+    t.string "schedule", default: "", null: false
+    t.text "details"
+    t.string "expenses", default: ""
+    t.string "conditions", default: ""
+    t.string "application_people", default: "", null: false
+    t.string "deadline", default: "", null: false
+    t.string "postable_type", null: false
+    t.bigint "postable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["postable_type", "postable_id"], name: "index_volunteers_on_postable"
   end
 
 end
