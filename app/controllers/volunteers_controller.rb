@@ -1,6 +1,6 @@
 class VolunteersController < ApplicationController
   def new
-    redirect_to root_path unless user_signed_in? || group_signed_in?
+    redirect_to mains_sign_in_choice_path unless user_signed_in? || group_signed_in?
     @volunteer = Volunteer.new
   end
 

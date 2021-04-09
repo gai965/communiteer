@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(version: 2021_04_08_114612) do
   create_table "volunteers", charset: "utf8", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "place", default: "", null: false
-    t.string "schedule", default: "", null: false
     t.text "details"
+    t.date "schedule", null: false
+    t.time "start_time"
+    t.time "end_time"
     t.string "expenses", default: ""
     t.string "conditions", default: ""
     t.string "application_people", default: "", null: false
-    t.string "deadline", default: "", null: false
+    t.date "deadline", null: false
     t.string "postable_type", null: false
     t.bigint "postable_id", null: false
     t.datetime "created_at", precision: 6, null: false

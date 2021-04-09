@@ -6,30 +6,46 @@
 @layer components {
 
   /* ---新規登録・ログイン画面のコンポーネント--- */
+
+  .label_name {
+    @apply text-lg sm:text-xl text-gray-600 uppercase mr-1;
+  }
   /* 情報入力欄 */
   .reg_info_field {
-    @apply w-full text-lg text-gray-800 border-b-2 border-gray-100 py-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400;
+    @apply w-full text-sm sm:text-lg text-gray-800 border-b-2 border-gray-100 py-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400;
   }
   /*「必須」*/
   .mandatory_display {
-    @apply text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1;
+    @apply text-xs sm:text-sm font-bold text-white bg-red-500 bg-opacity-80 py-1 px-1;
   }
   /*「任意」*/
   .any_display {
-    @apply text-sm font-bold text-white bg-gray-500 bg-opacity-80 py-1 px-1;
+    @apply text-xs sm:text-sm font-bold text-white bg-gray-500 bg-opacity-80 py-1 px-1;
   }
-  
-  .choice_block {
-    @apply h-full bg-white border-b-4 border-gray-400 flex flex-col py-12 px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
+  /* カテゴリーのタグ */
+  .category_name{
+    @apply text-sm sm:text-xl sm:ml-2 hover:bg-gray-200 ml-2
   }
-  /*「登録」ボタン */
+
+  .choice_block_left {
+    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-8  px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
+  }
+  .choice_block_right {
+    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-5 px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
+  }
+  /*「登録」「ログイン」ボタン */
   .registration_btn {
-    @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-2 mt-10 focus:outline-none hover:bg-gray-700 hover:shadow-none;
+    @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-1 sm:py-2 my-5 md:my-8 focus:outline-none hover:bg-gray-700 hover:shadow-none;
   }
   /*「もどる」ボタン */
   .return_btn {
-    @apply w-2/3 text-base text-white uppercase flex justify-center bg-gray-400 rounded-sm mx-auto py-2 mt-5 focus:outline-none hover:bg-gray-300 hover:shadow-none;
+    @apply w-3/5 text-base text-white uppercase flex justify-center bg-gray-400 rounded-sm mx-auto py-1 sm:py-2 md:mt-2 focus:outline-none hover:bg-gray-300 hover:shadow-none;
   }
+  /*「もどる」ボタンの小さめ */
+  .return_mini_btn {
+    @apply w-64 text-base text-white uppercase flex justify-center bg-gray-500 rounded-sm mx-auto py-2 mt-10 focus:outline-none hover:bg-gray-400 hover:shadow-none;
+  }
+
   /* ------------------------------------- */
 
   /*「field_with_errorr」によるレイアウト崩れを防ぐ */
