@@ -1,10 +1,11 @@
 class Volunteer < ApplicationRecord
   belongs_to :postable, polymorphic: true
+  has_one_attached :image
 
   validates :details, length: { maximum: 1000 }
 
   with_options presence: true do
-    validates :name, length: { maximum: 100 }
+    validates :title, length: { maximum: 100 }
     validates :place
     validates :schedule
     validates :application_people
