@@ -20,13 +20,13 @@ RSpec.describe Group, type: :model do
 
     context '新規登録がうまくいかないとき' do
       it '名前が「空」だと登録できない' do
-        @group.name = ''
+        @group.name = nil
         @group.valid?
         expect(@group.errors.full_messages).to include("Name can't be blank")
       end
 
       it 'メールアドレスが「空」だと登録できない' do
-        @group.email = ''
+        @group.email = nil
         @group.valid?
         expect(@group.errors.full_messages).to include("Email can't be blank")
       end
@@ -46,7 +46,7 @@ RSpec.describe Group, type: :model do
       end
 
       it '電話番号は「空」だと登録できない' do
-        @group.phone_number = ''
+        @group.phone_number = nil
         @group.valid?
         expect(@group.errors.full_messages).to include("Phone number can't be blank")
       end
@@ -70,7 +70,7 @@ RSpec.describe Group, type: :model do
       end
 
       it '住所が「空」だと登録できない' do
-        @group.base_address = ''
+        @group.base_address = nil
         @group.valid?
         expect(@group.errors.full_messages).to include("Base address can't be blank")
       end
@@ -82,13 +82,13 @@ RSpec.describe Group, type: :model do
       end
 
       it 'カテゴリーが「空」だと登録できない' do
-        @group.group_category = ''
+        @group.group_category = nil
         @group.valid?
         expect(@group.errors.full_messages).to include('Group category Select')
       end
 
       it 'パスワードが「空」だと登録できない' do
-        @group.password = ''
+        @group.password = nil
         @group.valid?
         expect(@group.errors.full_messages).to include("Password can't be blank")
       end

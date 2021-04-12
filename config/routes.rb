@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   root 'mains#index'
   resources :mains, only: :index
+  resources :volunteers, only: [:new, :create]
 
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'
+
+  # ボランティア投稿ページへのリダイレクト処理
+  get '/volunteers', to: 'volunteers#new'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -28,4 +32,5 @@ Rails.application.routes.draw do
     post '/groups/guest_sign_in', to: 'groups/sessions#guest_sign_in'
   end
 
+  
 end
