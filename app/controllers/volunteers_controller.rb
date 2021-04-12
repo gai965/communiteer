@@ -23,6 +23,7 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses, :application_people, :conditions, :deadline)
+    params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses,
+                                      :application_people, :conditions, :deadline)
   end
 end

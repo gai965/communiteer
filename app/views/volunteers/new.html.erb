@@ -41,8 +41,10 @@
         <span class='any_display'>任意</span>
         <div class='flex mb-1 sm:mb-4'>
           <img src='/assets/time_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <span class='w-1/2 md:w-1/4 text-xs sm:text-lg self-center mr-1'>開始：</span>
           <%= f.time_field :start_time, class:'reg_info_field'%> 
-          <span class='text-lg self-center mr-10 ml-10'>〜</span>
+          <span class='text-xs sm:text-lg self-center mr-1 ml-1 sm:mr-4 sm:ml-4'>〜</span>
+          <span class='w-1/2 md:w-1/4 text-xs sm:text-lg self-center mr-1'>終了：</span>
           <%= f.time_field :end_time, class:'reg_info_field'%> 
         </div>
         <label class='label_name'>必要経費</label>
