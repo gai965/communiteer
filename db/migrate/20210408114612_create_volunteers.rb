@@ -9,9 +9,9 @@ class CreateVolunteers < ActiveRecord::Migration[6.1]
       t.time     :end_time
       t.string   :expenses,                        default: ""
       t.string   :conditions,                      default: ""
-      t.string   :application_people, null: false, default: ""
+      t.integer  :application_people, null: false
       t.date     :deadline,           null: false
-      t.references :postable,    null: false, polymorphic: true
+      t.references :postable,         null: false, polymorphic: true
       t.timestamps
     end
   end

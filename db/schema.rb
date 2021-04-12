@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_093340) do
     t.time "end_time"
     t.string "expenses", default: ""
     t.string "conditions", default: ""
-    t.string "application_people", default: "", null: false
+    t.integer "application_people", null: false
     t.date "deadline", null: false
     t.string "postable_type", null: false
     t.bigint "postable_id", null: false

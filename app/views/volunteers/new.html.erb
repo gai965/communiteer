@@ -42,7 +42,7 @@
         <div class='flex mb-1 sm:mb-4'>
           <img src='/assets/time_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <%= f.time_field :start_time, class:'reg_info_field'%> 
-          <span>〜</span>
+          <span class='text-lg self-center mr-10 ml-10'>〜</span>
           <%= f.time_field :end_time, class:'reg_info_field'%> 
         </div>
         <label class='label_name'>必要経費</label>
@@ -55,7 +55,7 @@
         <span class='mandatory_display'>必須</span>
         <div class='flex mb-1 sm:mb-4'>
           <img src='/assets/application_people_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
-          <%= f.text_field :application_people, class:'reg_info_field', placeholder:'1人〜20人'%>
+          <%= f.number_field :application_people, class:'reg_info_field', placeholder:'20'%>
         </div>
         <label class='label_name'>応募条件</label>
         <span class='any_display'>任意</span>
