@@ -4,10 +4,10 @@ class Volunteer < ApplicationRecord
 
   validates :details,   length: { maximum: 1000 }
   validates :expenses,  length: { maximum: 100 }
-  validates :conditions, length: { maximum: 100 }
+  validates :conditions,length: { maximum: 100 }
 
   with_options presence: true do
-    validates :title, length: { maximum: 40 }
+    validates :title,              length: { maximum: 40 }
     validates :place
     validates :schedule
     validates :application_people, numericality: { greater_than: 0 }
