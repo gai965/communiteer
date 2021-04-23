@@ -11,6 +11,10 @@ class User < ApplicationRecord
   with_options presence: true, uniqueness: true do
     validates :nickname
   end
+  
+  def contributor_name
+    nickname
+  end
 
   def self.guest
     user = User.find_or_create_by!(email: 'user@guest.com') do |user|

@@ -4,24 +4,14 @@
       <%= link_to image_tag('logo_image.png', class:'hover:opacity-50'), '/' %>
     </div> 
     <% if user_signed_in? || group_signed_in? %>
-      <% if user_signed_in? %>
-        <% name= current_user.nickname  %> 
-        <% image_path = '/assets/user_icon.png' %> 
-        <% link_path = destroy_user_session_path %>
-      <% else %>
-        <% name= current_group.name  %> 
-        <% image_path = '/assets/group_icon.png' %> 
-        <% link_path = destroy_group_session_path %>
-      <% end %>
-
       <div class='h-full w-112 md:mr-8 lg:mr-14 flex justify-center'>
-      　<%= link_to(root_path, class:'h-full w-1/4 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to(root_path, class:'h-full w-1/4 hover:opacity-40 flex place-items-center') do %>
           <img src= '/assets/home_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>ホーム</span>
         <% end %>
         <%= link_to(root_path, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
-          <img src= <%=image_path%> class='h-2/5 mr-1' >
-          <span class='text-base truncate'><%= name %></span>
+          <img src= <%=$icon_image_path%> class='h-2/5 mr-1' >
+          <span class='text-base truncate'><%= $login_name %></span>
         <% end %>
         <%= link_to(root_path, class:'h-full w-1/5 hover:opacity-40 flex place-items-center') do %>
           <img src= '/assets/mailbox_icon.png' class='h-2/5 mr-1' >
@@ -31,7 +21,7 @@
           <img src= '/assets/notification_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>通知</span>
         <% end %>
-        <%= link_to(link_path, method: :delete, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to($logout_link_path, method: :delete, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
           <img src='/assets/logout_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>ログアウト</span>
         <% end %>

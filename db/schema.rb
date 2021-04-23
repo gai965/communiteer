@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_093340) do
     t.string "conditions", default: ""
     t.integer "application_people", null: false
     t.date "deadline", null: false
+    t.boolean "login_discrimination", default: false, null: false
     t.string "postable_type", null: false
     t.bigint "postable_id", null: false
     t.datetime "created_at", precision: 6, null: false

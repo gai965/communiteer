@@ -48,10 +48,10 @@ RSpec.describe Volunteer, type: :model do
         expect(@volunteer.errors.full_messages).to include("Title can't be blank")
       end
 
-      it '募集名が「40文字超える」と登録できない' do
-        @volunteer.title = Faker::Number.number(digits: 41)
+      it '募集名が「50文字超える」と登録できない' do
+        @volunteer.title = Faker::Number.number(digits: 51)
         @volunteer.valid?
-        expect(@volunteer.errors.full_messages).to include('Title is too long (maximum is 40 characters)')
+        expect(@volunteer.errors.full_messages).to include('Title is too long (maximum is 50 characters)')
       end
 
       it '活動場所が「空」だと登録できない' do
@@ -60,10 +60,16 @@ RSpec.describe Volunteer, type: :model do
         expect(@volunteer.errors.full_messages).to include("Place can't be blank")
       end
 
-      it '内容詳細が「1000文字超える」と登録できない' do
-        @volunteer.details = Faker::Number.number(digits: 1001)
+      it '活動場所が「50文字超える」と登録できない' do
+        @volunteer.place = Faker::Number.number(digits: 51)
         @volunteer.valid?
-        expect(@volunteer.errors.full_messages).to include('Details is too long (maximum is 1000 characters)')
+        expect(@volunteer.errors.full_messages).to include('Place is too long (maximum is 50 characters)')
+      end
+
+      it '内容詳細が「10000文字超える」と登録できない' do
+        @volunteer.details = Faker::Number.number(digits: 10001)
+        @volunteer.valid?
+        expect(@volunteer.errors.full_messages).to include('Details is too long (maximum is 10000 characters)')
       end
 
       it '活動日が「空」だと登録できない' do
@@ -78,17 +84,23 @@ RSpec.describe Volunteer, type: :model do
         expect(@volunteer.errors.full_messages).to include('Schedule select a date after tomorrow')
       end
 
+      it '活動時間の「終了時間だけ」だと登録できない' do
+        @volunteer.start_time = nil
+        @volunteer.valid?
+        expect(@volunteer.errors.full_messages).to include('Start time is also required')
+      end
+
       it '活動時間の「開始時間が終了時間より遅い」と登録できない' do
-        @volunteer.start_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :night)
-        @volunteer.end_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :day)
+        @volunteer.start_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :night) 
+        @volunteer.end_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :day) 
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include('Start time enter a time earlier than the end time')
       end
 
-      it '必要経費が「100文字超える」と登録できない' do
-        @volunteer.expenses = Faker::Number.number(digits: 101)
+      it '必要経費が「50文字超える」と登録できない' do
+        @volunteer.expenses = Faker::Number.number(digits: 51)
         @volunteer.valid?
-        expect(@volunteer.errors.full_messages).to include('Expenses is too long (maximum is 100 characters)')
+        expect(@volunteer.errors.full_messages).to include('Expenses is too long (maximum is 50 characters)')
       end
 
       it '募集人数が「空」だと登録できない' do
@@ -115,6 +127,7 @@ RSpec.describe Volunteer, type: :model do
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include('Deadline select a date after activity day')
       end
+
     end
   end
 end

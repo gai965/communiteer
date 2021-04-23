@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'mains#index'
   resources :mains, only: :index
-  resources :volunteers, only: [:new, :create]
+  resources :volunteers, expect: [:index]
 
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'
@@ -32,5 +32,4 @@ Rails.application.routes.draw do
     post '/groups/guest_sign_in', to: 'groups/sessions#guest_sign_in'
   end
 
-  
 end

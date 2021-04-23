@@ -20,6 +20,10 @@ class Group < ApplicationRecord
     validates :group_category, numericality: { less_than: 4, message: 'Select' }
   end
 
+  def contributor_name
+    name
+  end
+  
   def self.guest
     group = Group.find_or_create_by!(email: 'group@guest.com') do |group|
       group.name = 'ゲスト団体'
