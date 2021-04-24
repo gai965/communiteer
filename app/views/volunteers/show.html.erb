@@ -32,7 +32,11 @@
             <% if @volunteer.login_discrimination == true  %>
               <%= button_to '応募を締め切る', root_path, method: :get, class:'deadline_btn' %>
             <% elsif user_signed_in? && @volunteer.login_discrimination == false %>
-              <%= button_to '応募する', root_path, method: :get, class:'apply_btn' %>
+              <% if @volunteer_apply_finish_flag == true %>
+                <p class='apply_finish_btn'>申込み済</p>
+              <% else %>
+                <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+              <% end %>
               <button class='cheering_btn'>
                 <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
                 <span>応援する</span>

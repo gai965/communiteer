@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_11_093340) do
+ActiveRecord::Schema.define(version: 2021_04_24_124710) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 2021_04_11_093340) do
     t.index ["reset_password_token"], name: "index_groups_on_reset_password_token", unique: true
   end
 
+  create_table "join_volunteers", charset: "utf8", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "phone_number"
+    t.integer "number", null: false
+    t.text "inquiry"
+    t.bigint "user_id"
+    t.bigint "volunteer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_join_volunteers_on_user_id"
+    t.index ["volunteer_id"], name: "index_join_volunteers_on_volunteer_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -91,4 +104,6 @@ ActiveRecord::Schema.define(version: 2021_04_11_093340) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "join_volunteers", "users"
+  add_foreign_key "join_volunteers", "volunteers"
 end

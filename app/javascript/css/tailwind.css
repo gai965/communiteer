@@ -61,6 +61,10 @@
     @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center mb-2 bg-gray-800 hover:bg-gray-600 py-2 rounded-sm focus:outline-none;
   }
 
+  .apply_finish_btn {
+    @apply h-10 w-full sm:w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none;
+  }
+
   .deadline_btn {
     @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
   }

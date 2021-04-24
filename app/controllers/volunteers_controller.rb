@@ -27,6 +27,7 @@ class VolunteersController < ApplicationController
 
   def show
     login_discrimination
+    apply_verification
   end
 
   def edit
@@ -70,6 +71,13 @@ class VolunteersController < ApplicationController
     elsif group_signed_in?
       @volunteer.login_discrimination = true if 
       @volunteer.postable_id == current_group.id && @volunteer.postable_type == 'Group'
+    end
+  end
+
+  def apply_verification
+    join_volunteer_verification = JoinVolunteer.find_by(user_id: current_user.id, volunteer_id: @volunteer.id)
+    if join_volunteer_verification.present?
+      @volunteer_apply_finish_flag = true
     end
   end
 

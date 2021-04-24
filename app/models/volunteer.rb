@@ -1,6 +1,7 @@
 class Volunteer < ApplicationRecord
   belongs_to :postable, polymorphic: true
   has_one_attached :image
+  has_many :join_volunteers, dependent: :destroy
 
   validates :details,   length: { maximum: 10000 }
   validates :expenses,  length: { maximum: 50 }
