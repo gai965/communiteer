@@ -1,31 +1,31 @@
 <div class='sm:h-screen w-full bg-gray-100 flex flex-col font-sans'>
-  <div class='grid place-items-center my-10 sm:my-auto'>
-    <div class='w-full sm:w-176 md:w-192 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white rounded-lg shadow-md'>
+  <div class='grid place-items-center mt-10 sm:my-auto '>
+    <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
       <%= link_to(root_path, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
         <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-1 mr-4 sm:mr-2 py-1 px-1 sm:py-2 sm:px-2'>
       <% end %> 
       <div class='h-20 border-dashed border-b-2 border-gray-300 mx-3 grid place-items-center justify-items-start sm:col-span-3 '>
-        <p class='font-mono text-base sm:text-2xl md:text-3xl'><%= @volunteer.title %></p>
+        <p class='font-mono text-base sm:text-3xl'><%= @volunteer.title %></p>
       </div>
       <div class='sm:h-148 lg:h-160 my-6 px-10 sm:px-3'>
-        <div class='h-full grid grid-rows-2 md:grid-rows-4 grid-cols-1'>
+        <div class='h-full grid grid-rows-2 sm:grid-rows-4 grid-cols-1'>
           <%= image_tag @volunteer.image, class:'h-56 sm:h-full w-full my-auto mx-auto row-span-2 rounded-lg'%>
           <div class='my-3 lg:my-6 mx-2'>
             <%= link_to(root_path, class:'hover:opacity-40 mb-2 lg:mb-5 flex place-items-center') do %>
               <img src= <%=@icon_image_path%> class='h-8 lg:h-10 w-8 lg:w-10 mr-2' >
-              <span class='md:text-xl lg:text-2xl border-b border-gray-400'><%= @volunteer.postable.contributor_name %></span>
+              <span class='sm:text-xl lg:text-2xl border-b border-gray-400'><%= @volunteer.postable.contributor_name %></span>
             <% end %>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/participation_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
-              <span class='text-sm md:text-base lg:text-lg'>〇〇人が参加中</span>
+              <span class='text-sm sm:text-base lg:text-lg'>〇〇人が参加中</span>
             </div>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/cheering_off_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
-              <span class='text-sm md:text-base lg:text-lg'>〇〇人が応援中</span>
+              <span class='text-sm sm:text-base lg:text-lg'>〇〇人が応援中</span>
             </div>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/visit_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
-              <span class='text-sm md:text-base lg:text-lg'>〇〇人が訪問</span>
+              <span class='text-sm sm:text-base lg:text-lg'>〇〇人が訪問</span>
             </div>
           </div>
           <div class='my-auto'>
@@ -51,11 +51,11 @@
           <p class='font-mono text-2xl lg:text-3xl text-gray-600 '>募集情報</p>
 
           <% if @volunteer.login_discrimination == true  %>
-            <div class='h-8 lg:h-9 w-16 lg:w-20 bg-white flex items-center justify-around'>
-              <%= link_to( edit_volunteer_path(@volunteer.id), class:'h-7 lg:h-8 w-7 lg:w-8 bg-blue-700 flex justify-center items-center hover:opacity-60 rounded') do %>
+            <div class='h-8 lg:h-9 w-20 bg-white flex items-center justify-around'>
+              <%= link_to( edit_volunteer_path(@volunteer.id), class:'h-8 w-8 lg:w-8 bg-blue-700 flex justify-center items-center hover:opacity-60 rounded') do %>
                 <img src='/assets/edit_icon.png'class='h-3 w-3' >
               <% end %>
-              <%= link_to( volunteer_path(@volunteer.id), method: :delete, class:'h-7 lg:h-8 w-7 lg:w-8 bg-red-700 flex justify-center items-center hover:opacity-60 rounded') do %>
+              <%= link_to( volunteer_path(@volunteer.id), method: :delete, class:'h-8 w-8 lg:w-8 bg-red-700 flex justify-center items-center hover:opacity-60 rounded') do %>
                 <img src='/assets/delete_icon.png'class='h-3 w-3' >
               <% end %>
             </div>
@@ -115,12 +115,17 @@
         </div>
       </div>
     </div>
+  </div>
 
     <% if @volunteer.details.present? %>
-      <div class='w-full sm:w-176 md:w-192 lg:w-240 bg-white mt-3 py-3 rounded-lg shadow-md'>
-        <p class='font-mono text-2xl lg:text-3xl text-gray-600 bg-gray-200 mx-3'>内容詳細</p>
+      <div class='bg-gray-100 grid place-items-center'>
+        <div class='w-96 sm:w-176 lg:w-240 bg-white mt-3 sm:mt-0 mb-10 md:mb-3 py-4 rounded-lg shadow-md'>
+          <p class='font-mono text-2xl lg:text-3xl text-gray-600 bg-gray-200 mx-3'>内容詳細</p>
+          <div class='h-40 md:h-36 mt-3 mx-3 overflow-y-auto' >
+            <span class='text-lg sm:text-xl break-words overflow-visible'><%= @volunteer.details %></span>
+          </div>
+        </div>
       </div>
     <% end %>
 
-  </div>
 </div>

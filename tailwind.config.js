@@ -9,11 +9,11 @@ module.exports = {
         128: '32rem',
         148: '36rem',
         160: '40rem',
+        176: '44rem',
         192: '48rem',
+        224: '56rem',
+        240: '60rem',
       },
-      minWidth: {
-        '25': '25%',
-      }
     }
   },
   variants: {
