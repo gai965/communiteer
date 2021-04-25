@@ -2,7 +2,7 @@
   <div class='grid place-items-center mt-10 sm:my-auto '>
     <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
       <%= link_to(root_path, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
-        <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-1 mr-4 sm:mr-2 py-1 px-1 sm:py-2 sm:px-2'>
+        <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-1 mr-4 sm:mr-3 py-1 px-1 sm:py-2 sm:px-2'>
       <% end %> 
       <div class='h-20 border-dashed border-b-2 border-gray-300 mx-3 grid place-items-center justify-items-start sm:col-span-3 '>
         <p class='font-mono text-base sm:text-3xl'><%= @volunteer.title %></p>
@@ -29,23 +29,24 @@
             </div>
           </div>
           <div class='my-auto'>
-            <% if @volunteer.login_discrimination == true  %>
-              <%= button_to '応募を締め切る', root_path, method: :get, class:'deadline_btn' %>
-            <% elsif user_signed_in? && @volunteer.login_discrimination == false %>
-              <% if @volunteer_apply_finish_flag == true %>
-                <p class='apply_finish_btn'>申込み済</p>
+            <% if user_signed_in? || group_signed_in?%>
+              <% if @volunteer.login_discrimination == true  %>
+                <%= button_to '応募を締め切る', root_path, method: :get, class:'deadline_btn' %>
               <% else %>
-                <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+
+                <% if @volunteer_apply_finish_flag == true %>
+                  <p class='apply_finish_btn'>申込み済</p>
+                <% else %>
+                  <% if user_signed_in? || @group_categroy_number == 1 %>
+                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+                  <% end %>
+                <% end %>
+                <button class='cheering_btn'>
+                  <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
+                  <span>応援する</span>
+                </button>
+                
               <% end %>
-              <button class='cheering_btn'>
-                <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
-                <span>応援する</span>
-              </button>
-            <% elsif user_signed_in? || group_signed_in?%>
-              <button class='cheering_btn'>
-                <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
-                <span>応援する</span>
-              </button>
             <% end %>
           </div>
         </div>

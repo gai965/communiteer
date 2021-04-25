@@ -3,6 +3,7 @@ class Group < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :volunteers, as: :postable
+  has_many :join_volunteers, as: :joinable
 
   # 半角英数字および大文字を含む
   validates :password,
@@ -30,7 +31,7 @@ class Group < ApplicationRecord
       group.phone_number = '0000000000'
       group.base_address = '東京都新宿区西新宿2丁目8-1'
       group.url = 'http://www.communiteer.co.jp/'
-      group.group_category = '0'
+      group.group_category = 0
       group.password = 'GroupGuest01'
     end
   end

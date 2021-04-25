@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :volunteers, as: :postable
-  has_many :join_volunteers
+  has_many :volunteers,      as: :postable
+  has_many :join_volunteers, as: :joinable
 
   # 半角英数字および大文字を含む
   validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,

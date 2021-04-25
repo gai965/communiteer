@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_124710) do
     t.string "phone_number", default: "", null: false
     t.string "base_address", default: "", null: false
     t.string "url", default: ""
-    t.string "group_category", default: "", null: false
+    t.integer "group_category", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -62,11 +62,12 @@ ActiveRecord::Schema.define(version: 2021_04_24_124710) do
     t.string "phone_number"
     t.integer "number", null: false
     t.text "inquiry"
-    t.bigint "user_id"
+    t.string "joinable_type", null: false
+    t.bigint "joinable_id", null: false
     t.bigint "volunteer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_join_volunteers_on_user_id"
+    t.index ["joinable_type", "joinable_id"], name: "index_join_volunteers_on_joinable"
     t.index ["volunteer_id"], name: "index_join_volunteers_on_volunteer_id"
   end
 
@@ -104,6 +105,5 @@ ActiveRecord::Schema.define(version: 2021_04_24_124710) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "join_volunteers", "users"
   add_foreign_key "join_volunteers", "volunteers"
 end

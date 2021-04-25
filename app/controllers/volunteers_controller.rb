@@ -27,7 +27,9 @@ class VolunteersController < ApplicationController
 
   def show
     login_discrimination
-    apply_verification
+    if user_signed_in? || group_signed_in?
+      apply_verification
+    end 
   end
 
   def edit
@@ -75,10 +77,18 @@ class VolunteersController < ApplicationController
   end
 
   def apply_verification
-    join_volunteer_verification = JoinVolunteer.find_by(user_id: current_user.id, volunteer_id: @volunteer.id)
+    if user_signed_in?
+      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_user.id, joinable_type: 'User', volunteer_id: @volunteer.id)
+    elsif group_signed_in?
+      @group_categroy_number = Group.find(current_group.id).group_category
+      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_group.id, joinable_type: 'Group', volunteer_id: @volunteer.id) if 
+      @group_categroy_number == 1
+    end
+
     if join_volunteer_verification.present?
       @volunteer_apply_finish_flag = true
     end
+
   end
 
   private
