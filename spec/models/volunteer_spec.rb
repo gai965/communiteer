@@ -9,7 +9,7 @@ RSpec.describe Volunteer, type: :model do
   end
 
   describe 'ボランティア募集投稿' do
-    context '投稿登録がうまくいくとき' do
+    context '投稿登録が成功する時' do
       it '情報全てが存在すれば登録できる' do
         expect(@volunteer).to be_valid
       end
@@ -107,6 +107,18 @@ RSpec.describe Volunteer, type: :model do
         @volunteer.application_people = nil
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include("Application people can't be blank")
+      end
+
+      it '募集人数が「0」だと登録できない' do
+        @volunteer.application_people = 0
+        @volunteer.valid?
+        expect(@volunteer.errors.full_messages).to include("Application people must be greater than 0")
+      end
+
+      it '募集人数が「0未満」だと登録できない' do
+        @volunteer.application_people = -1
+        @volunteer.valid?
+        expect(@volunteer.errors.full_messages).to include("Application people must be greater than 0")
       end
 
       it '応募条件が「100文字超える」と登録できない' do

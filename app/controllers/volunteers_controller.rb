@@ -18,7 +18,8 @@ class VolunteersController < ApplicationController
 
     set_volunteer_noimage
 
-    if @volunteer.save
+    if @volunteer.valid?
+      @volunteer.save
       redirect_to root_path
     else
       render :new

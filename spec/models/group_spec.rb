@@ -6,7 +6,7 @@ RSpec.describe Group, type: :model do
   end
 
   describe '新規登録/団体情報' do
-    context '新規登録がうまくいくとき' do
+    context '新規登録が成功する時' do
       it '情報全てが存在すれば登録できる' do
         expect(@group).to be_valid
       end
@@ -18,7 +18,7 @@ RSpec.describe Group, type: :model do
       end
     end
 
-    context '新規登録がうまくいかないとき' do
+    context '新規登録が失敗する時' do
       it '名前が「空」だと登録できない' do
         @group.name = nil
         @group.valid?
