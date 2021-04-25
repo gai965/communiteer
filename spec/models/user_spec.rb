@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '新規登録/ユーザー情報' do
-    context '新規登録がうまくいくとき' do
+    context '新規登録が成功する時' do
       it '情報全てが存在すれば登録できる' do
         expect(@user).to be_valid
       end
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context '新規登録がうまくいかないとき' do
+    context '新規登録が失敗する時' do
       it 'ニックネームが「空」だと登録できない' do
         @user.nickname = nil
         @user.valid?

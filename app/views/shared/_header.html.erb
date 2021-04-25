@@ -1,50 +1,43 @@
 <header>
-  <div class='h-20 w-full bg-gray-300 bg-opacity-50 fixed flex justify-between place-items-center'>
-    <div class='h-full w-1/4 min-w-max flex justify-center text-opacity-100'>
-      <%= link_to image_tag('logo_image.png', class:'h-full w-56 hover:bg-gray-400'), '/' %>
+  <div class='h-14 w-full bg-gray-300 flex justify-between place-items-center'>
+    <div class='h-full w-48 md:ml-8 flex place-items-center'>
+      <%= link_to image_tag('logo_image.png', class:'hover:opacity-50'), '/' %>
     </div> 
-    <div class='h-full w-120 flex justify-center'>
-      <% if user_signed_in? || group_signed_in? %>
-         <% if user_signed_in? %><% name= current_user.nickname  %> <% end %>
-         <% if group_signed_in? %><% name= current_group.name  %> <% end %>
-        <div class='w-40 hover:bg-gray-400'>
-          <%= link_to(root_path, class:'h-full w-full flex justify-around place-items-center') do %>
-            <img src='/assets/user_icon.png' class='h-1/2' >
-            <span class='text-2xl whitespace-normal'><%= name %></span>
-          <% end %>
-        </div>
-        <div class='w-40 hover:bg-gray-400'>
-          <% if user_signed_in? %>
-            <%= link_to(destroy_user_session_path, method: :delete, class:'h-full w-full flex justify-around place-items-center') do %>
-              <img src='/assets/logout_icon.png' class='h-1/2' >
-              <span class='text-2xl whitespace-nowrap'>ログアウト</span>
-            <% end %>
-          <% end %>
-          <% if group_signed_in? %>
-            <%= link_to(destroy_group_session_path, method: :delete, class:'h-full w-full flex justify-around place-items-center') do%>
-              <img src='/assets/logout_icon.png' class='h-1/2' >
-              <span class='text-2xl whitespace-nowrap'>ログアウト</span>
-            <% end %>
-          <% end %>
-        </div>
-      <% else%>
-        <div class='w-40 hover:bg-gray-400'>
-          <%= link_to(mains_sign_up_choice_path, class:'h-full w-full flex justify-around place-items-center') do%>
-            <img src='/assets/registration_icon.png' class='h-1/2' >
-            <span class='text-2xl whitespace-nowrap'>新規登録</span>
-          <% end %>
-        </div>
-
-        <div class='w-40 hover:bg-gray-400'>
-          <%= link_to(mains_sign_in_choice_path, class:'h-full w-full flex justify-around place-items-center') do%>
-            <img src='/assets/login_icon.png' class='h-1/2' >
-            <span class='text-2xl whitespace-nowrap'>ログイン</span>
-          <% end %>
-        </div>
-      <% end %>
-      <div class='w-20 hover:bg-gray-400 flex justify-center'>
-        <img src='/assets/menu_icon.png' class='h-1/3 my-auto' >
+    <% if user_signed_in? || group_signed_in? %>
+      <div class='h-full w-112 md:mr-8 lg:mr-14 flex justify-center'>
+        <%= link_to(root_path, class:'h-full w-1/4 hover:opacity-40 flex place-items-center') do %>
+          <img src= '/assets/home_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base truncate'>ホーム</span>
+        <% end %>
+        <%= link_to(root_path, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
+          <img src= <%=$icon_image_path%> class='h-2/5 mr-1' >
+          <span class='text-base truncate'>マイページ</span>
+        <% end %>
+        <%= link_to(root_path, class:'h-full w-1/5 hover:opacity-40 flex place-items-center') do %>
+          <img src= '/assets/mailbox_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base truncate'>DM</span>
+        <% end %>
+        <%= link_to(root_path, class:'h-full w-1/5 hover:opacity-40 flex place-items-center') do %>
+          <img src= '/assets/notification_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base truncate'>通知</span>
+        <% end %>
+        <%= link_to($logout_link_path, method: :delete, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
+          <img src='/assets/logout_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base truncate'>ログアウト</span>
+        <% end %>
+      </div>
+    <% else%>
+      <div class='h-full w-56 md:mr-10 lg:mr-14 flex justify-center'>
+        <%= link_to(mains_sign_in_choice_path, class:'h-full w-1/2 hover:opacity-40 flex place-items-center') do%>
+          <img src='/assets/login_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base'>ログイン</span>
+        <% end %>
+        <%= link_to(mains_sign_up_choice_path, class:'h-full w-1/2 hover:opacity-40 flex place-items-center') do%>
+          <img src='/assets/registration_icon.png' class='h-2/5 mr-1' >
+          <span class='text-base'>新規登録</span>
+        <% end %>
       </div> 
-    </div> 
+
+    <% end %>
   </div>
 </header>
