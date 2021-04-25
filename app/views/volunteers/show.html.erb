@@ -37,15 +37,16 @@
                 <% if @volunteer_apply_finish_flag == true %>
                   <p class='apply_finish_btn'>申込み済</p>
                 <% else %>
-                  <% if user_signed_in? || @group_categroy_number == 1 %>
+                  <% if user_signed_in? %>
                     <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+                  <% elsif @group.group_category == 1 %>
+                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, params: {name: @group.name, phone_number: @group.phone_number} ,class:'apply_btn' %>
                   <% end %>
                 <% end %>
                 <button class='cheering_btn'>
                   <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
                   <span>応援する</span>
                 </button>
-                
               <% end %>
             <% end %>
           </div>
@@ -54,7 +55,6 @@
       <div class='h-160 sm:h-148 lg:h-160 py-4 sm:py-2 px-6 sm:my-6 lg:px-10 sm:col-span-2'>
         <div class='bg-gray-200 flex items-center justify-between mb-2 sm:mb-5'>
           <p class='font-mono text-2xl lg:text-3xl text-gray-600 '>募集情報</p>
-
           <% if @volunteer.login_discrimination == true  %>
             <div class='h-8 lg:h-9 w-20 bg-white flex items-center justify-around'>
               <%= link_to( edit_volunteer_path(@volunteer.id), class:'h-8 w-8 lg:w-8 bg-blue-700 flex justify-center items-center hover:opacity-60 rounded') do %>
@@ -121,7 +121,6 @@
       </div>
     </div>
   </div>
-
     <% if @volunteer.details.present? %>
       <div class='bg-gray-100 grid place-items-center'>
         <div class='w-96 sm:w-176 lg:w-240 bg-white mt-3 sm:mt-0 mb-10 md:mb-3 py-4 rounded-lg shadow-md'>

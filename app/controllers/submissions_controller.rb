@@ -2,7 +2,12 @@ class SubmissionsController < ApplicationController
 
   def join_volunteer_new
     @volunteer = Volunteer.find(params[:volunteer_id])
-    @join_volunteer = JoinVolunteer.new
+
+    if params[:name].present?
+      @join_volunteer = JoinVolunteer.new(:name => params[:name], :phone_number => params[:phone_number])
+    else
+      @join_volunteer = JoinVolunteer.new
+    end
   end
 
   def join_volunteer_create

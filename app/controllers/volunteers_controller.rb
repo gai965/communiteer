@@ -80,9 +80,9 @@ class VolunteersController < ApplicationController
     if user_signed_in?
       join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_user.id, joinable_type: 'User', volunteer_id: @volunteer.id)
     elsif group_signed_in?
-      @group_categroy_number = Group.find(current_group.id).group_category
+      @group = Group.find(current_group.id)
       join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_group.id, joinable_type: 'Group', volunteer_id: @volunteer.id) if 
-      @group_categroy_number == 1
+      @group.group_category == 1
     end
 
     if join_volunteer_verification.present?
