@@ -11,7 +11,7 @@ class CreateVolunteers < ActiveRecord::Migration[6.1]
       t.string   :conditions,                      default: ""
       t.integer  :application_people,  null: false
       t.date     :deadline,            null: false
-      t.integer  :visit_number,                    default: 0
+      t.integer  :participant_number,              default: 0
       t.boolean  :login_discrimination,null: false, default: false
       t.references :postable,         null: false, polymorphic: true
       t.timestamps

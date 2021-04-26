@@ -23,6 +23,8 @@ class SubmissionsController < ApplicationController
     end
 
     if @join_volunteer.save
+      @volunteer.participant_number += @join_volunteer.number
+      @volunteer.save
       redirect_to volunteer_path(@volunteer.id)
     else
       render :join_volunteer_new
