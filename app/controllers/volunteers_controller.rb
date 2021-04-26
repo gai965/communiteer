@@ -28,6 +28,7 @@ class VolunteersController < ApplicationController
 
   def show
     login_discrimination
+    impressionist(@volunteer, nil, unique: [:session_hash])
     if user_signed_in? || group_signed_in?
       apply_verification
     end 
@@ -68,6 +69,7 @@ class VolunteersController < ApplicationController
   end
 
   def login_discrimination
+    
     if user_signed_in?
       @volunteer.login_discrimination = true if 
       @volunteer.postable_id == current_user.id && @volunteer.postable_type == 'User'

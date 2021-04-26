@@ -3,6 +3,8 @@ class Volunteer < ApplicationRecord
   has_one_attached :image
   has_many :join_volunteers, dependent: :destroy
 
+  is_impressionable # gem「impressionism」で使用 
+
   validates :details,   length: { maximum: 10000 }
   validates :expenses,  length: { maximum: 50 }
   validates :conditions,length: { maximum: 100 }
