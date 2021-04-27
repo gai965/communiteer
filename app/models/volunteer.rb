@@ -43,4 +43,25 @@ class Volunteer < ApplicationRecord
     errors.add(:start_time, 'enter a time earlier than the end time') if
     self.start_time > self.end_time
   end
+
+  # ----インスタンスメソッド-----------------------------------------------------
+   # ---ボランティア投稿に画像がない場合「noimage」をつける---------------------
+  def set_volunteer_noimage(image)
+    if image.blank?
+      image.attach(io: File.open($noimage_path), filename: 'noimage.png')
+    end
+  end
+   # ---投稿者と閲覧者が同一アカウントか確認-----------------------------------
+  def contributor_verification(postable_id, postable_type, account_id, account_type)
+    return true if postable_id == account_id && postable_type == account_type 
+  end
+  
+   # ---ボランティア投稿に申し込み済か確認-------------------------------------
+  def application_verification(volunteer_id, account_id, account_type, approval)
+    if approval.present?
+      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: account_id, joinable_type: account_type, volunteer_id: volunteer_id)
+      return true if join_volunteer_verification.present?
+    end
+  end
+ 
 end

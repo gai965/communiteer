@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_105812) do
+ActiveRecord::Schema.define(version: 2021_04_26_133054) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -97,6 +97,22 @@ ActiveRecord::Schema.define(version: 2021_04_26_105812) do
     t.index ["volunteer_id"], name: "index_join_volunteers_on_volunteer_id"
   end
 
+  create_table "notifications", charset: "utf8", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "action", null: false
+    t.boolean "checked", default: false, null: false
+    t.bigint "join_volunteer_id"
+    t.string "sendable_type", null: false
+    t.bigint "sendable_id", null: false
+    t.string "receiveable_type", null: false
+    t.bigint "receiveable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["join_volunteer_id"], name: "index_notifications_on_join_volunteer_id"
+    t.index ["receiveable_type", "receiveable_id"], name: "index_notifications_on_receiveable"
+    t.index ["sendable_type", "sendable_id"], name: "index_notifications_on_sendable"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -122,7 +138,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_105812) do
     t.integer "application_people", null: false
     t.date "deadline", null: false
     t.integer "participant_number", default: 0
-    t.boolean "login_discrimination", default: false, null: false
+    t.boolean "contributor_flag", default: false, null: false
     t.string "postable_type", null: false
     t.bigint "postable_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -133,4 +149,5 @@ ActiveRecord::Schema.define(version: 2021_04_26_105812) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "join_volunteers", "volunteers"
+  add_foreign_key "notifications", "join_volunteers"
 end

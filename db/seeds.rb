@@ -21,9 +21,24 @@
     url: "http://www.communiteer#{n + 1}.co.jp/", 
     group_category: 1
   )
-
+end
+5.times do |n|
   Volunteer.create!(
-    title: "テスト投稿#{n + 1}", 
+    title: "団体テスト投稿#{n + 1}", 
+    place: "不明", 
+    details:"#{n + 1}", 
+    schedule:"2022-04-16", 
+    start_time:"18:18:00", 
+    end_time:"20:18:00", 
+    expenses:"#{n + 1}", 
+    conditions:"#{n + 1}", 
+    application_people: 5, 
+    deadline: "2022-04-10",
+    postable_id: "#{1}", 
+    postable_type:"Group"
+  )
+  Volunteer.create!(
+    title: "ユーザテスト投稿#{n + 1}", 
     place: "不明", 
     details:"#{n + 1}", 
     schedule:"2022-04-16", 
@@ -33,7 +48,7 @@
     conditions:"#{n + 1}", 
     application_people: 17, 
     deadline: "2022-04-10",
-    postable_id: "#{n + 1}", 
-    postable_type:"Group"
+    postable_id: "#{1}", 
+    postable_type:"User"
   )
 end
