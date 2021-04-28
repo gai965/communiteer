@@ -13,19 +13,17 @@ class JoinVolunteer < ApplicationRecord
 
   # ---インスタンスメソッド---------------------------------
    #----登録時の通知-----------------------------------
-    def create_notification_registration!(join_volunteer, volunteer, account_info)
-      notification = account_info.active_notifications.new(
-        item_id:          volunteer.id,
-        join_volunteer:   join_volunteer,
-        sendable_id:      volunteer.postable_id, 
-        sendable_type:    volunteer.postable_type,
-        receiveable_id:   join_volunteer.joinable_id,
-        receiveable_type: join_volunteer.joinable_type,
-        action:           'join_volunteer'
-      )
-      if notification.sendable_id == notification.sendable_id
-        notification.checked = true
-      end
-      notification.save!
-   end
+   def create_notification_registration!(join_volunteer, volunteer, account_info)
+    notification = account_info.active_notifications.new(
+      item_id:          volunteer.id,
+      join_volunteer:   join_volunteer,
+      sendable_id:      volunteer.postable_id, 
+      sendable_type:    volunteer.postable_type,
+      action:           'join_volunteer'
+    )
+    if notification.sendable_id == notification.sendable_id
+      notification.checked = true
+    end
+    notification.save!
+ end
 end
