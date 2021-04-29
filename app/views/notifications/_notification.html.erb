@@ -11,7 +11,7 @@
       <% if notification.action == 'join_volunteer' %>
         <%= link_to 'ボランティア募集', volunteer_path(notification.item_id), class:'link', method: :get %>
         <span class='gap_character'>に</span>
-        <%= link_to '応募', root_path, class:'link', method: :get %>
+        <%= link_to '応募', volunteer_approvals_join_info_path(notification.join_volunteer_id), class:'link', method: :get %>
         <span class='gap_character'>しました</span>
       <% end %>
     </div>

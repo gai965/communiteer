@@ -107,6 +107,35 @@
   .gap_character{
     @apply text-xs sm:text-base text-gray-500
   }
-  
   /* -------------------------------------- */
+
+  /* ---応募情報---------------------------- */
+  
+  .approval_title{
+    @apply text-gray-500 justify-self-start
+  }
+
+  .approval_details{
+    @apply text-base sm:text-xl text-gray-800 font-semibold col-span-2
+
+  }
+
+  .link_root{
+    @apply text-base sm:text-xl font-semibold text-blue-600 hover:text-blue-400 hover:border-blue-400 col-span-2
+  }
+
+  .approval_title_inquiry{
+    @apply text-gray-500 row-span-3 place-self-end justify-self-start
+  }
+
+  .approval_details_inquiry{
+    @apply text-base sm:text-xl text-gray-800 font-semibold row-span-3 col-span-2 break-words
+  }
+  
+  .approval_btn {
+    @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
+  }
+
+  /* -------------------------------------- */
+  
 }

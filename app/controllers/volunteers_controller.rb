@@ -28,13 +28,6 @@ class VolunteersController < ApplicationController
     @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
     @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
     impressionist(@volunteer, nil, unique: [:session_hash])
-
-    path = Rails.application.routes.recognize_path(request.referer)
-    if path[:controller] == 'notifications'
-      @return_path = notifications_path
-    else
-      @return_path = root_path
-    end
   end
 
   def edit

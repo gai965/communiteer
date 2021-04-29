@@ -36,6 +36,6 @@ class SubmissionsController < ApplicationController
 
   private
   def join_volunteer_params
-    params.require(:join_volunteer).permit(:name, :phone_number, :number, :inquir).merge(volunteer_id: @volunteer.id)
+    params.require(:join_volunteer).permit(:name, :phone_number, :number, :inquiry).merge(volunteer_id: @volunteer.id)
   end
 end
