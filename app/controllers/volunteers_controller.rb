@@ -54,7 +54,6 @@ class VolunteersController < ApplicationController
     redirect_to root_path
   end
 
-
   private
 
   def volunteer_params
@@ -76,5 +75,4 @@ class VolunteersController < ApplicationController
       @approval = true if @group.group_category == 1
     end
   end
-
 end

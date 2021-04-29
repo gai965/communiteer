@@ -29,11 +29,16 @@
             </div>
           </div>
           <div class='my-auto'>
+          <% if @volunteer.deadline_flag == true %>
+            <div class ='p-2 border-4 border-gray-300'>
+              <p class='deadline_text'>募集は終了致しました</p>
+              <p class='deadline_text'>皆様のご応募ありがとうございました</p>
+            </div>
+          <%else%>
             <% if user_signed_in? || group_signed_in?%>
-              <% if @volunteer.contributor_flag == true  %>
-                <%= button_to '応募を締め切る', root_path, method: :get, class:'deadline_btn' %>
+              <% if @volunteer.contributor_flag == true && @volunteer.deadline_flag == false %>
+                <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
               <% else %>
-
                 <% if @volunteer_apply_finish_flag == true %>
                   <p class='apply_finish_btn'>申込み済</p>
                 <% else %>
@@ -48,7 +53,10 @@
                   <span>応援する</span>
                 </button>
               <% end %>
+            <% else %>
+              <%= button_to 'ログインして応募する', mains_sign_in_choice_path, method: :get, class:'login_apply_btn' %>
             <% end %>
+          <% end %>
           </div>
         </div>
       </div>
@@ -65,7 +73,6 @@
               <% end %>
             </div>
           <% end %>
-
 
         </div>
         <div class='h-80 sm:h-72 lg:h-80 border-b divide-y grid grid-rows-3 grid-cols-1'>
