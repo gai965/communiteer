@@ -28,6 +28,13 @@ class VolunteersController < ApplicationController
     @volunteer.contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
     @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
     impressionist(@volunteer, nil, unique: [:session_hash])
+
+    path = Rails.application.routes.recognize_path(request.referer)
+    if path[:controller] == 'notifications'
+      @return_path = notifications_path
+    else
+      @return_path = root_path
+    end
   end
 
   def edit
@@ -57,12 +64,6 @@ class VolunteersController < ApplicationController
   def set_volunteer
     @volunteer = Volunteer.find(params[:id])
     @volunteer.set_volunteer_noimage(@volunteer.image)
-    
-    if @volunteer.postable_type == 'User'
-      @icon_image_path = '/assets/user_icon.png'
-    elsif @volunteer.postable_type == 'Group'
-      @icon_image_path = '/assets/group_icon.png'
-    end
 
     if user_signed_in?
       @account_id = current_user.id

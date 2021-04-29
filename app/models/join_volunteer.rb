@@ -21,9 +21,6 @@ class JoinVolunteer < ApplicationRecord
       sendable_type:    volunteer.postable_type,
       action:           'join_volunteer'
     )
-    if notification.sendable_id == notification.sendable_id
-      notification.checked = true
-    end
     notification.save!
  end
 end

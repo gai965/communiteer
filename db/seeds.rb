@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Group.create!(
+  email: "group@guest.com", 
+  password:"GroupGuest01", 
+  name: "ゲスト団体",
+  phone_number: "0000000000", 
+  base_address: "東京都新宿区西新宿2丁目8-1}", 
+  url: "http://www.communiteer.co.jp/", 
+  group_category: 1
+)
 2.times do |n|
   User.create!(
     email: "user#{n + 1}@com",
@@ -22,7 +31,8 @@
     group_category: 1
   )
 end
-5.times do |n|
+
+10.times do |n|
   Volunteer.create!(
     title: "団体テスト投稿#{n + 1}", 
     place: "不明", 
@@ -32,23 +42,9 @@ end
     end_time:"20:18:00", 
     expenses:"#{n + 1}", 
     conditions:"#{n + 1}", 
-    application_people: 5, 
+    application_people: "#{n + 1}", 
     deadline: "2022-04-10",
     postable_id: "#{1}", 
     postable_type:"Group"
-  )
-  Volunteer.create!(
-    title: "ユーザテスト投稿#{n + 1}", 
-    place: "不明", 
-    details:"#{n + 1}", 
-    schedule:"2022-04-16", 
-    start_time:"18:18:00", 
-    end_time:"20:18:00", 
-    expenses:"#{n + 1}", 
-    conditions:"#{n + 1}", 
-    application_people: 17, 
-    deadline: "2022-04-10",
-    postable_id: "#{1}", 
-    postable_type:"User"
   )
 end

@@ -25,6 +25,10 @@ class Group < ApplicationRecord
   def contributor_name
     name
   end
+
+  def image_icon_path
+    '/assets/group_icon.png'
+  end
   
   def self.guest
     group = Group.find_or_create_by!(email: 'group@guest.com') do |group|

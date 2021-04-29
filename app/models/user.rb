@@ -19,6 +19,10 @@ class User < ApplicationRecord
     nickname
   end
 
+  def image_icon_path
+    '/assets/user_icon.png'
+  end
+
   def self.guest
     user = User.find_or_create_by!(email: 'user@guest.com') do |user|
       user.nickname = 'ゲスト'
