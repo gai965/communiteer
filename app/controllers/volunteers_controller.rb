@@ -8,6 +8,7 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.new(volunteer_params)
+    @volunteer.set_volunteer_noimage(@volunteer.image)
     if user_signed_in?
       @volunteer.postable_id = current_user.id
       @volunteer.postable_type = 'User'
@@ -15,9 +16,6 @@ class VolunteersController < ApplicationController
       @volunteer.postable_id = current_group.id
       @volunteer.postable_type = 'Group'
     end
-
-    set_volunteer_noimage
-
     if @volunteer.valid?
       @volunteer.save
       redirect_to root_path
@@ -27,11 +25,16 @@ class VolunteersController < ApplicationController
   end
 
   def show
-    login_discrimination
+    @volunteer.contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
+    @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
     impressionist(@volunteer, nil, unique: [:session_hash])
-    if user_signed_in? || group_signed_in?
-      apply_verification
-    end 
+
+    path = Rails.application.routes.recognize_path(request.referer)
+    if path[:controller] == 'notifications'
+      @return_path = notifications_path
+    else
+      @return_path = root_path
+    end
   end
 
   def edit
@@ -51,52 +54,27 @@ class VolunteersController < ApplicationController
     redirect_to root_path
   end
 
-  def set_volunteer
-    @volunteer = Volunteer.find(params[:id])
-    set_volunteer_noimage
-
-    if @volunteer.postable_type == 'User'
-      @icon_image_path = '/assets/user_icon.png'
-    elsif @volunteer.postable_type == 'Group'
-      @icon_image_path = '/assets/group_icon.png'
-    end
-  end
-
-  def set_volunteer_noimage
-    if @volunteer.image.blank?
-      @volunteer.image.attach(io: File.open($noimage_path), filename: 'noimage.png')
-    end
-  end
-
-  def login_discrimination
-    
-    if user_signed_in?
-      @volunteer.login_discrimination = true if 
-      @volunteer.postable_id == current_user.id && @volunteer.postable_type == 'User'
-    elsif group_signed_in?
-      @volunteer.login_discrimination = true if 
-      @volunteer.postable_id == current_group.id && @volunteer.postable_type == 'Group'
-    end
-  end
-
-  def apply_verification
-    if user_signed_in?
-      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_user.id, joinable_type: 'User', volunteer_id: @volunteer.id)
-    elsif group_signed_in?
-      @group = Group.find(current_group.id)
-      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: current_group.id, joinable_type: 'Group', volunteer_id: @volunteer.id) if 
-      @group.group_category == 1
-    end
-
-    if join_volunteer_verification.present?
-      @volunteer_apply_finish_flag = true
-    end
-
-  end
 
   private
 
   def volunteer_params
     params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses, :application_people, :conditions, :deadline)
   end
+
+  def set_volunteer
+    @volunteer = Volunteer.find(params[:id])
+    @volunteer.set_volunteer_noimage(@volunteer.image)
+
+    if user_signed_in?
+      @account_id = current_user.id
+      @account_type = 'User'
+      @approval = true
+    elsif group_signed_in?
+      @account_id = current_group.id
+      @account_type = 'Group'
+      @group = Group.find(current_group.id)
+      @approval = true if @group.group_category == 1
+    end
+  end
+
 end

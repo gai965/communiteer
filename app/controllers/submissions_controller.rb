@@ -17,12 +17,15 @@ class SubmissionsController < ApplicationController
     if user_signed_in?
       @join_volunteer.joinable_id = current_user.id
       @join_volunteer.joinable_type = 'User'
+      @account_info = current_user
     else
       @join_volunteer.joinable_id = current_group.id
       @join_volunteer.joinable_type = 'Group'
+      @account_info = current_group
     end
 
     if @join_volunteer.save
+      @join_volunteer.create_notification_registration!(@join_volunteer, @volunteer, @account_info)
       @volunteer.participant_number += @join_volunteer.number
       @volunteer.save
       redirect_to volunteer_path(@volunteer.id)

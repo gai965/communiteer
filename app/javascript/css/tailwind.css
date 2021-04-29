@@ -91,5 +91,14 @@
   
   /* -------------------------------------- */
 
+  /* ---通知画面---------------------------- */
+
+  .link{
+    @apply text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300
+  }
+  .gap_character{
+    @apply text-xs sm:text-base text-gray-500
+  }
   
+  /* -------------------------------------- */
 }

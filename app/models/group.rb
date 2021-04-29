@@ -2,9 +2,10 @@ class Group < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :volunteers, as: :postable
+  has_many :volunteers,      as: :postable
   has_many :join_volunteers, as: :joinable
-
+  has_many :active_notifications , class_name: 'Notification', as: :receiveable, dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', as: :sendable,    dependent: :destroy
   # 半角英数字および大文字を含む
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
@@ -23,6 +24,10 @@ class Group < ApplicationRecord
 
   def contributor_name
     name
+  end
+
+  def image_icon_path
+    '/assets/group_icon.png'
   end
   
   def self.guest

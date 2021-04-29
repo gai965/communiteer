@@ -1,0 +1,20 @@
+
+
+<div class='h-14 w-11/12 sm:w-128 border-b border-gray-200 my-10 mx-3 sm:mx-auto flex items-end'>
+  <div class='h-full sm:h-12 flex self-start'>
+    <img src= <%= notification.receiveable.image_icon_path%> class='h-8 w-8 mr-1 self-center' >
+  </div>
+  <div class='w-full flex flex-col'>
+    <div class='flex flex-wrap items-center'>
+      <%= link_to notification.receiveable.contributor_name, root_path, class:'link', method: :get %>
+      <span class='gap_character'>さんが</span>
+      <% if notification.action == 'join_volunteer' %>
+        <%= link_to 'ボランティア募集', volunteer_path(notification.item_id), class:'link', method: :get %>
+        <span class='gap_character'>に</span>
+        <%= link_to '応募', root_path, class:'link', method: :get %>
+        <span class='gap_character'>しました</span>
+      <% end %>
+    </div>
+    <span class='w-full text-xs text-right text-gray-400'>(<%= time_ago_in_words(notification.created_at) %>前)</span>
+  </div>
+</div>

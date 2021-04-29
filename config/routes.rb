@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'mains#index'
-  resources :mains, only: :index
-  resources :volunteers, except: :index do
+  resources :mains,         only: :index
+  resources :notifications, only: :index
+  resources :volunteers,    except: :index do
     get  '/submissions/new', to: 'submissions#join_volunteer_new'
     post '/submissions', to: 'submissions#join_volunteer_create'
   end
+ 
 
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'
