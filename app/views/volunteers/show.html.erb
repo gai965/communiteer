@@ -36,7 +36,7 @@
             </div>
           <%else%>
             <% if user_signed_in? || group_signed_in?%>
-              <% if @volunteer.contributor_flag == true && @volunteer.deadline_flag == false %>
+              <% if @volunteer_contributor_flag == true && @volunteer.deadline_flag == false %>
                 <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
               <% else %>
                 <% if @volunteer_apply_finish_flag == true %>
@@ -63,7 +63,7 @@
       <div class='h-160 sm:h-148 lg:h-160 py-4 sm:py-2 px-6 sm:my-6 lg:px-10 sm:col-span-2'>
         <div class='bg-gray-200 flex items-center justify-between mb-2 sm:mb-5'>
           <p class='font-mono text-2xl lg:text-3xl text-gray-600 '>募集情報</p>
-          <% if @volunteer.contributor_flag == true  %>
+          <% if @volunteer_contributor_flag == true  %>
             <div class='h-8 lg:h-9 w-20 bg-white flex items-center justify-around'>
               <%= link_to( edit_volunteer_path(@volunteer.id), class:'h-8 w-8 lg:w-8 bg-blue-700 flex justify-center items-center hover:opacity-60 rounded') do %>
                 <img src='/assets/edit_icon.png'class='h-3 w-3' >

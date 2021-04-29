@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_133054) do
     t.integer "application_people", null: false
     t.date "deadline", null: false
     t.integer "participant_number", default: 0
-    t.boolean "contributor_flag", default: false, null: false
     t.boolean "deadline_flag", default: false, null: false
     t.string "postable_type", null: false
     t.bigint "postable_id", null: false

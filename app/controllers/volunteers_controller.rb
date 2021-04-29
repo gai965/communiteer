@@ -25,7 +25,7 @@ class VolunteersController < ApplicationController
   end
 
   def show
-    @volunteer.contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
+    @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
     @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
     impressionist(@volunteer, nil, unique: [:session_hash])
 
