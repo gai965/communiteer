@@ -1,5 +1,5 @@
 class MainsController < ApplicationController
-  before_action :set_login_user,        only: [:index]
+  before_action :set_login_account,     only: [:index]
   before_action :deadline_verification, only: [:index]
 
   def index
@@ -16,7 +16,7 @@ class MainsController < ApplicationController
   end
   # ------------------------------
 
-  def set_login_user
+  def set_login_account
     if user_signed_in? 
       $login_name = current_user.nickname
       $icon_image_path = '/assets/user_icon.png'

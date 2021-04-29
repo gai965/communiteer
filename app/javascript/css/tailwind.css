@@ -58,27 +58,27 @@
   /* ---投稿詳細画面------------------------ */
 
   .apply_btn {
-    @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center mb-2 bg-red-600 hover:bg-red-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-red-600 hover:bg-red-400 py-2 rounded-sm focus:outline-none;
   }
 
-  .apply_finish_btn {
-    @apply h-10 w-full sm:w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none;
+  .apply_finish_text {
+    @apply h-10 w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none;
   }
 
   .deadline_btn {
-    @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
   }
 
   .deadline_text {
-    @apply w-full sm:w-full text-lg text-gray-500 font-bold text-center;
+    @apply w-full text-lg text-gray-500 font-bold text-center;
   }
 
   .cheering_btn {
-    @apply h-10 w-full sm:w-full text-lg text-black text-center bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none;
+    @apply h-10 w-full text-lg text-black text-center bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none;
   }
 
   .login_apply_btn {
-    @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center mb-2 bg-green-600 hover:bg-green-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-green-600 hover:bg-green-400 py-2 rounded-sm focus:outline-none;
   }
 
   .item_title{
@@ -111,30 +111,34 @@
 
   /* ---応募情報---------------------------- */
   
-  .approval_title{
+  .accept_title{
     @apply text-gray-500 justify-self-start
   }
 
-  .approval_details{
+  .accept_details{
     @apply text-base sm:text-xl text-gray-800 font-semibold col-span-2
-
   }
 
   .link_root{
-    @apply text-base sm:text-xl font-semibold text-blue-600 hover:text-blue-400 hover:border-blue-400 col-span-2
+    @apply text-base sm:text-xl font-semibold text-gray-600 hover:text-gray-400 hover:border-blue-400 col-span-2
   }
 
-  .approval_title_inquiry{
+  .accept_title_inquiry{
     @apply text-gray-500 row-span-3 place-self-end justify-self-start
   }
 
-  .approval_details_inquiry{
+  .accept_details_inquiry{
     @apply text-base sm:text-xl text-gray-800 font-semibold row-span-3 col-span-2 break-words
   }
   
-  .approval_btn {
-    @apply h-10 w-full sm:w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
+  .accept_btn {
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
   }
+
+  .accept_finish_text {
+    @apply h-10 w-3/5 mx-auto text-lg text-white font-semibold text-center my-5 bg-gray-400 py-2 rounded-sm focus:outline-none;
+  }
+
 
   /* -------------------------------------- */
   

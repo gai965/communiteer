@@ -1,4 +1,5 @@
 class VolunteersController < ApplicationController
+  before_action :move_to_index, only: [:new, :edit]
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -45,6 +46,10 @@ class VolunteersController < ApplicationController
   def destroy
     @volunteer.destroy
     redirect_to root_path
+  end
+
+  def move_to_index
+    redirect_to root_path unless user_signed_in? || group_signed_in?
   end
 
   private

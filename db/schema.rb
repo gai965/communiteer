@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_133054) do
     t.string "phone_number"
     t.integer "number", null: false
     t.text "inquiry"
+    t.boolean "accept_flag", default: false, null: false
     t.string "joinable_type", null: false
     t.bigint "joinable_id", null: false
     t.bigint "volunteer_id"
