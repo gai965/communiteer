@@ -132,11 +132,11 @@
   }
   
   .accept_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm;
   }
 
   .accept_finish_text {
-    @apply h-10 w-full text-lg text-white font-semibold text-center my-5 bg-gray-400 py-2 rounded-sm;
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm;
   }
 
 
