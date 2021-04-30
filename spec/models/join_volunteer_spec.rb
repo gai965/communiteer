@@ -62,13 +62,13 @@ RSpec.describe JoinVolunteer, type: :model do
       it '参加人数が「0」だと登録できない' do
         @join_volunteer.number = 0
         @join_volunteer.valid?
-        expect(@join_volunteer.errors.full_messages).to include("Number of participants must be greater than 0")
+        expect(@join_volunteer.errors.full_messages).to include('Number of participants must be greater than 0')
       end
 
       it '参加人数が「0未満」だと登録できない' do
         @join_volunteer.number = -1
         @join_volunteer.valid?
-        expect(@join_volunteer.errors.full_messages).to include("Number of participants must be greater than 0")
+        expect(@join_volunteer.errors.full_messages).to include('Number of participants must be greater than 0')
       end
 
       it '問い合わせが「100文字超える」と登録できない' do
@@ -76,7 +76,6 @@ RSpec.describe JoinVolunteer, type: :model do
         @join_volunteer.valid?
         expect(@join_volunteer.errors.full_messages).to include('Inquiry is too long (maximum is 100 characters)')
       end
-
     end
   end
 end

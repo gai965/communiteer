@@ -1,7 +1,7 @@
 <div class='sm:h-screen w-full bg-gray-100 flex flex-col font-sans'>
   <div class='grid place-items-center mt-10 sm:my-auto '>
     <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
-      <%= link_to(@return_path, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
+      <%= link_to(return_path_get, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
         <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-1 mr-4 sm:mr-3 py-1 px-1 sm:py-2 sm:px-2'>
       <% end %> 
       <div class='h-20 border-dashed border-b-2 border-gray-300 mx-3 grid place-items-center justify-items-start sm:col-span-3 '>
@@ -40,7 +40,7 @@
                 <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
               <% else %>
                 <% if @volunteer_apply_finish_flag == true %>
-                  <p class='apply_finish_btn'>申込み済</p>
+                  <p class='apply_finish_text'>申込み済</p>
                 <% else %>
                   <% if user_signed_in? %>
                     <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
