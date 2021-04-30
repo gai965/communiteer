@@ -4,9 +4,9 @@ class Group < ApplicationRecord
 
   has_many :volunteers,      as: :postable
   has_many :join_volunteers, as: :joinable
-  has_many :active_notifications , class_name: 'Notification', as: :sendable,    dependent: :destroy
+  has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
-  
+
   # 半角英数字および大文字を含む
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
@@ -30,7 +30,7 @@ class Group < ApplicationRecord
   def image_icon_path
     '/assets/group_icon.png'
   end
-  
+
   def self.guest
     group = Group.find_or_create_by!(email: 'group@guest.com') do |group|
       group.name = 'ゲスト団体'

@@ -136,7 +136,7 @@
   }
 
   .accept_finish_text {
-    @apply h-10 w-3/5 mx-auto text-lg text-white font-semibold text-center my-5 bg-gray-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-semibold text-center my-5 bg-gray-400 py-2 rounded-sm;
   }
 
 

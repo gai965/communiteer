@@ -1,5 +1,4 @@
 module VolunteersHelper
-
   def return_path_get
     path = Rails.application.routes.recognize_path(request.referer)
     if path[:controller] == 'notifications'
@@ -10,7 +9,6 @@ module VolunteersHelper
     else
       return_path = root_path
     end
-    return return_path
+    return_path
   end
-  
 end

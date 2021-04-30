@@ -26,7 +26,8 @@ class VolunteersController < ApplicationController
   end
 
   def show
-    @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type, @account_id, @account_type)
+    @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type,
+                                                                      @account_id, @account_type)
     @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
@@ -55,7 +56,8 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses, :application_people, :conditions, :deadline)
+    params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses,
+                                      :application_people, :conditions, :deadline)
   end
 
   def set_volunteer

@@ -5,14 +5,12 @@ class AcceptsController < ApplicationController
 
   def join_volunteer_info
   end
-  
+
   def join_volunteer_accept
     @join_volunteer.create_notification_accept_registration!(@join_volunteer, @volunteer, @account_info)
     if @join_volunteer.accept_flag == false
       @join_volunteer.accept_flag = true
-      if @join_volunteer.save!
-        redirect_to volunteer_accepts_join_info_path(@volunteer.id)
-      end
+      redirect_to volunteer_accepts_join_info_path(@volunteer.id) if @join_volunteer.save!
     end
   end
 

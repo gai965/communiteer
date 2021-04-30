@@ -19,6 +19,11 @@
         <%= link_to '参加', volunteer_accepts_join_info_path(notification.item_id), class:'link', method: :get %>
         <span class='gap_character'>を了承致しました</span>
       <% end %>
+      <% if notification.join_volunteer.accept_flag == true && notification.action == 'join_volunteer' %> 
+        <span class='text-xs text-blue-400 border border-blue-400 rounded-full ml-3 px-1.5'>承諾済</span>
+      <% elsif notification.join_volunteer.accept_flag == false && notification.action == 'join_volunteer' %> 
+        <span class='text-xs text-red-400 border border-red-400 rounded-full ml-3 px-1.5'>未承諾</span>
+      <% end %> 
     </div>
     <span class='w-full text-xs text-right text-gray-400'>(<%= time_ago_in_words(notification.created_at) %>前)</span>
   </div>

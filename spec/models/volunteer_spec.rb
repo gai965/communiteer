@@ -67,7 +67,7 @@ RSpec.describe Volunteer, type: :model do
       end
 
       it '内容詳細が「10000文字超える」と登録できない' do
-        @volunteer.details = Faker::Number.number(digits: 10001)
+        @volunteer.details = Faker::Number.number(digits: 10_001)
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include('Details is too long (maximum is 10000 characters)')
       end
@@ -91,8 +91,8 @@ RSpec.describe Volunteer, type: :model do
       end
 
       it '活動時間の「開始時間が終了時間より遅い」と登録できない' do
-        @volunteer.start_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :night) 
-        @volunteer.end_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :day) 
+        @volunteer.start_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :night)
+        @volunteer.end_time = Faker::Time.between_dates(from: Date.today, to: Date.today, period: :day)
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include('Start time enter a time earlier than the end time')
       end
@@ -112,13 +112,13 @@ RSpec.describe Volunteer, type: :model do
       it '募集人数が「0」だと登録できない' do
         @volunteer.application_people = 0
         @volunteer.valid?
-        expect(@volunteer.errors.full_messages).to include("Application people must be greater than 0")
+        expect(@volunteer.errors.full_messages).to include('Application people must be greater than 0')
       end
 
       it '募集人数が「0未満」だと登録できない' do
         @volunteer.application_people = -1
         @volunteer.valid?
-        expect(@volunteer.errors.full_messages).to include("Application people must be greater than 0")
+        expect(@volunteer.errors.full_messages).to include('Application people must be greater than 0')
       end
 
       it '応募条件が「100文字超える」と登録できない' do
@@ -139,7 +139,6 @@ RSpec.describe Volunteer, type: :model do
         @volunteer.valid?
         expect(@volunteer.errors.full_messages).to include('Deadline select a date after activity day')
       end
-
     end
   end
 end

@@ -17,7 +17,7 @@ class MainsController < ApplicationController
   # ------------------------------
 
   def set_login_account
-    if user_signed_in? 
+    if user_signed_in?
       $login_name = current_user.nickname
       $icon_image_path = '/assets/user_icon.png'
       $logout_link_path = destroy_user_session_path
@@ -34,5 +34,4 @@ class MainsController < ApplicationController
       volunteer.update(deadline_flag: true)
     end
   end
-
 end

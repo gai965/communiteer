@@ -1,9 +1,9 @@
 class NotificationsController < ApplicationController
   before_action :move_to_index,     only: [:index]
   before_action :set_login_account, only: [:index]
- 
+
   def index
-    @notifications = @account.passive_notifications
+    @notifications = @account.passive_notifications.includes(:join_volunteer)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
@@ -22,5 +22,4 @@ class NotificationsController < ApplicationController
       @account = current_group
     end
   end
-  
 end
