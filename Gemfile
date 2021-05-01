@@ -63,3 +63,4 @@ gem 'gimei'     # 日本語版Faker
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'impressionist'  # PVのgem
+gem 'kaminari' #ページネーションのgem

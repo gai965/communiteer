@@ -141,5 +141,23 @@
 
 
   /* -------------------------------------- */
+  .pagination {
+    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6;
+  }
+
+  .pagination * {
+    @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1;
+  }
   
+  .pagination a:hover {
+    @apply border-4 rounded-full;
+  }
+  
+  .pagination >.page.current {
+    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2;
+  }
+  
+  .pagination >.first,.last{
+    @apply w-24 sm:w-32;
+  }
 }
