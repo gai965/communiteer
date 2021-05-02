@@ -10,9 +10,12 @@
   "version": "0.1.0",
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.4",
+    "@vue/compiler-sfc": "^3.0.11",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
+    "vue": "^3.0.11",
+    "vue-loader": "^16.2.0",
     "webpack-dev-server": "^3.11.2"
   }
 }
