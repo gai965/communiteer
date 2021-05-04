@@ -15,12 +15,14 @@
   .label_name {
     @apply text-lg sm:text-xl text-gray-600 uppercase mr-2;
   }
-  
+  /* 画像プレビュー */
+  .image_preview{
+    @apply h-48 sm:h-80 w-48 sm:w-80 mx-auto my-auto
+  }
   /* 情報入力欄 */
   .reg_info_field {
     @apply w-full text-sm sm:text-lg text-gray-800 border-b-2 border-gray-100 pb-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400;
 }
-  
   /*「必須」*/
   .mandatory_display {
     @apply text-xs font-bold text-white bg-red-400 py-1 px-1;
