@@ -48,10 +48,17 @@
                     <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, params: {name: @group.name, phone_number: @group.phone_number} ,class:'apply_btn' %>
                   <% end %>
                 <% end %>
-                <button class='cheering_btn'>
-                  <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
-                  <span>応援する</span>
-                </button>
+                <% if @volunteer_cheer_finish_flag.blank? %>
+                  <%= button_to volunteer_cheers_path(@volunteer.id), class:'cheering_on_btn' do %>
+                    <img src='/assets/cheering_off_icon.png' class='h-5 w-5 mr-2'>
+                    <span>応援する</span>
+                  <% end %>
+                <% else %>
+                  <%= button_to root_path, class:'cheering_off_btn' do %>
+                    <img src='/assets/cheering_on_icon.png' class='h-5 w-5 mr-2'>
+                    <span>応援中</span>
+                  <% end %>
+                <% end %>
               <% end %>
             <% else %>
               <%= button_to 'ログインして応募する', mains_sign_in_choice_path, method: :get, class:'login_apply_btn' %>

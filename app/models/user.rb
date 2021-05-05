@@ -2,8 +2,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :volunteers,      as: :postable
+  has_many :volunteers,      as: :postable,  dependent: :destroy
   has_many :join_volunteers, as: :joinable
+  has_many :cheers,          as: :cheerable
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 

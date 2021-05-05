@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_action :set_login_account, only: [:index]
 
   def index
-    @notifications = @account.passive_notifications.includes(:join_volunteer).page(params[:page]).per(6)
+    @notifications = @account.passive_notifications.page(params[:page]).per(6)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end

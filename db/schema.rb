@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_133054) do
+ActiveRecord::Schema.define(version: 2021_05_05_092411) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_04_26_133054) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "cheers", charset: "utf8", force: :cascade do |t|
+    t.string "cheerable_type", null: false
+    t.bigint "cheerable_id", null: false
+    t.string "targetable_type", null: false
+    t.bigint "targetable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cheerable_type", "cheerable_id"], name: "index_cheers_on_cheerable"
+    t.index ["targetable_type", "targetable_id"], name: "index_cheers_on_targetable"
   end
 
   create_table "groups", charset: "utf8", force: :cascade do |t|
@@ -99,17 +110,18 @@ ActiveRecord::Schema.define(version: 2021_04_26_133054) do
   end
 
   create_table "notifications", charset: "utf8", force: :cascade do |t|
-    t.integer "item_id", null: false
+    t.integer "post_id", null: false
     t.string "action", null: false
     t.boolean "checked", default: false, null: false
-    t.bigint "join_volunteer_id"
+    t.string "linkable_type", null: false
+    t.bigint "linkable_id", null: false
     t.string "sendable_type", null: false
     t.bigint "sendable_id", null: false
     t.string "receiveable_type", null: false
     t.bigint "receiveable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["join_volunteer_id"], name: "index_notifications_on_join_volunteer_id"
+    t.index ["linkable_type", "linkable_id"], name: "index_notifications_on_linkable"
     t.index ["receiveable_type", "receiveable_id"], name: "index_notifications_on_receiveable"
     t.index ["sendable_type", "sendable_id"], name: "index_notifications_on_sendable"
   end
@@ -150,5 +162,4 @@ ActiveRecord::Schema.define(version: 2021_04_26_133054) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "join_volunteers", "volunteers"
-  add_foreign_key "notifications", "join_volunteers"
 end

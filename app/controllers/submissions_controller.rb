@@ -1,6 +1,5 @@
 class SubmissionsController < ApplicationController
   before_action :move_to_index,     only: [:join_volunteer_new]
-  before_action :set_login_account, only: [:index]
 
   def join_volunteer_new
     @volunteer = Volunteer.find(params[:volunteer_id])
@@ -18,7 +17,7 @@ class SubmissionsController < ApplicationController
     set_login_account
 
     if @join_volunteer.save
-      @join_volunteer.create_notification_join_registration!(@join_volunteer, @volunteer, @account_info)
+      @join_volunteer.create_notification_join_registration!(@join_volunteer, @account_info)
       @volunteer.participant_number += @join_volunteer.number
       @volunteer.save
       redirect_to volunteer_path(@volunteer.id)

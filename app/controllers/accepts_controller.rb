@@ -7,15 +7,15 @@ class AcceptsController < ApplicationController
   end
 
   def join_volunteer_accept
-    @join_volunteer.create_notification_accept_registration!(@join_volunteer, @volunteer, @account_info)
+    @join_volunteer.create_notification_accept_registration!(@join_volunteer, @account_info)
     if @join_volunteer.accept_flag == false
       @join_volunteer.accept_flag = true
-      redirect_to volunteer_accepts_join_info_path(@volunteer.id) if @join_volunteer.save!
+      redirect_to volunteer_accepts_join_info_path(@join_volunteer.volunteer.id) if @join_volunteer.save!
     end
   end
 
   def set_join_volunteer_info
-    @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id])
+    @join_volunteer = JoinVolunteer.includes(:volunteer).find_by(volunteer_id: params[:volunteer_id])
   end
 
   def set_login_account
@@ -26,7 +26,6 @@ class AcceptsController < ApplicationController
       @account_info = current_group
       @account_type = 'Group'
     end
-    @volunteer = Volunteer.find(params[:volunteer_id])
   end
 
   def move_to_index
