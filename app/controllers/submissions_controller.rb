@@ -1,6 +1,5 @@
 class SubmissionsController < ApplicationController
   before_action :move_to_index,     only: [:join_volunteer_new]
-  before_action :set_login_account, only: [:index]
 
   def join_volunteer_new
     @volunteer = Volunteer.find(params[:volunteer_id])

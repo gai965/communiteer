@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     post '/submissions',       to: 'submissions#join_volunteer_create'
     get  '/accepts/join_info', to: 'accepts#join_volunteer_info'
     post '/accepts',           to: 'accepts#join_volunteer_accept'
+    get  '/cheers/index',      to: 'cheers#volunteer_cheer_index'
+    post '/cheers',            to: 'cheers#volunteer_cheer_create'
   end
  
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'

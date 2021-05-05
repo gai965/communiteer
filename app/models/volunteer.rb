@@ -2,6 +2,8 @@ class Volunteer < ApplicationRecord
   belongs_to :postable, polymorphic: true
   has_one_attached :image
   has_many :join_volunteers, dependent: :destroy
+  has_many :notifications,   dependent: :destroy
+  has_many :cheers,          as: :targetable
 
   is_impressionable # gem「impressionism」で使用
 
@@ -45,6 +47,7 @@ class Volunteer < ApplicationRecord
   end
 
   # ----インスタンスメソッド-----------------------------------------------------
+
   # ---ボランティア投稿に画像がない場合「noimage」をつける---------------------
   def set_volunteer_noimage(image)
     image.attach(io: File.open($noimage_path), filename: 'noimage.png') if image.blank?
@@ -62,5 +65,17 @@ class Volunteer < ApplicationRecord
                                                           volunteer_id: volunteer_id)
       return true if join_volunteer_verification.present?
     end
+  end
+
+  #----ボランティア投稿に応援した場合の通知-----------------------------------
+  def create_notification_cheer_registration!(join_volunteer, volunteer, account_info)
+    notification = account_info.active_notifications.new(
+      item_id: volunteer.id,
+      join_volunteer: join_volunteer,
+      receiveable_id: volunteer.postable_id,
+      receiveable_type: volunteer.postable_type,
+      action: 'join_volunteer'
+    )
+    notification.save!
   end
 end
