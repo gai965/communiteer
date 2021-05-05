@@ -10,7 +10,7 @@ class DeviseCreateGroups < ActiveRecord::Migration[6.1]
       t.string  :phone_number,       null: false, default: ""
       t.string  :base_address,       null: false, default: ""
       t.string  :url,                             default: ""
-      t.integer :group_category,    null: false
+      t.integer :group_category,     null: false
 
       ## Recoverable
       t.string   :reset_password_token

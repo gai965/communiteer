@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import "channels"
 
 import '../css/tailwind.css';
+require("../preview");
 
 Rails.start()
 Turbolinks.start()
