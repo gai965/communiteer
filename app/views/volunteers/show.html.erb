@@ -54,7 +54,7 @@
                     <span>応援する</span>
                   <% end %>
                 <% else %>
-                  <%= button_to root_path, class:'cheering_off_btn' do %>
+                  <%= button_to volunteer_cheers_delete_path(@volunteer.id) , method: :delete, class:'cheering_off_btn' do %>
                     <img src='/assets/cheering_on_icon.png' class='h-5 w-5 mr-2'>
                     <span>応援中</span>
                   <% end %>
