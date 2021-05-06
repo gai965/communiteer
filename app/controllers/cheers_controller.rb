@@ -3,6 +3,7 @@ class CheersController < ApplicationController
  before_action :set_info, only: [:volunteer_cheer_create, :volunteer_cheer_destroy]
 
  def volunteer_cheer_index
+  @cheer = Cheer.where(targetable_id: params[:volunteer_id]).order('created_at DESC').page(params[:page]).per(6)
  end
 
  def volunteer_cheer_create

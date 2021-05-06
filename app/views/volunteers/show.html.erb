@@ -22,7 +22,10 @@
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/cheering_off_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
               <span class='text-sm sm:text-base lg:text-lg'>応援：</span>
-              <%= link_to "#{@cheer_number}", root_path, class:'border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+              <% if @cheer_number == 0 %><span> 0 </span>
+              <% else %>
+                <%= link_to "#{@cheer_number}", volunteer_cheers_index_path(@volunteer.id), class:'border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+              <% end %>
             </div>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/visit_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
