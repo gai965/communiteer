@@ -21,7 +21,9 @@
             </div>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/cheering_off_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
-              <span class='text-sm sm:text-base lg:text-lg'>応援：〇〇</span>
+              <span class='text-sm sm:text-base lg:text-lg'>応援：
+                <%= link_to "#{@cheer_number}", root_path, class:'border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+              </span>
             </div>
             <div class='opacity-60 flex mb-1'>
               <img src='/assets/visit_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
