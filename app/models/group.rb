@@ -11,17 +11,18 @@ class Group < ApplicationRecord
   # 半角英数字および大文字を含む
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
-                      message: 'Include all uppercase and lowercase letters and numbers' }
+                      message: 'は大文字を含む英字と数字を入力してください' }
   # 「http:」または「https:」を含む(空白も可)
   validates :url,
             format: { with: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, allow_blank: true,
-                      message: 'Include "http" or "https" in the acronym' }
+                      message: 'の頭字語に「http」または「https」を含めてください' }
+
+  validates :group_category, presence:{ message: 'を選択してください' }
 
   with_options presence: true do
     validates :name
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'Applies to character restrictions' } # 「-」を除く10-11桁の数字
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '文字制限に適用されます' } # 「-」を除く10-11桁の数字
     validates :base_address
-    validates :group_category, numericality: { less_than: 4, message: 'Select' }
   end
 
   def contributor_name

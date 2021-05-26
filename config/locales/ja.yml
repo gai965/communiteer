@@ -1,5 +1,18 @@
 ja:
   activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email:    メールアドレス
+      group:
+        name:  名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        phone_number: 電話番号
+        base_address: 住所
+        url: ホームページアドレス
+        group_category: カテゴリー
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

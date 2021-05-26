@@ -1,9 +1,9 @@
 class Volunteer < ApplicationRecord
   belongs_to :postable, polymorphic: true
   has_one_attached :image
-  has_many :join_volunteers, dependent: :destroy
-  has_many :notifications,   dependent: :destroy
-  has_many :cheers,          as: :targetable
+  has_many :join_volunteers                , dependent: :destroy
+  has_many :notifications,  as: :linkable  , dependent: :destroy
+  has_many :cheers,         as: :targetable, dependent: :destroy
 
   is_impressionable # gem「impressionism」で使用
 
@@ -67,14 +67,21 @@ class Volunteer < ApplicationRecord
     end
   end
 
+  # ---ボランティア投稿に応援済か確認-------------------------------------
+  def cheer_verification(volunteer_id, account_id, account_type)
+    volunteer_cheer_verification = Cheer.find_by(cheerable_id: account_id, cheerable_type: account_type,
+                                                  targetable_id: volunteer_id, targetable_type: 'Volunteer')
+    return true if volunteer_cheer_verification.present?
+  end
+
   #----ボランティア投稿に応援した場合の通知-----------------------------------
-  def create_notification_cheer_registration!(join_volunteer, volunteer, account_info)
+  def create_notification_cheer_registration!(volunteer, account_info)
     notification = account_info.active_notifications.new(
-      item_id: volunteer.id,
-      join_volunteer: join_volunteer,
-      receiveable_id: volunteer.postable_id,
+      post_id:          volunteer.id,
+      linkable:         volunteer,
+      receiveable_id:   volunteer.postable_id,
       receiveable_type: volunteer.postable_type,
-      action: 'join_volunteer'
+      action:           'cheer'
     )
     notification.save!
   end

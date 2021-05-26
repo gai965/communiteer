@@ -75,8 +75,12 @@
     @apply w-full text-lg text-gray-500 font-bold text-center;
   }
 
-  .cheering_btn {
-    @apply h-10 w-full text-lg text-black text-center bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none;
+  .cheering_on_btn {
+    @apply h-10 w-full text-lg text-black text-center font-bold bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none;
+  }
+
+  .cheering_off_btn {
+    @apply h-10 w-full text-lg text-white text-center font-bold bg-blue-500 flex justify-center items-center my-auto rounded-sm focus:outline-none;
   }
 
   .login_apply_btn {

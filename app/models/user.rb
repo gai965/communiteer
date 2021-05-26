@@ -8,9 +8,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
-  # 半角英数字および大文字を含む
   validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
-                                 message: 'Include all uppercase and lowercase letters and numbers'
+                                 message: 'は大文字を含む英字と数字を入力してください'
 
   with_options presence: true, uniqueness: true do
     validates :nickname

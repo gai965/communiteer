@@ -29,6 +29,8 @@ class VolunteersController < ApplicationController
     @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type,
                                                                       @account_id, @account_type)
     @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
+    @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer.id, @account_id, @account_type)
+    @cheer_number = Cheer.where(targetable_id: params[:id]).count
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
 
