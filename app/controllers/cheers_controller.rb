@@ -44,4 +44,10 @@ class CheersController < ApplicationController
       @target_type = 'Volunteer'
     end
   end
+<<<<<<< Updated upstream
 end
+=======
+ 
+ 
+ end
+>>>>>>> Stashed changes
