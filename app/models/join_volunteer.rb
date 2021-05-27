@@ -16,7 +16,7 @@ class JoinVolunteer < ApplicationRecord
   end
 
   # ---インスタンスメソッド---------------------------------
-  #----登録時の通知-----------------------------------
+  #----登録時の相手側通知-----------------------------------
   def create_notification_join_registration!(join_volunteer, account_info)
     notification = account_info.active_notifications.new(
       post_id:          join_volunteer.volunteer.id,
@@ -28,7 +28,7 @@ class JoinVolunteer < ApplicationRecord
     notification.save!
   end
 
-  #----承諾時の通知-----------------------------------
+  #----承諾時の相手側通知-----------------------------------
   def create_notification_accept_registration!(join_volunteer, account_info)
     notification = account_info.active_notifications.new(
       post_id:          join_volunteer.volunteer.id,
