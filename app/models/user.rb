@@ -12,11 +12,11 @@ class User < ApplicationRecord
                                  message: 'は大文字を含む英字と数字を入力してください'
 
   with_options presence: true, uniqueness: true do
-    validates :nickname
+    validates :name
   end
 
   def contributor_name
-    nickname
+    name
   end
 
   def image_icon_path
@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   def self.guest
     user = User.find_or_create_by!(email: 'user@guest.com') do |user|
-      user.nickname = 'ゲスト'
+      user.name = 'ゲスト'
       user.password = 'UserGuest01'
     end
   end

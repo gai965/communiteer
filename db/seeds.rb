@@ -11,14 +11,14 @@ Group.create!(
   password:"GroupGuest01", 
   name: "ゲスト団体",
   phone_number: "0000000000", 
-  base_address: "東京都新宿区西新宿2丁目8-1}", 
+  base_address: "東京都新宿区西新宿2丁目8-1", 
   url: "http://www.communiteer.co.jp/", 
   group_category: 1
 )
 2.times do |n|
   User.create!(
     email: "user#{n + 1}@com",
-    nickname: "テストユーザー#{n + 1}",
+    name: "テストユーザー#{n + 1}",
     password: "User#{n+1}#{n+1}"
   )
   Group.create!(

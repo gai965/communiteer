@@ -15,6 +15,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # ユーザ新規登録時の情報を確認
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end

@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
 
     context '新規登録が失敗する時' do
       it 'ニックネームが「空」だと登録できない' do
-        @user.nickname = nil
+        @user.name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include('ニックネームを入力してください')
       end
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
       it 'ニックネームが「一意性でない」と登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
-        another_user.nickname = @user.nickname
+        another_user.name = @user.name
         another_user.valid?
         expect(another_user.errors.full_messages).to include('ニックネームはすでに存在します')
       end

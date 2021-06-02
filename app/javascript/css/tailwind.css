@@ -146,7 +146,7 @@
   }
 
 
-  /* -------------------------------------- */
+  /* ---ページネーション----------------------------------- */
   .pagination {
     @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6;
   }
@@ -166,4 +166,15 @@
   .pagination >.first,.last{
     @apply w-24 sm:w-32;
   }
+  /* ------------------------------------- */
+
+
+
+  /* ---マイページ-------------------------- */
+
+  .profile_edit_btn {
+    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400  py-2 rounded-sm focus:outline-none;
+  }
+
+  /* ------------------------------------- */
 }
