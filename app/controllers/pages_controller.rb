@@ -3,9 +3,13 @@ class PagesController < ApplicationController
 
   def show
     if params[:type] == 'User'
-      @page_info = User.find(params[:id])
+      @account_page_info = User.find(params[:id])
+      @account_page_info_type = params[:type]
+      @icon_image_path = '/assets/user_icon.png'
     elsif params[:type] == 'Group'
-      @page_info = Group.find(params[:id])
+      @account_page_info_type = params[:type]
+      @account_page_info = Group.find(params[:id])
+      @icon_image_path = '/assets/group_icon.png'
     end
   end
 
