@@ -18,8 +18,4 @@ class AcceptsController < ApplicationController
     @volunteer = Volunteer.find(params[:volunteer_id])
     @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id])
   end
-
-  def move_to_index
-    redirect_to root_path unless user_signed_in? || group_signed_in?
-  end
 end

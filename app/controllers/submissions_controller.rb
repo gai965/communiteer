@@ -24,11 +24,7 @@ class SubmissionsController < ApplicationController
       render :join_volunteer_new
     end
   end
-
-  def move_to_index
-    redirect_to root_path unless user_signed_in? || group_signed_in?
-  end
-
+  
   private
 
   def join_volunteer_params

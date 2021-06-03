@@ -20,13 +20,9 @@ class CheersController < ApplicationController
      redirect_to volunteer_path(params[:volunteer_id])
    end
   end
-  
-  def move_to_index
-    redirect_to root_path unless user_signed_in? || group_signed_in?
-  end
-  
+
   private
- 
+
   def set_info
     set_login_account
     if params[:action] == 'volunteer_cheer_create'
