@@ -1,10 +1,12 @@
 class PagesController < ApplicationController
-  before_action :set_profile_edit_path, only: [:index, :show]
-
-  def index
-  end
+  before_action :set_profile_edit_path, only: [:show]
 
   def show
+    if params[:type] == 'User'
+      @page_info = User.find(params[:id])
+    elsif params[:type] == 'Group'
+      @page_info = Group.find(params[:id])
+    end
   end
 
   def set_profile_edit_path

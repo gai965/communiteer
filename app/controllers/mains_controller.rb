@@ -17,6 +17,7 @@ class MainsController < ApplicationController
   # ------------------------------
 
   def set_header_info
+    set_login_account
     if user_signed_in?
       $login_id = current_user.id
       $icon_image_path = '/assets/user_icon.png'

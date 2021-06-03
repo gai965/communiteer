@@ -1,2 +1,3 @@
-<% provide(:title, '他人のマイページ') %>
-<%= render partial: 'page_info' %>
+
+<% provide(:title, "#{@page_info.name}さんのページ") %>
+<%= render partial: 'page_info', locals: {page_info: @page_info} %>

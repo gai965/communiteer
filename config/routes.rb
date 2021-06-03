@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'mains#index'
   resources :mains,         only: :index
   resources :notifications, only: :index
-  resources :pages,         only: [:index, :show]
+  resources :pages,         only: [:show]
   resources :volunteers,    except: :index do
     get  '/submissions/new',   to: 'submissions#join_volunteer_new'
     post '/submissions',       to: 'submissions#join_volunteer_create'

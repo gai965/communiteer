@@ -13,7 +13,7 @@
         <div class='h-full grid grid-rows-2 sm:grid-rows-4 grid-cols-1'>
           <%= image_tag @volunteer.image, class:'h-56 sm:h-full w-full my-auto mx-auto row-span-2 rounded-lg'%>
           <div class='my-3 lg:my-6 mx-2'>
-            <%= link_to(page_path(@volunteer.postable_id), class:'hover:opacity-40 mb-2 lg:mb-5 flex place-items-center') do %>
+            <%= link_to(page_path(@volunteer.postable_id, type: @volunteer.postable_type), class:'hover:opacity-40 mb-2 lg:mb-5 flex place-items-center') do %>
               <img src= <%= @volunteer.postable.image_icon_path%> class='h-8 lg:h-10 w-8 lg:w-10 mr-2' >
               <span class='sm:text-xl lg:text-2xl border-b border-gray-400'><%= @volunteer.postable.contributor_name %></span>
             <% end %>
