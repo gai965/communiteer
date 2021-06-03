@@ -9,6 +9,7 @@ import "channels"
 
 import '../css/tailwind.css';
 require("../preview");
+require("../profile");
 
 Rails.start()
 Turbolinks.start()

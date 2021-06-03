@@ -173,7 +173,31 @@
   /* ---マイページ-------------------------- */
 
   .profile_edit_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400  py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none;
+  }
+
+  .tab {
+    color       : #C0C0C0;
+    font-size   : x-large;
+    font-weight : bold;
+    margin-right: 1rem;
+  }
+  
+  .tab.now_active{
+    color : #000000;
+    border-bottom: medium solid #C2EEFF;
+  }
+
+  .child_tab {
+    color         : #000000;
+    font-size     : medium;
+    padding: 0.5rem 1rem;
+  }
+
+  .child_tab.child_now_active{
+    color           : #000000;
+    background-color: #C2EEFF;
+    font-weight     : bold;
   }
 
   /* ------------------------------------- */
