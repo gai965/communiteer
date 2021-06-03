@@ -7,13 +7,13 @@
 
   /*「field_with_errorr」によるレイアウト崩れを防ぐ */
   .field_with_errors {
-    @apply contents;
+    @apply contents
 } 
 
   /* ---新規登録・ログイン画面のコンポーネント--- */
 
   .label_name {
-    @apply text-lg sm:text-xl text-gray-600 uppercase mr-2;
+    @apply text-lg sm:text-xl text-gray-600 uppercase mr-2
   }
   /* 画像プレビュー */
   .image_preview{
@@ -21,15 +21,15 @@
   }
   /* 情報入力欄 */
   .reg_info_field {
-    @apply w-full text-sm sm:text-lg text-gray-800 border-b-2 border-gray-100 pb-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400;
+    @apply w-full text-sm sm:text-lg text-gray-800 border-b-2 border-gray-100 pb-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400
 }
   /*「必須」*/
   .mandatory_display {
-    @apply text-xs font-bold text-white bg-red-400 py-1 px-1;
+    @apply text-xs font-bold text-white bg-red-400 py-1 px-1
   }
   /*「任意」*/
   .any_display {
-    @apply text-xs font-bold text-white bg-gray-400 py-1 px-1;
+    @apply text-xs font-bold text-white bg-gray-400 py-1 px-1
   }
   /* カテゴリーのタグ */
   .category_name{
@@ -37,22 +37,22 @@
   }
 
   .choice_block_left {
-    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-8  px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
+    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-8  px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl
   }
   .choice_block_right {
-    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-5 px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl;
+    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-5 px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl
   }
   /*「登録」「ログイン」ボタン */
   .registration_btn {
-    @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-1 sm:py-2 my-5 md:my-8 focus:outline-none hover:bg-gray-700 hover:shadow-none;
+    @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-1 sm:py-2 my-5 md:my-8 focus:outline-none hover:bg-gray-700 hover:shadow-none
   }
   /*「もどる」ボタン */
   .return_btn {
-    @apply w-3/5 text-base text-white uppercase flex justify-center bg-gray-400 rounded-sm mx-auto py-1 sm:py-2 md:mt-2 focus:outline-none hover:bg-gray-300 hover:shadow-none;
+    @apply w-3/5 text-base text-white uppercase flex justify-center bg-gray-400 rounded-sm mx-auto py-1 sm:py-2 md:mt-2 focus:outline-none hover:bg-gray-300 hover:shadow-none
   }
   /*「もどる」ボタンの小さめ */
   .return_mini_btn {
-    @apply w-64 text-base text-white uppercase flex justify-center bg-gray-500 rounded-sm mx-auto py-2 mt-10 focus:outline-none hover:bg-gray-400 hover:shadow-none;
+    @apply w-64 text-base text-white uppercase flex justify-center bg-gray-500 rounded-sm mx-auto py-2 mt-10 focus:outline-none hover:bg-gray-400 hover:shadow-none
   }
 
   /* ------------------------------------- */
@@ -60,31 +60,31 @@
   /* ---投稿詳細画面------------------------ */
 
   .apply_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-red-600 hover:bg-red-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-red-600 hover:bg-red-400 py-2 rounded-sm focus:outline-none
   }
 
   .apply_finish_text {
-    @apply h-10 w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none
   }
 
   .deadline_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none
   }
 
   .deadline_text {
-    @apply w-full text-lg text-gray-500 font-bold text-center;
+    @apply w-full text-lg text-gray-500 font-bold text-center
   }
 
   .cheering_on_btn {
-    @apply h-10 w-full text-lg text-black text-center font-bold bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none;
+    @apply h-10 w-full text-lg text-black text-center font-bold bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none
   }
 
   .cheering_off_btn {
-    @apply h-10 w-full text-lg text-white text-center font-bold bg-blue-500 flex justify-center items-center my-auto rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white text-center font-bold bg-blue-500 flex justify-center items-center my-auto rounded-sm focus:outline-none
   }
 
   .login_apply_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-green-600 hover:bg-green-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-green-600 hover:bg-green-400 py-2 rounded-sm focus:outline-none
   }
 
   .item_title{
@@ -138,67 +138,65 @@
   }
   
   .accept_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm;
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm
   }
 
   .accept_finish_text {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm;
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm
   }
 
 
   /* ---ページネーション----------------------------------- */
   .pagination {
-    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6;
+    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6
   }
 
   .pagination * {
-    @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1;
+    @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1
   }
   
   .pagination a:hover {
-    @apply border-4 rounded-full;
+    @apply border-4 rounded-full
   }
   
   .pagination >.page.current {
-    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2;
+    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
   }
   
   .pagination >.first,.last{
-    @apply w-24 sm:w-32;
+    @apply w-24 sm:w-32
   }
   /* ------------------------------------- */
 
 
 
   /* ---マイページ-------------------------- */
+  .page_item_area{
+    @apply w-full cursor-pointer flex flex-col mt-3 
+  }
+
+  .page_item {
+    @apply text-gray-500 text-center border-black mx-auto 
+  }
 
   .profile_edit_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none;
+    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
   }
 
   .tab {
-    color       : #C0C0C0;
-    font-size   : x-large;
-    font-weight : bold;
-    margin-right: 1rem;
+    @apply text-xl sm:text-2xl text-gray-400 font-bold mr-4 hover:text-black
   }
-  
+
   .tab.now_active{
-    color : #000000;
-    border-bottom: medium solid #C2EEFF;
+    @apply text-black border-b-2 border-blue-200
   }
 
   .child_tab {
-    color         : #000000;
-    font-size     : medium;
-    padding: 0.5rem 1rem;
+    @apply text-gray-400 text-sm sm:text-lg hover:bg-gray-200 px-1 sm:px-4 py-2
   }
 
   .child_tab.child_now_active{
-    color           : #000000;
-    background-color: #C2EEFF;
-    font-weight     : bold;
+    @apply text-black font-bold bg-blue-100
   }
-
   /* ------------------------------------- */
 }
