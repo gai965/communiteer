@@ -54,23 +54,23 @@ class Volunteer < ApplicationRecord
   end
 
   # ---投稿者と閲覧者が同一アカウントか確認-----------------------------------
-  def contributor_verification(postable_id, postable_type, account_id, account_type)
-    return true if postable_id == account_id && postable_type == account_type
+  def contributor_verification(volunteer, account_id, account_type)
+    return true if volunteer.postable_id == account_id && volunteer.postable_type == account_type
   end
 
   # ---ボランティア投稿に申し込み済か確認-------------------------------------
-  def application_verification(volunteer_id, account_id, account_type, approval)
+  def application_verification(volunteer, account_id, account_type, approval)
     if approval.present?
       join_volunteer_verification = JoinVolunteer.find_by(joinable_id: account_id, joinable_type: account_type,
-                                                          volunteer_id: volunteer_id)
+                                                          volunteer_id: volunteer.id)
       return true if join_volunteer_verification.present?
     end
   end
 
   # ---ボランティア投稿に応援済か確認-------------------------------------
-  def cheer_verification(volunteer_id, account_id, account_type)
+  def cheer_verification(volunteer, account_id, account_type)
     volunteer_cheer_verification = Cheer.find_by(cheerable_id: account_id, cheerable_type: account_type,
-                                                  targetable_id: volunteer_id, targetable_type: 'Volunteer')
+                                                  targetable_id: volunteer.id, targetable_type: 'Volunteer')
     return true if volunteer_cheer_verification.present?
   end
 

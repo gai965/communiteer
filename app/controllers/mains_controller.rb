@@ -1,5 +1,5 @@
 class MainsController < ApplicationController
-  before_action :set_login_account,     only: [:index]
+  before_action :set_header_info, only: [:index]
   before_action :deadline_verification, only: [:index]
 
   def index
@@ -16,13 +16,14 @@ class MainsController < ApplicationController
   end
   # ------------------------------
 
-  def set_login_account
+  def set_header_info
+    set_login_account
     if user_signed_in?
-      $login_name = current_user.nickname
+      $login_id = current_user.id
       $icon_image_path = '/assets/user_icon.png'
       $logout_link_path = destroy_user_session_path
     elsif group_signed_in?
-      $login_name = current_group.name
+      $login_id = current_group.id
       $icon_image_path = '/assets/group_icon.png'
       $logout_link_path = destroy_group_session_path
     end

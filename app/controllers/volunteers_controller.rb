@@ -1,9 +1,8 @@
 class VolunteersController < ApplicationController
-  before_action :move_to_index, only: [:new, :edit]
+  before_action :move_to_login, only: [:new, :edit]
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   def new
-    redirect_to mains_sign_in_choice_path unless user_signed_in? || group_signed_in?
     @volunteer = Volunteer.new
   end
 
@@ -26,11 +25,12 @@ class VolunteersController < ApplicationController
   end
 
   def show
-    @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer.postable_id, @volunteer.postable_type,
-                                                                      @account_id, @account_type)
-    @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer.id, @account_id, @account_type, @approval)
-    @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer.id, @account_id, @account_type)
-    @cheer_number = Cheer.where(targetable_id: params[:id]).count
+    if user_signed_in? || group_signed_in?
+      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id, @account_type)
+      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id, @account_type, @approval)
+      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id, @account_type)
+      @cheer_number = Cheer.where(targetable_id: params[:id]).count
+    end
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
 
@@ -50,11 +50,7 @@ class VolunteersController < ApplicationController
     @volunteer.destroy
     redirect_to root_path
   end
-
-  def move_to_index
-    redirect_to root_path unless user_signed_in? || group_signed_in?
-  end
-
+  
   private
 
   def volunteer_params
@@ -63,17 +59,14 @@ class VolunteersController < ApplicationController
   end
 
   def set_volunteer
+    set_login_account
     @volunteer = Volunteer.find(params[:id])
     @volunteer.set_volunteer_noimage(@volunteer.image)
 
     if user_signed_in?
-      @account_id = current_user.id
-      @account_type = 'User'
       @approval = true
     elsif group_signed_in?
-      @account_id = current_group.id
-      @account_type = 'Group'
-      @group = Group.find(current_group.id)
+      @group = Group.find(@account.id)
       @approval = true if @group.group_category == 1
     end
   end
