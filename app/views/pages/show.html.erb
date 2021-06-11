@@ -31,7 +31,7 @@
       </div>
       <div class='h-screen w-full lg:w-176 bg-white flex-1 lg:flex-none hover:shadow-md p-6 md:ml-2'>
         <ul class='cursor-pointer flex pb-5'>
-          <li class='tab now_active'>投稿</li>
+          <div class='tab now_active'>投稿</div>
           <li class='tab'>参加</li>
           <li class='tab'>応援</li>
         </ul>
@@ -41,6 +41,11 @@
           <li class='child_tab'>活動場所</li>
           <li class='child_tab'>イベント</li>
         </ul>
+        <div class='my-5'>
+          <div id='display_board'>
+            <%# <%= render partial: 'display' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
