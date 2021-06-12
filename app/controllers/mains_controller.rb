@@ -3,8 +3,7 @@ class MainsController < ApplicationController
   before_action :deadline_verification, only: [:index]
 
   def index
-    @volunteer = Volunteer.order('created_at DESC').limit(10)
-    $volunteer_post_number = @volunteer.count
+    volunteers_set
     $noimage_path = File.expand_path('app/assets/images/noimage.png', Rails.root)
   end
 
@@ -15,6 +14,17 @@ class MainsController < ApplicationController
   def sign_in_choice
   end
   # ------------------------------
+
+  def volunteers_set
+    @volunteers = Volunteer.order('created_at DESC').limit(10)
+    volunteers_path = []
+    @volunteers.each.with_index do |volunteer, i|
+      volunteers_path.push(volunteer_path(volunteer.id))
+      volunteer.set_volunteer_noimage(volunteer.image)
+    end
+    @volunteers_path = volunteers_path
+    @volunteer_post_number = @volunteers.count
+  end
 
   def set_header_info
     set_login_account

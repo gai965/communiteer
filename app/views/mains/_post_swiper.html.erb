@@ -1,0 +1,24 @@
+<div class='swiper-container slider2'>
+  <div class='swiper-wrapper'>
+    <% posts.each.with_index do |post, i| %>
+      <div class='swiper-slide'>
+        <div class='post_area group'>
+          <%= link_to paths[i] do %>
+            <%= image_tag post.image, class:'h-2/3 w-full'%>
+            <div class='py-1 px-4'>
+              <p class='text-2xl font-bold truncate mb-2 group-hover:text-green-400'><%= post.title %></p>
+              <div class='flex items-center'>
+                <img src= <%= post.postable.image_icon_path %> class='h-6 w-6 opacity-50 mr-1' >
+                <span class='text-lg text-gray-600 truncate mr-1'><%= post.postable.contributor_name %></span>
+                <img src='/assets/destination_icon.png' class='h-6 w-6 opacity-50 mr-1'>
+                <span class='text-lg text-gray-600 truncate mr-1'><%= post.place%></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class='swiper-pagination'></div>
+</div>
+<%= javascript_pack_tag 'swiper' %>

@@ -5,34 +5,23 @@
     <%= render partial: 'index_swiper'%> 
   </div>
   <div class='w-full bg-gray-100 pt-5 pb-10 px-2 md:px-6'>
-    <div class='h-72 sm:h-96 md:h-120 w-full py-2 sm:py-4 px-2 md:px-16 lg:px-24 xl:px-36 mx-auto'>
+    <div class='w-full py-2 sm:py-4 px-2 :px-16 mx-auto'>
       <p class='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center border-gray-300 border-b-2 pb-2'>新着情報</p>
-      <div class='my-3'>
-        <p class='text-xl md:text-2xl lg:text-3xl font-bold pb-1 sm:pb-2 md:pb-4 '>ボランティア募集</p>
-        <% if $volunteer_post_number == 0 %>
-          <p class='text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-bold text-center py-3 sm:py-5'>投稿はありません</p>
+      <div class='top_post_area'>
+        <p class='top_post_title'>ボランティア募集</p>
+        <% if @volunteer_post_number == 0 %>
+          <p class='no_posts'>投稿はありません</p>
         <% else %>
-          <% if $volunteer_post_number < 5 %>
-            <div class='grid  grid-cols-<%= $volunteer_post_number %>'>
-          <% else %>
-            <div class='grid grid-cols-5 gap-x-2'>
-          <% end %>
-              <%= render partial: 'volunteer', collection: @volunteer %> 
-            </div>
+          <%= render partial: 'post_swiper', locals: { posts: @volunteers, paths: @volunteers_path} %> 
         <% end %>
       </div>
-    </div>
-    <div class='bg-white mt-6 p-4 rounded-md shadow-md'>
-      <p class='text-4xl font-bold text-center pb-3'>募集投稿</p>
-      <div class='p-1'>
-        <%= link_to(new_volunteer_path) do %>
-          <div class='mb-4 flex shadow-lg group hover:shadow-2xl transform hover:scale-105'>
-            <%= image_tag('volunteer_recruit_image.jpg', class:'h-1/2 w-1/2') %>
-            <div class='w-1/2 bg-gray-200 group-hover:bg-gray-300 p-10 '>
-              <p class='text-3xl font-bold'>ボランティア募集</p>
-            </div>
-          </div>
-        <% end %>
+      <div class='top_post_area'>
+        <p class='top_post_title'>活動場所募集</p>
+        <p class='no_posts'>投稿はありません</p>
+      </div>
+      <div class='top_post_area'>
+        <p class='top_post_title'>イベント参加者募集</p>
+        <p class='no_posts'>投稿はありません</p>
       </div>
     </div>
   </div>
