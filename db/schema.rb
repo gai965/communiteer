@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_05_04_134325) do
 
-  create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "cheers", charset: "utf8", force: :cascade do |t|
+  create_table "cheers", charset: "utf8mb3", force: :cascade do |t|
     t.string "cheerable_type", null: false
     t.bigint "cheerable_id", null: false
     t.string "targetable_type", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["targetable_type", "targetable_id"], name: "index_cheers_on_targetable"
   end
 
-  create_table "groups", charset: "utf8", force: :cascade do |t|
+  create_table "groups", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: ""
     t.string "encrypted_password", default: "", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["reset_password_token"], name: "index_groups_on_reset_password_token", unique: true
   end
 
-  create_table "impressions", charset: "utf8", force: :cascade do |t|
+  create_table "impressions", charset: "utf8mb3", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
     t.integer "user_id"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "join_volunteers", charset: "utf8", force: :cascade do |t|
+  create_table "join_volunteers", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "phone_number"
     t.integer "number", null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["volunteer_id"], name: "index_join_volunteers_on_volunteer_id"
   end
 
-  create_table "notifications", charset: "utf8", force: :cascade do |t|
+  create_table "notifications", charset: "utf8mb3", force: :cascade do |t|
     t.integer "post_id", null: false
     t.string "action", null: false
     t.boolean "checked", default: false, null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["sendable_type", "sendable_id"], name: "index_notifications_on_sendable"
   end
 
-  create_table "users", charset: "utf8", force: :cascade do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_134325) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "volunteers", charset: "utf8", force: :cascade do |t|
+  create_table "volunteers", charset: "utf8mb3", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.string "place", default: "", null: false
     t.text "details"
