@@ -2,7 +2,7 @@
   <div class='swiper-wrapper'>
     <% posts.each.with_index do |post, i| %>
       <div class='swiper-slide'>
-        <div class='post_area group'>
+        <div class='single_post_area group'>
           <%= link_to paths[i] do %>
             <%= image_tag post.image, class:'h-2/3 w-full'%>
             <div class='py-1 px-4'>
@@ -20,5 +20,7 @@
     <% end %>
   </div>
   <div class='swiper-pagination'></div>
+  <div class='swiper-button-prev'></div>
+  <div class='swiper-button-next'></div>
 </div>
 <%= javascript_pack_tag 'swiper' %>

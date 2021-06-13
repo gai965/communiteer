@@ -188,8 +188,13 @@
   .slider2 {
     @apply h-80 w-full bg-gray-100
   }
-  .post_area {
+  .single_post_area {
     @apply h-64 w-80 sm:w-96 md:w-80 bg-white mx-auto hover:shadow-lg rounded-md
   }
-  
+  .swiper-button-prev:after{
+    @apply h-16 w-16 text-transparent bg-left-arrow bg-no-repeat -mr-12
+  }
+  .swiper-button-next:after{
+    @apply h-16 w-16 text-transparent bg-right-arrow bg-no-repeat -ml-12
+  }
 }
