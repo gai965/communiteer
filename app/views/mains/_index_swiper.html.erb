@@ -1,0 +1,58 @@
+<div class='swiper-container slider1'>
+  <div class='swiper-wrapper'>
+    <div class='swiper-slide'><%= image_tag('top_image.jpg', class:'h-full w-full pb-10') %></div>
+    <div class='swiper-slide'>
+      <div class='swiper_post_container'>
+        <%= image_tag('volunteer_recruit_image.jpg', class:'w-3/5 md:w-2/3') %>
+        <div class='swiper_post_area'>
+          <div class='h-1/5 mb-2 sm:mb-6 grid place-content-center '>
+            <p class='swiper_post_title'>ボランティア</p>
+            <p class='swiper_post_title'>募集</p>
+          </div>
+          <div class='h-3/5'>
+            <p class='swiper_post_description'>個人または団体で</p>
+            <p class='swiper_post_description'>ボランティア募集を</p>
+            <p class='swiper_post_description'>することができます</p>
+          </div>
+          <%= button_to 'ボランティア募集', new_volunteer_path, method: :get, class:'top_post_btn' %>
+        </div>
+      </div>
+    </div>
+    <div class='swiper-slide'>
+      <div class='swiper_post_container'>
+        <div class='swiper_post_area'>
+          <div class='h-1/5 mb-2 sm:mb-6 grid place-content-center '>
+            <p class='swiper_post_title'>活動場所</p>
+            <p class='swiper_post_title'>募集</p>
+          </div>
+          <div class='h-3/5'>
+            <p class='swiper_post_description'>個人の方で得意事を</p>
+            <p class='swiper_post_description'>活かしたい方が</p>
+            <p class='swiper_post_description'>活動場所を募集できます</p>
+          </div>
+          <%= button_to '活動場所募集', root_path, method: :get, class:'top_post_btn' %>
+        </div>
+        <%= image_tag('provide_image2.jpg', class:'w-3/5 md:w-2/3') %>
+      </div>
+    </div>
+    <div class='swiper-slide'>
+      <div class='swiper_post_container'>
+        <%= image_tag('participate_image.jpg', class:'w-3/5 md:w-2/3') %>
+        <div class='swiper_post_area'>
+          <div class='h-1/5 mb-2 sm:mb-6 grid place-content-center '>
+            <p class='swiper_post_title'>イベント参加者</p>
+            <p class='swiper_post_title'>募集</p>
+          </div>
+          <div class='h-3/5'>
+            <p class='swiper_post_description'>どなたでも</p>
+            <p class='swiper_post_description'>イベント参加者を</p>
+            <p class='swiper_post_description'>募集することができます</p>
+          </div>
+          <%= button_to 'イベント参加者募集', root_path, method: :get, class:'top_post_btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='swiper-pagination'></div>
+</div>
+<%= javascript_pack_tag 'swiper' %>

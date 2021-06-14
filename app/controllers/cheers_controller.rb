@@ -1,6 +1,7 @@
 class CheersController < ApplicationController
-  before_action :move_to_index, only: [:volunteer_cheer_index, :volunteer_cheer_create]
-  before_action :set_info, only: [:volunteer_cheer_create, :volunteer_cheer_destroy]
+  before_action :move_to_index,     only: [:volunteer_cheer_index, :volunteer_cheer_create]
+  before_action :set_cheer_info,
+                :set_login_account, only: [:volunteer_cheer_create, :volunteer_cheer_destroy]
  
   def volunteer_cheer_index
    @cheer = Cheer.where(targetable_id: params[:volunteer_id]).order('created_at DESC').page(params[:page]).per(6)
@@ -23,8 +24,7 @@ class CheersController < ApplicationController
 
   private
 
-  def set_info
-    set_login_account
+  def set_cheer_info
     if params[:action] == 'volunteer_cheer_create'
       @volunteer   = Volunteer.find(params[:volunteer_id]) 
       @target_id   = @volunteer.id

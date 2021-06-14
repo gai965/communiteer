@@ -1,6 +1,11 @@
 class VolunteersController < ApplicationController
-  before_action :move_to_login, only: [:new, :edit]
-  before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_login,     only: [:new, :edit]
+  before_action :set_login_account, only: [:index, :create, :show]
+  before_action :set_volunteer,     only: [:show, :edit, :update, :destroy]
+
+  def index
+    @all_volunteer = Volunteer.all
+  end
 
   def new
     @volunteer = Volunteer.new
@@ -9,13 +14,9 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.set_volunteer_noimage(@volunteer.image)
-    if user_signed_in?
-      @volunteer.postable_id = current_user.id
-      @volunteer.postable_type = 'User'
-    else
-      @volunteer.postable_id = current_group.id
-      @volunteer.postable_type = 'Group'
-    end
+    @volunteer.postable_id =  @account.id
+    @volunteer.postable_type = @account_type
+
     if @volunteer.valid?
       @volunteer.save
       redirect_to root_path
@@ -59,7 +60,6 @@ class VolunteersController < ApplicationController
   end
 
   def set_volunteer
-    set_login_account
     @volunteer = Volunteer.find(params[:id])
     @volunteer.set_volunteer_noimage(@volunteer.image)
 

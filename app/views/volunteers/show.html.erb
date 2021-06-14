@@ -1,6 +1,6 @@
 <% provide(:title, @volunteer.title) %>
 <%= render 'shared/header' %> 
-
+<%= render partial:'shared/second_header', locals:{ title: 'ボランティア募集詳細' } %> 
 <div class='sm:h-screen w-full bg-gray-200 font-sans'>
   <div class='grid place-items-center pt-10'>
     <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
@@ -143,7 +143,7 @@
     </div>
   </div>
     <% if @volunteer.details.present? %>
-      <div class='bg-gray-200 grid place-items-center'>
+      <div class='bg-gray-200 grid place-items-center pb-10'>
         <div class='w-full sm:w-176 lg:w-240 bg-white mt-3 sm:mt-0 mb-10 md:mb-3 py-4 rounded-lg shadow-md'>
           <p class='font-mono text-2xl lg:text-3xl text-gray-600 bg-gray-200 mx-3'>内容詳細</p>
           <div class='h-40 md:h-36 mt-3 mx-3 overflow-y-auto' >

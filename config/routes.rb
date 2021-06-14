@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :mains,         only: :index
   resources :notifications, only: :index
   resources :pages,         only: [:show]
-  resources :volunteers,    except: :index do
+  resources :volunteers do
     get  '/submissions/new',   to: 'submissions#join_volunteer_new'
     post '/submissions',       to: 'submissions#join_volunteer_create'
     get  '/accepts/join_info', to: 'accepts#join_volunteer_info'
