@@ -117,7 +117,7 @@
 
   /* ---ページネーション----------------------------------- */
   .pagination {
-    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6
+    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto my-3 sm:my-6
   }
   .pagination * {
     @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1

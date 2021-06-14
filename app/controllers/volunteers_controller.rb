@@ -4,7 +4,7 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer,     only: [:show, :edit, :update, :destroy]
 
   def index
-    @all_volunteer = Volunteer.all.order('created_at DESC')
+    @all_volunteer = Volunteer.all.order('created_at DESC').page(params[:page]).per(12)
     @all_volunteer_number = @all_volunteer.count
   end
 

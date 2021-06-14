@@ -19,6 +19,10 @@ class Volunteer < ApplicationRecord
     validates :deadline
   end
 
+  def volunteer_title
+    title
+  end
+
   # 活動日が「明日以降」でしか登録できないバリデーション
   validate :schedule_after_tomorrow, if: -> { schedule.present? }
   def schedule_after_tomorrow
