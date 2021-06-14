@@ -25,9 +25,9 @@
           </div>
         </div>
         <div class='h-1/5'>
-          <% if sameperson_confirmation.present? %>
+          <% if sameperson_confirmation == 0 %>
             <%= button_to 'プロフィールを編集する', @edit_path, method: :get, class:'profile_edit_btn' %>
-          <% else %>
+          <% elsif sameperson_confirmation == 1 %>
             <%= button_to 'ダイレクトメッセージを送る', root_path, method: :get, class:'direct_message_btn' %>
           <% end %>
         </div>

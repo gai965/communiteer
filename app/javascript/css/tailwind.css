@@ -143,7 +143,7 @@
     @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
   }
   .direct_message_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
+    @apply h-10 w-full text-lg text-white font-bold text-center bg-purple-500 hover:bg-purple-400 py-2 rounded-sm focus:outline-none
   }
   .tab {
     @apply text-xl sm:text-2xl text-gray-400 font-bold mr-4 hover:text-black
