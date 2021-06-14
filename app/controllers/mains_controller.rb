@@ -18,7 +18,7 @@ class MainsController < ApplicationController
   def volunteers_set
     @volunteers = Volunteer.order('created_at DESC').limit(10)
     volunteers_path = []
-    @volunteers.each.with_index do |volunteer, i|
+    @volunteers.each do |volunteer|
       volunteers_path.push(volunteer_path(volunteer.id))
       volunteer.set_volunteer_noimage(volunteer.image)
     end

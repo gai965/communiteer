@@ -2,6 +2,9 @@ class VolunteersController < ApplicationController
   before_action :move_to_login, only: [:new, :edit]
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
+  def index
+  end
+
   def new
     @volunteer = Volunteer.new
   end

@@ -156,17 +156,20 @@
   }
 
   /* ---TOP画面----------------------------------- */
-  .top_post_area {
-    @apply border-gray-300 border-b-2 my-4 pb-2
-  }
   .top_post_title {
-    @apply text-xl md:text-2xl lg:text-3xl font-bold pb-1 sm:pb-2 md:pb-4 
+    @apply text-2xl lg:text-3xl font-bold my-4
+  }
+  .top_post_area {
+    @apply border-gray-300 border-b-2 pb-6 grid justify-items-center
   }
   .no_posts {
     @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-bold text-center py-3 sm:py-5
   }
   .top_post_btn {
     @apply h-10 w-full text-sm sm:text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
+  }
+  .top_link_btn {
+    @apply text-xl text-blue-500 hover:text-blue-300 border-b border-blue-500 hover:border-blue-300
   }
   /***** ---_index_swiper---------------------------- *****/
   .slider1 {
