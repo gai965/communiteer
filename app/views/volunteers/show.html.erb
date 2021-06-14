@@ -1,6 +1,6 @@
 <% provide(:title, @volunteer.title) %>
 <%= render 'shared/header' %> 
-
+<%= render partial:'shared/second_header', locals:{ title: 'ボランティア募集詳細' } %> 
 <div class='sm:h-screen w-full bg-gray-200 font-sans'>
   <div class='grid place-items-center pt-10'>
     <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>

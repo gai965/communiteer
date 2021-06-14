@@ -1,5 +1,6 @@
 class MainsController < ApplicationController
-  before_action :set_header_info, only: [:index]
+  before_action :set_login_account,     only: [:set_header_info, :index]
+  before_action :set_header_info,       only: [:index]
   before_action :deadline_verification, only: [:index]
 
   def index
@@ -27,7 +28,6 @@ class MainsController < ApplicationController
   end
 
   def set_header_info
-    set_login_account
     if user_signed_in?
       $login_id = current_user.id
       $icon_image_path = '/assets/user_icon.png'

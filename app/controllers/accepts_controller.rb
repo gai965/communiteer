@@ -1,5 +1,6 @@
 class AcceptsController < ApplicationController
   before_action :move_to_index,           only: [:join_volunteer_info]
+  before_action :set_login_account,       only: [:join_volunteer_info]
   before_action :set_join_volunteer_info, only: [:join_volunteer_info, :join_volunteer_accept]
 
   def join_volunteer_info
@@ -14,7 +15,6 @@ class AcceptsController < ApplicationController
   end
 
   def set_join_volunteer_info
-    set_login_account
     @volunteer = Volunteer.find(params[:volunteer_id])
     @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id])
   end

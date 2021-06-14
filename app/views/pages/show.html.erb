@@ -1,5 +1,6 @@
 <% provide(:title, "#{@account_page_info.name}さんのページ") %>
 <%= render 'shared/header' %>
+<%= render partial:'shared/second_header', locals:{ title: "#{@account_page_info.name}さんのページ" } %> 
 
 <div class='w-full bg-gray-200 font-sans'>
   <div class='grid place-items-center py-14'>
@@ -26,6 +27,8 @@
         <div class='h-1/5'>
           <% if sameperson_confirmation.present? %>
             <%= button_to 'プロフィールを編集する', @edit_path, method: :get, class:'profile_edit_btn' %>
+          <% else %>
+            <%= button_to 'ダイレクトメッセージを送る', root_path, method: :get, class:'direct_message_btn' %>
           <% end %>
         </div>
       </div>
@@ -42,9 +45,6 @@
           <li class='child_tab'>イベント</li>
         </ul>
         <div class='my-5'>
-          <div id='display_board'>
-            <%# <%= render partial: 'display' %>
-          </div>
         </div>
       </div>
     </div>
