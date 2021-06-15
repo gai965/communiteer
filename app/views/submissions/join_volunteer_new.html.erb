@@ -1,8 +1,10 @@
 <% provide(:title, 'ボランティア参加応募') %>
+<%= render 'shared/header' %> 
+<%= render partial:'shared/second_header', locals:{ title: "#{@volunteer.title}への応募" } %> 
 
-<div class='h-screen w-full bg-gray-100 flex flex-col font-sans'>
-  <div class='grid place-items-center mx-auto my-auto'>
-    <div class='w-80 sm:w-160 md:w-192 p-4 md:p-8 bg-white rounded-lg shadow-md'>
+<div class='h-screen w-full bg-gray-200 font-sans'>
+  <div class='grid place-items-center pt-14'>
+    <div class='w-full xs:w-112 sm:w-160 md:w-192 p-4 md:p-8 bg-white rounded-lg shadow-md'>
       <%= link_to(volunteer_path(@volunteer.id), class:'grid justify-items-end place-items-center') do %>
         <img src='/assets/close_icon.png', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
       <% end %>

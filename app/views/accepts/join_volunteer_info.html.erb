@@ -1,12 +1,14 @@
+<% provide(:title, "#{@volunteer.title}への応募情報") %>
 <%= render 'shared/header' %>
+<%= render partial:'shared/second_header', locals:{ title: "#{@volunteer.title}への応募情報" } %> 
 
 <div class='h-screen w-full bg-gray-100 flex flex-col font-sans'>
-  <div class='grid place-items-center mt-10 sm:my-auto '>
-    <div class='w-full sm:w-160 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
-      <div class='bg-gray-200 m-2 sm:my-8 sm:mx-16'>
+  <div class='grid place-items-center pt-10 '>
+    <div class='w-full xs:w-112 sm:w-160 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
+      <div class='bg-gray-200 my-8 mx-8 sm:mx-16'>
         <p class='font-mono text-2xl text-gray-600 ml-3'>応募情報</p>
       </div>
-      <div class='m-2 sm:my-5 sm:mx-24'>
+      <div class='my-5 mx-10 sm:mx-24'>
         <div class='grid grid-cols-3 border-b mb-3'>
           <span class='accept_title'>ボランティア名</span>
           <%= link_to volunteer_title_get, volunteer_root_path_get, class: 'link_root' %>

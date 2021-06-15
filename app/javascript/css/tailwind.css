@@ -55,7 +55,10 @@
     @apply h-10 w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none
   }
   .deadline_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-3 bg-yellow-400 hover:bg-gray-400 py-2 shadow-md rounded-sm focus:outline-none
+  }
+  .list_applicants_btn {
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-green-700 hover:bg-green-500 py-2 rounded-sm focus:outline-none
   }
   .deadline_text {
     @apply w-full text-lg text-gray-500 font-bold text-center

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
   resources :pages,         only: [:show]
   resources :volunteers do
+    get  '/submissions/index', to: 'submissions#join_volunteer_index'
     get  '/submissions/new',   to: 'submissions#join_volunteer_new'
     post '/submissions',       to: 'submissions#join_volunteer_create'
     get  '/accepts/join_info', to: 'accepts#join_volunteer_info'
