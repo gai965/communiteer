@@ -109,7 +109,7 @@
     @apply text-base sm:text-xl text-gray-800 font-semibold row-span-3 col-span-2 break-words
   }
   .accept_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-md rounded-sm
   }
   .accept_finish_text {
     @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm

@@ -55,37 +55,40 @@ group_volunteer = []
 
 
 7.times do |n|
-  schedule_time  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
-  deadline_time  = Faker::Time.forward(days: 30, period: :night)
-  place          = Gimei.address.kanji
+  schedule_time1  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
+  schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
+  deadline_time1  = Faker::Time.forward(days: 30, period: :night)
+  deadline_time2  = Faker::Time.forward(days: 30, period: :night)
+  place1          = Gimei.address.kanji
+  place2          = Gimei.address.kanji
   people         = Faker::Number.between(from: 1, to: 30)
 
   group_volunteer[n] = Volunteer.create!(
     title:              title[n],
-    place:              place, 
+    place:              place1, 
     details:            "#{n + 1}", 
-    schedule:           schedule_time , 
-    start_time:         schedule_time , 
-    end_time:           deadline_time, 
+    schedule:           schedule_time1 , 
+    start_time:         schedule_time1 , 
+    end_time:           deadline_time1, 
     expenses:           "現地までの移動費", 
     conditions:         "特になし", 
     application_people: people, 
-    deadline:           deadline_time,
+    deadline:           deadline_time1,
     postable_id:        "1", 
     postable_type:      "Group"
   )
 
   volunteer = Volunteer.create!(
     title:              title[12 - n],
-    place:              place, 
+    place:              place2, 
     details:            "#{12 - n}", 
-    schedule:           schedule_time , 
-    start_time:         schedule_time , 
-    end_time:           deadline_time, 
+    schedule:           schedule_time2 , 
+    start_time:         schedule_time2 , 
+    end_time:           deadline_time2, 
     expenses:           "#{12 - n}", 
     conditions:         "#{12 - n}", 
     application_people: people, 
-    deadline:           deadline_time,
+    deadline:           deadline_time2,
     postable_id:        id.sample, 
     postable_type:      postable_type.sample
   )
