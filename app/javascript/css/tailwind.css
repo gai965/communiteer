@@ -87,11 +87,20 @@
 
   /* ---通知画面---------------------------- */
 
-  .link{
-    @apply text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300
+  .link_truncate{
+    @apply truncate text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300 
+  }
+  .link_immutable{
+    @apply flex-none text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300 
   }
   .gap_character{
-    @apply text-xs sm:text-base text-gray-500
+    @apply text-xs sm:text-base text-gray-500 flex-none
+  }
+  .accepted_icon{
+    @apply border-blue-400 text-xs text-blue-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
+  }
+  .noaccepted_icon{
+    @apply border-red-400 text-xs text-red-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
   }
 
   /* ---応募情報---------------------------- */

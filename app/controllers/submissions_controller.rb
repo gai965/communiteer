@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
 
   def join_volunteer_index
     all_join_volunteer = JoinVolunteer.where(volunteer_id: params[:volunteer_id])
-    @per_join_volunteer = all_join_volunteer.page(params[:page]).per(12)
+    @per_join_volunteer = all_join_volunteer.page(params[:page]).per(6)
     @all_join_volunteer_number = all_join_volunteer.count
   end
 
