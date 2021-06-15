@@ -109,7 +109,7 @@
     @apply text-base sm:text-xl text-gray-800 font-semibold row-span-3 col-span-2 break-words
   }
   .accept_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm
+    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-md rounded-sm
   }
   .accept_finish_text {
     @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm
@@ -117,7 +117,7 @@
 
   /* ---ページネーション----------------------------------- */
   .pagination {
-    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto mb-3 sm:mb-6
+    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto my-3 sm:my-6
   }
   .pagination * {
     @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1
@@ -143,7 +143,7 @@
     @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
   }
   .direct_message_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
+    @apply h-10 w-full text-lg text-white font-bold text-center bg-purple-500 hover:bg-purple-400 py-2 rounded-sm focus:outline-none
   }
   .tab {
     @apply text-xl sm:text-2xl text-gray-400 font-bold mr-4 hover:text-black

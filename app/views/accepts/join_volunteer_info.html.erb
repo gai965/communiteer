@@ -48,6 +48,7 @@
           <% else %>
             <p class='accept_finish_text'>承諾済み</p>
           <% end %>
+          <%= button_to 'ダイレクトメッセージを送る', root_path, method: :get, class:'direct_message_btn' %>
         <% end %>
       </div>
     </div>
