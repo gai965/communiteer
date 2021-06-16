@@ -5,7 +5,10 @@
 <div class='h-screen w-full bg-gray-100 flex flex-col font-sans'>
   <div class='grid place-items-center pt-10 '>
     <div class='w-full xs:w-112 sm:w-160 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
-      <div class='bg-gray-200 my-8 mx-8 sm:mx-16'>
+      <%= link_to(return_path_get, class:'grid justify-items-end') do %>
+        <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-2 mr-4 sm:mr-3 py-1 px-1 sm:py-2 sm:px-2'>
+      <% end %> 
+      <div class='bg-gray-200 my-4 mx-8 sm:mx-16'>
         <p class='font-mono text-2xl text-gray-600 ml-3'>応募情報</p>
       </div>
       <div class='my-5 mx-10 sm:mx-24'>
@@ -47,7 +50,6 @@
         <% if approver_verification.present? %>
           <% if @join_volunteer.accept_flag == false %>
             <%= button_to '承諾する', volunteer_accepts_path(@join_volunteer.volunteer_id, id: @join_volunteer.joinable_id, type: @join_volunteer.joinable_type), method: :post, class:'accept_btn' %>
-            <%# <%= button_to '承諾する', volunteer_accepts_path(@join_volunteer.volunteer_id), method: :post, class:'accept_btn' %> 
           <% else %>
             <p class='accept_finish_text'>承諾済み</p>
           <% end %>

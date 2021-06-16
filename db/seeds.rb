@@ -103,11 +103,12 @@ end
   tel      = Faker::Number.number(digits: 11)
   posts.times do |i|
     people = Faker::Number.between(from: 1, to: 30)
+    inquiry= Faker::Number.number(digits: 100)
     joinvolunteer = JoinVolunteer.create!(
       name:          user[n].name,
       phone_number:  tel,
       number:        people,
-      inquiry:       "",
+      inquiry:       inquiry,
       accept_flag:   false,
       volunteer_id:  "#{2*i+1}",
       joinable:      user[n]
