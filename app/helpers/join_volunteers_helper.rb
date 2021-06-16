@@ -1,0 +1,2 @@
+module JoinVolunteersHelper
+end

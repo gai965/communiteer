@@ -28,7 +28,7 @@
               <span class='text-sm sm:text-base lg:text-lg'>応援：</span>
               <% if @cheer_number == 0 %><span class='text-sm sm:text-base lg:text-lg'> 0 </span>
               <% else %>
-                <%= link_to "#{@cheer_number}", volunteer_cheers_index_path(@volunteer.id), class:'text-sm sm:text-base lg:text-lg border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+                <%= link_to "#{@cheer_number}", volunteer_cheers_path(@volunteer.id), class:'text-sm sm:text-base lg:text-lg border-b border-black hover:text-gray-500 hover:border-gray-500'%>
               <% end %>
             </div>
             <div class='opacity-60 flex mb-1'>
@@ -46,15 +46,15 @@
             <% if user_signed_in? || group_signed_in?%>
               <% if @volunteer_contributor_flag == true && @volunteer.deadline_flag == false %>
                 <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
-                <%= button_to '応募者一覧を見る', volunteer_submissions_index_path(@volunteer.id), method: :get, class:'list_applicants_btn' %>
+                <%= button_to '応募者一覧を見る', volunteer_join_index_path(@volunteer.id), method: :get, class:'list_applicants_btn' %>
               <% else %>
                 <% if @volunteer_apply_finish_flag == true %>
                   <p class='apply_finish_text'>申込み済</p>
                 <% else %>
                   <% if user_signed_in? %>
-                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+                    <%= button_to '応募する', new_volunteer_join_path(@volunteer.id), method: :get, class:'apply_btn' %>
                   <% elsif @group.group_category == 1 %>
-                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, params: {name: @group.name, phone_number: @group.phone_number} ,class:'apply_btn' %>
+                    <%= button_to '応募する', new_volunteer_join_path(@volunteer.id), method: :get, params: {name: @group.name, phone_number: @group.phone_number} ,class:'apply_btn' %>
                   <% end %>
                 <% end %>
                 <% if @volunteer_cheer_finish_flag.blank? %>
@@ -63,7 +63,7 @@
                     <span>応援する</span>
                   <% end %>
                 <% else %>
-                  <%= button_to volunteer_cheers_delete_path(@volunteer.id) , method: :delete, class:'cheering_off_btn' do %>
+                  <%= button_to volunteer_cheer_path(@volunteer.id) , method: :delete, class:'cheering_off_btn' do %>
                     <img src='/assets/cheering_on_icon.png' class='h-5 w-5 mr-2'>
                     <span>応援中</span>
                   <% end %>

@@ -2,6 +2,6 @@
 
 <div class='h-14 border-b border-gray-200 mx-10 sm:mx-20 my-3 sm:my-5 flex justify-start items-center'>
   <img src= <%= cheerer.cheerable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
-  <%= link_to cheerer.cheerable.contributor_name, page_path(cheerer.cheerable_id, type: cheerer.cheerable_type), class:'link', method: :get %>
+  <%= link_to cheerer.cheerable.contributor_name, page_path(cheerer.cheerable_id, type: cheerer.cheerable_type), class:'link_truncate', method: :get %>
   <span class='gap_character'>さん</span>
 </div>

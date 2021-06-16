@@ -4,17 +4,11 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
   resources :pages,         only: [:show]
   resources :volunteers do
-    get  '/submissions/index', to: 'submissions#join_volunteer_index'
-    get  '/submissions/new',   to: 'submissions#join_volunteer_new'
-    post '/submissions',       to: 'submissions#join_volunteer_create'
-    get  '/accepts/join_info', to: 'accepts#join_volunteer_info'
-    post '/accepts',           to: 'accepts#join_volunteer_accept'
-    get  '/cheers/index',      to: 'cheers#volunteer_cheer_index'
-    post '/cheers',            to: 'cheers#volunteer_cheer_create'
-    delete '/cheers/delete',   to: 'cheers#volunteer_cheer_destroy'
+    resources :join_volunteers, only: [:index, :new, :create], as: 'join' 
+    resources :accepts        , only: [:show, :create]
+    resources :cheers         , only: [:index, :create, :destroy]
   end
-  
- 
+
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'
 

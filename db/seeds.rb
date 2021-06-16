@@ -1,6 +1,6 @@
 require 'faker'
 
-membership = 9
+membership = 2
 posts      = 7
 user       = []
 
@@ -25,7 +25,7 @@ membership.times do |n|
   group_address  = Gimei.address.kanji
   group_tel      = Faker::Number.number(digits: 11)
   group_url      = Faker::Internet.url
-  group_category = Faker::Number.between(from: 0, to: 3)
+  # group_category = Faker::Number.between(from: 0, to: 3)
 
   user[n+1] = User.create!(
     email: "user#{n + 1}@com",
@@ -39,7 +39,7 @@ membership.times do |n|
     phone_number: group_tel, 
     base_address: group_address, 
     url: group_url, 
-    group_category: group_category
+    group_category: 1
   )
 end
 
@@ -99,23 +99,23 @@ posts.times do |n|
 end
 
 # ボランティア申し込み
-# (membership+1).times do |n|
-#   tel      = Faker::Number.number(digits: 11)
-#   posts.times do |i|
-#     people = Faker::Number.between(from: 1, to: 30)
-#     joinvolunteer = JoinVolunteer.create!(
-#       name:          user[n].name,
-#       phone_number:  tel,
-#       number:        people,
-#       inquiry:       "",
-#       accept_flag:   false,
-#       volunteer_id:  "#{2*i+1}",
-#       joinable:      user[n]
-#     )
-#     group_volunteer[i].participant_number += joinvolunteer.number
-#     group_volunteer[i].save
-#   end
-# end
+(membership+1).times do |n|
+  tel      = Faker::Number.number(digits: 11)
+  posts.times do |i|
+    people = Faker::Number.between(from: 1, to: 30)
+    joinvolunteer = JoinVolunteer.create!(
+      name:          user[n].name,
+      phone_number:  tel,
+      number:        people,
+      inquiry:       "",
+      accept_flag:   false,
+      volunteer_id:  "#{2*i+1}",
+      joinable:      user[n]
+    )
+    group_volunteer[i].participant_number += joinvolunteer.number
+    group_volunteer[i].save
+  end
+end
 
 # 応援(ボランティア投稿)
 # (membership+1).times do |n|
