@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     redirect_to mains_sign_in_choice_path unless user_signed_in? || group_signed_in?
   end
 
-  def move_to_index
+  def move_to_top
     redirect_to root_path unless user_signed_in? || group_signed_in?
   end
 end

@@ -1,6 +1,8 @@
 require 'faker'
 
 membership = 2
+posts      = 7
+user       = []
 
 # ユーザ登録
 group = Group.create!(
@@ -12,7 +14,7 @@ group = Group.create!(
   url: "http://www.communiteer.co.jp/", 
   group_category: 1
 )
-user = User.create!(
+user[0] = User.create!(
   email:    "user@guest.com",
   password: "UserGuest01",
   name:     "ゲスト"
@@ -23,9 +25,9 @@ membership.times do |n|
   group_address  = Gimei.address.kanji
   group_tel      = Faker::Number.number(digits: 11)
   group_url      = Faker::Internet.url
-  group_category = Faker::Number.between(from: 0, to: 3)
+  # group_category = Faker::Number.between(from: 0, to: 3)
 
-  User.create!(
+  user[n+1] = User.create!(
     email: "user#{n + 1}@com",
     name:  user_name,
     password: "User#{n+1}#{n+1}"
@@ -37,7 +39,7 @@ membership.times do |n|
     phone_number: group_tel, 
     base_address: group_address, 
     url: group_url, 
-    group_category: group_category
+    group_category: 1
   )
 end
 
@@ -54,14 +56,14 @@ id            = [1, 2, 3]
 group_volunteer = []
 
 
-7.times do |n|
+posts.times do |n|
   schedule_time1  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
   schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
   deadline_time1  = Faker::Time.forward(days: 30, period: :night)
   deadline_time2  = Faker::Time.forward(days: 30, period: :night)
   place1          = Gimei.address.kanji
   place2          = Gimei.address.kanji
-  people         = Faker::Number.between(from: 1, to: 30)
+  people          = Faker::Number.between(from: 1, to: 30)
 
   group_volunteer[n] = Volunteer.create!(
     title:              title[n],
@@ -96,13 +98,33 @@ group_volunteer = []
   volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{12 - n}.jpg")), filename: "sample#{12 - n}.jpg")
 end
 
+# ボランティア申し込み
+# (membership+1).times do |n|
+#   tel      = Faker::Number.number(digits: 11)
+#   posts.times do |i|
+#     people = Faker::Number.between(from: 1, to: 30)
+#     inquiry= Faker::Number.number(digits: 100)
+#     joinvolunteer = JoinVolunteer.create!(
+#       name:          user[n].name,
+#       phone_number:  tel,
+#       number:        people,
+#       inquiry:       inquiry,
+#       accept_flag:   false,
+#       volunteer_id:  "#{2*i+1}",
+#       joinable:      user[n]
+#     )
+#     group_volunteer[i].participant_number += joinvolunteer.number
+#     group_volunteer[i].save
+#   end
+# end
+
 # 応援(ボランティア投稿)
 # (membership+1).times do |n|
-#   3.times do |i|
+#   posts.times do |i|
 #     Cheer.create!(
 #       cheerable_id:    "#{n+1}",
 #       cheerable_type:  postable_type[0],
-#       targetable_id:   "#{i+1}",
+#       targetable_id:   "#{2*i+1}",
 #       targetable_type: "Volunteer"
 #     )
 #   end

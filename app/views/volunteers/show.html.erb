@@ -1,10 +1,11 @@
 <% provide(:title, @volunteer.title) %>
 <%= render 'shared/header' %> 
 <%= render partial:'shared/second_header', locals:{ title: 'ボランティア募集詳細' } %> 
+
 <div class='sm:h-screen w-full bg-gray-200 font-sans'>
-  <div class='grid place-items-center pt-10'>
+  <div class='grid place-items-center pt-10 pb-5'>
     <div class='w-full sm:w-176 lg:w-240 grid grid-row-3 grid-cols-1 sm:grid-cols-3 bg-white my-5 mx-2 sm:mx-0 rounded-lg shadow-md'>
-      <%= link_to(return_path_get, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
+      <%= link_to(return_volunteer_path, class:'sm:col-span-3 grid justify-items-end place-items-center') do %>
         <img src='/assets/close_icon.png', class='h-7 w-7 sm:h-9 sm:w-9 rounded-full hover:bg-gray-200 mt-1 mr-4 sm:mr-3 py-1 px-1 sm:py-2 sm:px-2'>
       <% end %> 
       <div class='h-20 border-dashed border-b-2 border-gray-300 mx-3 grid place-items-center justify-items-start sm:col-span-3 '>
@@ -22,12 +23,12 @@
               <img src='/assets/participation_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
               <span class='text-sm sm:text-base lg:text-lg'>参加：<%= @volunteer.participant_number %></span>
             </div>
-            <div class='opacity-60 flex mb-1'>
+            <div class='opacity-60 flex items-center mb-1'>
               <img src='/assets/cheering_off_icon.png' class='h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'>
               <span class='text-sm sm:text-base lg:text-lg'>応援：</span>
-              <% if @cheer_number == 0 %><span> 0 </span>
+              <% if @cheer_number == 0 %><span class='text-sm sm:text-base lg:text-lg'> 0 </span>
               <% else %>
-                <%= link_to "#{@cheer_number}", volunteer_cheers_index_path(@volunteer.id), class:'border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+                <%= link_to "#{@cheer_number}", volunteer_cheers_path(@volunteer.id), class:'text-sm sm:text-base lg:text-lg border-b border-black hover:text-gray-500 hover:border-gray-500'%>
               <% end %>
             </div>
             <div class='opacity-60 flex mb-1'>
@@ -45,14 +46,15 @@
             <% if user_signed_in? || group_signed_in?%>
               <% if @volunteer_contributor_flag == true && @volunteer.deadline_flag == false %>
                 <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
+                <%= button_to '応募者一覧を見る', volunteer_join_index_path(@volunteer.id), method: :get, class:'list_applicants_btn' %>
               <% else %>
                 <% if @volunteer_apply_finish_flag == true %>
                   <p class='apply_finish_text'>申込み済</p>
                 <% else %>
                   <% if user_signed_in? %>
-                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, class:'apply_btn' %>
+                    <%= button_to '応募する', new_volunteer_join_path(@volunteer.id), params: {second_pre_page: params[:page]}, method: :get, class:'apply_btn' %>
                   <% elsif @group.group_category == 1 %>
-                    <%= button_to '応募する', volunteer_submissions_new_path(@volunteer.id), method: :get, params: {name: @group.name, phone_number: @group.phone_number} ,class:'apply_btn' %>
+                    <%= button_to '応募する', new_volunteer_join_path(@volunteer.id), params: {second_pre_page: params[:page], name: @group.name, phone_number: @group.phone_number},method: :get, class:'apply_btn' %>
                   <% end %>
                 <% end %>
                 <% if @volunteer_cheer_finish_flag.blank? %>
@@ -61,7 +63,7 @@
                     <span>応援する</span>
                   <% end %>
                 <% else %>
-                  <%= button_to volunteer_cheers_delete_path(@volunteer.id) , method: :delete, class:'cheering_off_btn' do %>
+                  <%= button_to volunteer_cheer_path(@volunteer.id) , method: :delete, class:'cheering_off_btn' do %>
                     <img src='/assets/cheering_on_icon.png' class='h-5 w-5 mr-2'>
                     <span>応援中</span>
                   <% end %>
@@ -87,7 +89,6 @@
               <% end %>
             </div>
           <% end %>
-
         </div>
         <div class='h-80 sm:h-72 lg:h-80 border-b divide-y grid grid-rows-3 grid-cols-1'>
           <div class='grid grid-rows-2 grid-cols-4'>
@@ -142,15 +143,18 @@
       </div>
     </div>
   </div>
-    <% if @volunteer.details.present? %>
-      <div class='bg-gray-200 grid place-items-center pb-10'>
-        <div class='w-full sm:w-176 lg:w-240 bg-white mt-3 sm:mt-0 mb-10 md:mb-3 py-4 rounded-lg shadow-md'>
-          <p class='font-mono text-2xl lg:text-3xl text-gray-600 bg-gray-200 mx-3'>内容詳細</p>
-          <div class='h-40 md:h-36 mt-3 mx-3 overflow-y-auto' >
-            <span class='text-lg sm:text-xl break-words overflow-visible'><%= @volunteer.details %></span>
-          </div>
+  <% if @volunteer.details.present? %>
+    <div class='bg-gray-200 grid place-items-center pb-5'>
+      <div class='w-full sm:w-176 lg:w-240 bg-white mt-3 sm:mt-0 mb-3 py-4 rounded-lg shadow-md'>
+        <p class='font-mono text-2xl lg:text-3xl text-gray-600 bg-gray-200 mx-3'>内容詳細</p>
+        <div class='h-40 md:h-36 mt-3 mx-3 overflow-y-auto' >
+          <span class='text-lg sm:text-xl break-words overflow-visible'><%= @volunteer.details %></span>
         </div>
       </div>
-    <% end %>
-
+    </div>
+  <%= render 'shared/footer' %>
+  <% end %>
 </div>
+<% if @volunteer.details.blank? %>
+  <%= render 'shared/footer' %>
+<% end %>

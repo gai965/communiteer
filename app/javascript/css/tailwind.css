@@ -55,7 +55,10 @@
     @apply h-10 w-full text-lg text-white font-semibold text-center mb-2 bg-gray-400 py-2 rounded-sm focus:outline-none
   }
   .deadline_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-yellow-400 hover:bg-gray-400 py-2 shadow-lg rounded-sm focus:outline-none
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-3 bg-yellow-400 hover:bg-gray-400 py-2 shadow-md rounded-sm focus:outline-none
+  }
+  .list_applicants_btn {
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-2 bg-green-700 hover:bg-green-500 py-2 rounded-sm focus:outline-none
   }
   .deadline_text {
     @apply w-full text-lg text-gray-500 font-bold text-center
@@ -84,11 +87,20 @@
 
   /* ---通知画面---------------------------- */
 
-  .link{
-    @apply text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300
+  .link_truncate{
+    @apply truncate text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300 
+  }
+  .link_immutable{
+    @apply flex-none text-sm sm:text-lg font-bold text-gray-500 hover:text-gray-300 
   }
   .gap_character{
-    @apply text-xs sm:text-base text-gray-500
+    @apply text-xs sm:text-base text-gray-500 flex-none
+  }
+  .accepted_icon{
+    @apply border-blue-400 text-xs text-blue-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
+  }
+  .noaccepted_icon{
+    @apply border-red-400 text-xs text-red-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
   }
 
   /* ---応募情報---------------------------- */

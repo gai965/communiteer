@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  before_action :move_to_index,     only: [:index]
+  before_action :move_to_top,       only: [:index]
   before_action :set_login_account, only: [:index]
 
   def index
