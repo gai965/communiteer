@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   def set_login_account
     if user_signed_in?
       @account = current_user

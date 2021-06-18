@@ -30,7 +30,7 @@ class JoinVolunteersController < ApplicationController
       render :new
     end
   end
-  
+
   private
 
   def join_volunteer_params

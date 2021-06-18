@@ -17,7 +17,7 @@ class Group < ApplicationRecord
             format: { with: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, allow_blank: true,
                       message: 'の頭字語に「http」または「https」を含めてください' }
 
-  validates :group_category, presence:{ message: 'を選択してください' }
+  validates :group_category, presence: { message: 'を選択してください' }
 
   with_options presence: true do
     validates :name

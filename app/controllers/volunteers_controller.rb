@@ -16,7 +16,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.set_volunteer_noimage(@volunteer.image)
-    @volunteer.postable_id =  @account.id
+    @volunteer.postable_id = @account.id
     @volunteer.postable_type = @account_type
 
     if @volunteer.valid?
@@ -53,7 +53,7 @@ class VolunteersController < ApplicationController
     @volunteer.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def volunteer_params

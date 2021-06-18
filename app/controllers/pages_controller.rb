@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_login_account    , only: [:show]
+  before_action :set_login_account, only: [:show]
   before_action :set_profile_edit_path, only: [:show]
   before_action :set_page_info,         only: [:show]
 
