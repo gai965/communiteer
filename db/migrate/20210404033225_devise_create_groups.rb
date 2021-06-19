@@ -11,6 +11,7 @@ class DeviseCreateGroups < ActiveRecord::Migration[6.1]
       t.string  :base_address,       null: false, default: ""
       t.string  :url,                             default: ""
       t.integer :group_category,     null: false
+      t.string  :type,                            default: "Group"
 
       ## Recoverable
       t.string   :reset_password_token

@@ -1,0 +1,20 @@
+
+<div class='h-14 md:w-128 border-b border-gray-200 my-10 mx-7 sm:mx-14 md:mx-auto'>
+  <div class='h-14 flex justify-between'>
+    <div class='flex items-center'>
+      <img src= <%= chat[0].speakable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
+      <%= link_to  chat[0].speakable.name, page_path(chat[0].speakable_id, type: chat[0].speakable_type), class:'link_truncate' %>
+      <span class='gap_character'>さん</span>
+    </div>
+    <div class='flex items-center'>
+      <%= link_to room_path(chat[0].room_id, room_id:chat[0].room_id), class:'group' do %>
+        <span class='text-lg font-bold truncate group-hover:text-gray-400'><%= chat[0].message %></span>
+        <% if chat[0].checked == true %> 
+          <span class='checked_icon'>既読</span>
+        <% elsif chat[0].checked  == false %> 
+          <span class='nochecked_icon'>未読</span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

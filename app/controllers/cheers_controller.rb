@@ -8,7 +8,7 @@ class CheersController < ApplicationController
   end
 
   def create
-    cheer = Cheer.new(cheerable_id: @account.id, cheerable_type: @account_type, targetable_id: @volunteer.id,
+    cheer = Cheer.new(cheerable_id: @account.id, cheerable_type:  @account.type, targetable_id: @volunteer.id,
                       targetable_type: @target_type)
     if cheer.save!
       @volunteer.create_notification_cheer_registration!(@volunteer, @account)
@@ -17,7 +17,7 @@ class CheersController < ApplicationController
   end
 
   def destroy
-    cheer = Cheer.find_by(cheerable_id: @account.id, cheerable_type: @account_type, targetable_id: params[:volunteer_id])
+    cheer = Cheer.find_by(cheerable_id: @account.id, cheerable_type:  @account.type, targetable_id: params[:volunteer_id])
     redirect_to volunteer_path(params[:volunteer_id]) if cheer.destroy
   end
 

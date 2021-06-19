@@ -17,7 +17,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
     @volunteer.set_volunteer_noimage(@volunteer.image)
     @volunteer.postable_id = @account.id
-    @volunteer.postable_type = @account_type
+    @volunteer.postable_type =  @account.type
 
     if @volunteer.valid?
       @volunteer.save
@@ -30,9 +30,9 @@ class VolunteersController < ApplicationController
   def show
     @cheer_number = Cheer.where(targetable_id: params[:id]).count
     if user_signed_in? || group_signed_in?
-      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id, @account_type)
-      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id, @account_type, @approval)
-      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id, @account_type)
+      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id,  @account.type)
+      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id,  @account.type, @approval)
+      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id,  @account.type)
     end
     impressionist(@volunteer, nil, unique: [:session_hash])
   end

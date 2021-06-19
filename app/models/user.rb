@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :volunteers,      as: :postable, dependent: :destroy
   has_many :join_volunteers, as: :joinable
   has_many :cheers,          as: :cheerable
+  has_many :rooms,           as: :selfable
+  has_many :rooms,           as: :pertnerable
+  has_many :chats,           as: :speakable
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
@@ -26,6 +29,7 @@ class User < ApplicationRecord
   def self.guest
     user = User.find_or_create_by!(email: 'user@guest.com') do |user|
       user.name = 'ゲスト'
+      user.type = 'User'
       user.password = 'UserGuest01'
     end
   end

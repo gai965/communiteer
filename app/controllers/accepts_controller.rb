@@ -17,6 +17,8 @@ class AcceptsController < ApplicationController
     end
   end
 
+  private
+  
   def set_join_volunteer_info
     @volunteer = Volunteer.find(params[:volunteer_id])
     @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id], joinable_id: params[:id],

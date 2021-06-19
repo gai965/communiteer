@@ -1,0 +1,19 @@
+<% provide(:title, 'DM一覧') %>
+<%= render 'shared/header' %>
+<%= render partial:'shared/second_header', locals:{ title: 'DM一覧' } %>
+ 
+<div class='h-screen bg-gray-200 font-sans'>
+  <div class='grid place-items-center pt-14'>
+    <div class='w-80 xs:w-112 sm:w-148 md:w-176 lg:w-224 bg-white rounded hover:shadow-xl '>
+      <div>
+        <p class='text-center text-2xl font-bold text-gray-400 border-b-2 border-gray-300 pb-5 my-10 mx-5 sm:mx-10'>一覧</p>
+      </div>
+      <% if @chats.present? %>
+        <%= render partial:'chat_partner', collection: @chats, as: 'chat' %>
+      <% else %>
+        <p class='text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-500 font-bold text-center py-3 sm:py-10'>DM中の相手はおりません</p>
+      <% end %>
+    </div> 
+  </div>
+</div>
+<%= render 'shared/footer' %>

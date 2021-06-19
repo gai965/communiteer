@@ -6,6 +6,8 @@ class PagesController < ApplicationController
   def show
   end
 
+  private
+  
   def set_page_info
     if params[:type] == 'User'
       @account_page_info = User.find(params[:id])

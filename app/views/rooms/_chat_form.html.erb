@@ -1,0 +1,7 @@
+<%= form_with model: @chat, local: true do |f| %>
+  <div class='h-10 w-80 xs:w-112 sm:w-148 md:w-176 lg:w-224 flex my-5'>
+  <%= f.text_field :message, placeholder: 'メッセージを入力して下さい' , class: 'w-full shadow-lg mr-3 focus:outline-none inline-block' %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit '送信', class: 'w-20 text-white font-bold bg-red-500 hover:bg-red-300' %>
+  </div>
+<% end %>

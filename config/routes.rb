@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'mains#index'
   resources :mains,         only: :index
   resources :notifications, only: :index
-  resources :pages,         only: [:show]
+  resources :pages,         only: :show
+  resources :rooms,         only: [:index, :show ,:create]
+  resources :chats,         only: [:create, :destroy]
   resources :volunteers do
     resources :join_volunteers, only: [:index, :new, :create], as: 'join' 
     resources :accepts        , only: [:show, :create]

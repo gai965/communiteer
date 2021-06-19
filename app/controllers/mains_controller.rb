@@ -16,6 +16,8 @@ class MainsController < ApplicationController
   end
   # ------------------------------
 
+  private
+
   def volunteers_set
     @volunteers = Volunteer.order('created_at DESC').limit(10)
     volunteers_path = []

@@ -1,6 +1,6 @@
 require 'faker'
 
-membership = 2
+membership = 6
 posts      = 7
 user       = []
 
@@ -99,36 +99,36 @@ posts.times do |n|
 end
 
 # ボランティア申し込み
-# (membership+1).times do |n|
-#   tel      = Faker::Number.number(digits: 11)
-#   posts.times do |i|
-#     people = Faker::Number.between(from: 1, to: 30)
-#     inquiry= Faker::Number.number(digits: 100)
-#     joinvolunteer = JoinVolunteer.create!(
-#       name:          user[n].name,
-#       phone_number:  tel,
-#       number:        people,
-#       inquiry:       inquiry,
-#       accept_flag:   false,
-#       volunteer_id:  "#{2*i+1}",
-#       joinable:      user[n]
-#     )
-#     group_volunteer[i].participant_number += joinvolunteer.number
-#     group_volunteer[i].save
-#   end
-# end
+(membership+1).times do |n|
+  tel      = Faker::Number.number(digits: 11)
+  posts.times do |i|
+    people = Faker::Number.between(from: 1, to: 30)
+    inquiry= Faker::Number.number(digits: 100)
+    joinvolunteer = JoinVolunteer.create!(
+      name:          user[n].name,
+      phone_number:  tel,
+      number:        people,
+      inquiry:       inquiry,
+      accept_flag:   false,
+      volunteer_id:  "#{2*i+1}",
+      joinable:      user[n]
+    )
+    group_volunteer[i].participant_number += joinvolunteer.number
+    group_volunteer[i].save
+  end
+end
 
 # 応援(ボランティア投稿)
-# (membership+1).times do |n|
-#   posts.times do |i|
-#     Cheer.create!(
-#       cheerable_id:    "#{n+1}",
-#       cheerable_type:  postable_type[0],
-#       targetable_id:   "#{2*i+1}",
-#       targetable_type: "Volunteer"
-#     )
-#   end
-# end
+(membership+1).times do |n|
+  posts.times do |i|
+    Cheer.create!(
+      cheerable_id:    "#{n+1}",
+      cheerable_type:  postable_type[0],
+      targetable_id:   "#{2*i+1}",
+      targetable_type: "Volunteer"
+    )
+  end
+end
 
 # 通知(応援)
 # 7.times do |n|
