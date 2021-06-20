@@ -26,9 +26,9 @@
         </div>
         <div class='h-1/5'>
           <% if sameperson_confirmation == 0 %>
-            <%= button_to 'プロフィールを編集する', @edit_path, method: :get, class:'profile_edit_btn' %>
-          <% elsif sameperson_confirmation == 1 %>
-            <%= button_to 'ダイレクトメッセージを送る', rooms_path(partner_id:@account_page_info.id, partner_type:@account_page_info_type), method: :post, class:'direct_message_btn' %>
+            <%= button_to 'プロフィールを編集する', @edit_path, method: :get, class:'btn profile_edit' %>
+          <% elsif sameperson_confirmation == 1 %> 
+            <%= button_to 'ダイレクトメッセージを送る', rooms_path(partner_id:@account_page_info.id,partner_type: @account_page_info.type),method: :post, class:'btn direct_message' %> 
           <% end %>
         </div>
       </div>

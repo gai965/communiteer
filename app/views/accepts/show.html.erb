@@ -49,11 +49,11 @@
 
         <% if approver_verification.present? %>
           <% if @join_volunteer.accept_flag == false %>
-            <%= button_to '承諾する', volunteer_accepts_path(@join_volunteer.volunteer_id, id: @join_volunteer.joinable_id, type: @join_volunteer.joinable_type), method: :post, class:'accept_btn' %>
+            <%= button_to '承諾する', volunteer_accepts_path(@join_volunteer.volunteer_id, id: @join_volunteer.joinable_id, type: @join_volunteer.joinable_type), method: :post, class:'btn accept' %>
           <% else %>
             <p class='accept_finish_text'>承諾済み</p>
           <% end %>
-          <%= button_to 'ダイレクトメッセージを送る', root_path, method: :get, class:'direct_message_btn' %>
+          <%= button_to 'ダイレクトメッセージを送る',  rooms_path(partner_id:@join_volunteer.joinable_id ,partner_type: @join_volunteer.joinable_type), method: :post, class:'btn direct_message' %> 
         <% end %>
       </div>
     </div>

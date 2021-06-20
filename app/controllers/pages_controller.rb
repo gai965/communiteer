@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   before_action :set_page_info,         only: [:show]
 
   def show
+    @room_id = Room.where(selfable_id:@account.id, selfable_type:@account.type).or(Room.where(partnerable_id:@account.id, partnerable_type:@account.type)).pluck(:id)
   end
 
   private

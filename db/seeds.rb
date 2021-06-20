@@ -99,24 +99,24 @@ posts.times do |n|
 end
 
 # ボランティア申し込み
-(membership+1).times do |n|
-  tel      = Faker::Number.number(digits: 11)
-  posts.times do |i|
-    people = Faker::Number.between(from: 1, to: 30)
-    inquiry= Faker::Number.number(digits: 100)
-    joinvolunteer = JoinVolunteer.create!(
-      name:          user[n].name,
-      phone_number:  tel,
-      number:        people,
-      inquiry:       inquiry,
-      accept_flag:   false,
-      volunteer_id:  "#{2*i+1}",
-      joinable:      user[n]
-    )
-    group_volunteer[i].participant_number += joinvolunteer.number
-    group_volunteer[i].save
-  end
-end
+# (membership+1).times do |n|
+#   tel      = Faker::Number.number(digits: 11)
+#   posts.times do |i|
+#     people = Faker::Number.between(from: 1, to: 30)
+#     inquiry= Faker::Number.number(digits: 100)
+#     joinvolunteer = JoinVolunteer.create!(
+#       name:          user[n].name,
+#       phone_number:  tel,
+#       number:        people,
+#       inquiry:       inquiry,
+#       accept_flag:   false,
+#       volunteer_id:  "#{2*i+1}",
+#       joinable:      user[n]
+#     )
+#     group_volunteer[i].participant_number += joinvolunteer.number
+#     group_volunteer[i].save
+#   end
+# end
 
 # 応援(ボランティア投稿)
 (membership+1).times do |n|

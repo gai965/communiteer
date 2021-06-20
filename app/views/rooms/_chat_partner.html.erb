@@ -2,19 +2,26 @@
 <div class='h-14 md:w-128 border-b border-gray-200 my-10 mx-7 sm:mx-14 md:mx-auto'>
   <div class='h-14 flex justify-between'>
     <div class='flex items-center'>
-      <img src= <%= chat[0].speakable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
-      <%= link_to chat[0].speakable.name, page_path(chat[0].speakable_id, type: chat[0].speakable_type), class:'link_truncate' %>
+    <% if room.selfable_id == @account.id && room.selfable_type == @account.type %> 
+      <img src= <%= room.partnerable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
+      <%= link_to room.partnerable.name, page_path(room.partnerable_id, type: room.partnerable_type), class:'link_truncate' %>
+    <% elsif room.partnerable_id == @account.id && room.partnerable_type == @account.type %> 
+      <img src= <%= room.selfable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
+      <%= link_to room.selfable.name, page_path(room.selfable_id, type: room.selfable_type), class:'link_truncate' %>
+    <% end %>
       <span class='gap_character'>さん</span>
     </div>
-    <div class='flex items-center'>
-      <%= link_to room_path(chat[0].room_id, room_id:chat[0].room_id), class:'truncate group' do %>
-        <span class='text-lg font-bold truncate group-hover:text-gray-400'><%= chat[0].message %></span>
-        <% if chat[0].checked == true %> 
-          <span class='checked_icon'>既読</span>
-        <% elsif chat[0].checked  == false %> 
-          <span class='nochecked_icon'>未読</span>
+    <% if room.chat[-1].present? %> 
+      <div class='flex items-center overflow-auto ml-2'>
+        <%= link_to room_path(room.id, room_id:room.id), class:'group' do %>
+          <span class='text-lg font-bold group-hover:text-gray-400'><%= room.chat[-1].message %></span>
+          <% if room.chat[-1].checked == true %> 
+            <span class='checked read'>既読</span>
+          <% elsif room.chat[-1].checked  == false %> 
+            <span class='checked unread'>未読</span>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

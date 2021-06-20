@@ -25,7 +25,8 @@ module.exports = {
       backgroundImage: theme => ({
         'right-arrow': "url('../../assets/images/right_arrow.png')",
         'left-arrow' : "url('../../assets/images/left_arrow.png')",
-      })
+      }),
+      borderWidth: ['hover'],
     },
   },
   variants: {
