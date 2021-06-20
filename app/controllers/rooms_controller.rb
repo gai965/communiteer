@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(id: params[:room_id])
+    @all_chats     = Chat.where(room_id: params[:room_id]).includes(:room)
     @my_chats      = Chat.where(speakable_id:@account.id, speakable_type:@account.type, room_id: params[:room_id]).includes(:room)
     @partner_chats = Chat.where(room_id: params[:room_id]).where.not(speakable_id:@account.id, speakable_type:@account.type).includes(:room)
     @partner_chats.where(checked: false).each do |partner_chat|

@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(chat_params)
     if @chat.save
-      redirect_to root_path
+      redirect_to room_path(@chat.room_id, room_id:@chat.room_id)
     end
   end
 

@@ -1,4 +1,16 @@
 
-<div class='h-148 sm:h-160 w-80 xs:w-112 sm:w-148 md:w-176 lg:w-224 bg-white rounded shadow-lg'>
-  
-</div>
+<% if chat.speakable_id == @account.id && chat.speakable_type == @account.type%>
+  <div class='flex items-end justify-end mt-4'>
+    <span class='text-sm mr-1'><%= chat.updated_at.strftime('%H:%M') %></span>
+    <div class='chat myself'>
+      <span><%= chat.message %></span>
+    </div>
+  </div>
+<% else %>
+  <div class='flex items-end justify-start mt-4'>
+    <div class='chat partner'>
+      <span><%= chat.message %></span>
+    </div>
+    <span class='text-sm ml-1'><%= chat.updated_at.strftime('%H:%M') %></span>
+  </div>
+<% end %>
