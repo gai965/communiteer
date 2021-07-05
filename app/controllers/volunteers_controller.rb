@@ -1,7 +1,7 @@
 class VolunteersController < ApplicationController
-  before_action :move_to_login,     only: [:new, :edit]
-  before_action :set_login_account, only: [:index, :create, :show]
-  before_action :set_volunteer,     only: [:show, :edit, :update, :destroy]
+  before_action :move_to_login,     only:  [:new, :edit]
+  before_action :set_login_account, expect:[:new]
+  before_action :set_volunteer,     only:  [:show, :edit, :update, :destroy]
 
   def index
     all_volunteer = Volunteer.all.order('created_at DESC')

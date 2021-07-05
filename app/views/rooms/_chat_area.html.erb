@@ -1,8 +1,8 @@
 
 <% if chat.speakable_id == @account.id && chat.speakable_type == @account.type%>
-  <div class='flex items-end justify-end mt-4'>
+  <div class='flex items-end justify-end mt-2'>
     <div class='flex flex-col'>
-      <%= link_to '削除', chat_path(chat.id),method: :delete, class:'chat_destroy' %>
+      <%= link_to '削除', chat_path(chat.id),method: :delete ,class:'chat_destroy', remote: true %> 
       <span class='text-sm mr-1'><%= chat.updated_at.strftime('%H:%M') %></span>
     </div>
     <div class='chat myself'>
@@ -10,7 +10,8 @@
     </div>
   </div>
 <% else %>
-  <div class='flex items-end justify-start mt-4'>
+  <div class='flex items-end justify-start mt-2'>
+    <img src= <%= chat.speakable.image_icon_path%> class='h-6 w-6 mr-2' >
     <div class='chat partner'>
       <span><%= chat.message %></span>
     </div>
