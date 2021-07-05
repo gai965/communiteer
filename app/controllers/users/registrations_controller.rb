@@ -1,6 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
 
   def reject
     redirect_to new_user_registration_path
@@ -15,6 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # ユーザ新規登録時の情報を確認
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :type])
   end
 end

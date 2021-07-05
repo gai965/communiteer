@@ -1,0 +1,8 @@
+
+<%= form_with url:'/chats', method: :post, id: 'chat-form' do |f| %>
+  <div class='h-10 w-80 xs:w-112 sm:w-148 md:w-176 lg:w-224 flex my-7'>
+    <%= f.text_field :message, placeholder: 'メッセージを入力して下さい' , class: 'w-full focus:shadow-lg mr-3 px-3 focus:outline-none inline-block',id: 'message' %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit '送信', id: 'chat-submit', class: 'w-20 text-white font-bold bg-red-500 hover:bg-red-300' %>
+  </div>
+<% end %>

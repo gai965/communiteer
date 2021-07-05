@@ -4,14 +4,117 @@
 
 
 @layer components {
+  
+  /*--- 共通 ----------------------------------------- */
 
   /*「field_with_errorr」によるレイアウト崩れを防ぐ */
   .field_with_errors {
     @apply contents
-} 
+  }
+  /* 未読・既読などの確認アイコンに使用 */
+  .checked{
+    @apply text-xs border rounded-full ml-1 md:ml-3 px-1.5 flex-none
+  }
+  .btn{
+    @apply h-10 w-full text-lg text-white font-bold text-center py-2 rounded-sm
+  }
 
+  /* ---TOP画面--------------------------------------- */
+  .top_post_title {
+    @apply text-2xl lg:text-3xl font-bold my-4
+  }
+  .top_post_area {
+    @apply border-gray-300 border-b-2 pb-6 grid justify-items-center
+  }
+  .no_posts {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-bold text-center py-3 sm:py-5
+  }
+  .top_post_btn {
+    @apply h-10 w-full text-sm sm:text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm 
+  }
+  .top_link_btn {
+    @apply text-xl text-blue-500 hover:text-blue-300 border-b border-blue-500 hover:border-blue-300
+  }
+  /***** ---_index_swiper---------------------------- *****/
+  .slider1 {
+    @apply h-72 sm:h-96 md:h-120 w-full lg:w-240 mx-auto rounded-md shadow-md
+  }
+  .swiper_post_container {
+    @apply h-full w-full pb-10 flex
+  }
+  .swiper_post_area {
+    @apply w-2/5 md:w-1/3 bg-gray-100 px-2 md:px-7 py-5 md:py-10
+  }
+  .swiper_post_title {
+    @apply text-base sm:text-3xl text-center font-bold
+  }
+  .swiper_post_description {
+    @apply text-sm sm:text-2xl
+  }
+  /***** ---_post_swiper---------------------------- *****/
+  .slider2 {
+    @apply h-80 w-full bg-gray-100
+  }
+  .single_post_area {
+    @apply h-64 w-80 sm:w-96 md:w-80 bg-white mx-auto hover:shadow-lg rounded-md
+  }
+  .swiper-button-prev:after{
+    @apply h-16 w-16 text-transparent bg-left-arrow bg-no-repeat -mr-12
+  }
+  .swiper-button-next:after{
+    @apply h-16 w-16 text-transparent bg-right-arrow bg-no-repeat -ml-12
+  }
+
+  /* ---マイページ-------------------------- */
+  .page_item_area{
+    @apply w-full cursor-pointer flex flex-col mt-3 
+  }
+  .page_item {
+    @apply text-gray-500 text-center border-black mx-auto 
+  }
+  .profile_edit {
+    @apply bg-gray-500 hover:bg-gray-400
+  }
+  .direct_message {
+    @apply bg-purple-500 hover:bg-purple-400
+  }
+  .tab {
+    @apply text-xl sm:text-2xl text-gray-400 font-bold mr-4 hover:text-black
+  }
+  .tab.now_active{
+    @apply text-black border-b-2 border-blue-200
+  }
+  .child_tab {
+    @apply text-gray-400 text-sm sm:text-lg hover:bg-gray-200 px-1 sm:px-4 py-2
+  }
+  .child_tab.child_now_active{
+    @apply text-black font-bold bg-blue-100
+  }
+
+  /* ---DM-------------------------- */
+  .page_item_area{
+    @apply w-full cursor-pointer flex flex-col mt-3
+  }
+  .read{
+    @apply border-blue-400 text-blue-400
+  }
+  .unread{
+    @apply border-red-400 text-red-400
+  }
+  .chat{
+    @apply rounded-lg shadow py-1 px-2 flex content-center break-all 
+  }
+  .myself{
+    @apply bg-green-300
+  }
+  .partner{
+    @apply bg-gray-300
+  }
+  .chat_destroy{
+    @apply text-sm mr-1 hover:text-gray-400 
+  }
   /* ---新規登録・ログイン画面のコンポーネント--- */
-
+  
   .label_name {
     @apply text-lg sm:text-xl text-gray-600 uppercase mr-2
   }
@@ -20,21 +123,24 @@
   }
   .reg_info_field {
     @apply w-full text-sm sm:text-lg text-gray-800 border-b-2 border-gray-100 pb-2 px-1 focus:text-gray-600 focus:outline-none focus:border-gray-400
-}
+  }
   .mandatory_display {
     @apply text-xs font-bold text-white bg-red-400 py-1 px-1
   }
   .any_display {
     @apply text-xs font-bold text-white bg-gray-400 py-1 px-1
   }
-  .category_name{
+  .category_name {
     @apply text-sm sm:text-xl sm:ml-2 hover:bg-gray-200 ml-2
   }
-  .choice_block_left {
-    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-8  px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl
+  .choice_block {
+    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col px-6 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl
   }
-  .choice_block_right {
-    @apply sm:h-full sm:w-full bg-white border-b-4 border-gray-400 flex flex-col py-5 px-6 sm:py-10 sm:px-8 rounded shadow-md hover:border-gray-500 hover:bg-gray-400 hover:shadow-2xl
+  .left {
+    @apply py-8 sm:py-10 
+  }
+  .right {
+    @apply py-5 sm:py-10 
   }
   .registration_btn {
     @apply w-full text-lg text-white uppercase bg-gray-800 rounded-sm py-1 sm:py-2 my-5 md:my-8 focus:outline-none hover:bg-gray-700 hover:shadow-none
@@ -45,7 +151,6 @@
   .return_mini_btn {
     @apply w-64 text-base text-white uppercase flex justify-center bg-gray-500 rounded-sm mx-auto py-2 mt-10 focus:outline-none hover:bg-gray-400 hover:shadow-none
   }
-
   /* ---投稿詳細画面------------------------ */
 
   .apply_btn {
@@ -63,6 +168,7 @@
   .deadline_text {
     @apply w-full text-lg text-gray-500 font-bold text-center
   }
+  
   .cheering_on_btn {
     @apply h-10 w-full text-lg text-black text-center font-bold bg-white border-2 border-blue-300 flex justify-center items-center my-auto rounded-sm shadow-md focus:outline-none
   }
@@ -96,11 +202,11 @@
   .gap_character{
     @apply text-xs sm:text-base text-gray-500 flex-none
   }
-  .accepted_icon{
-    @apply border-blue-400 text-xs text-blue-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
+  .approval{
+    @apply border-blue-400 text-blue-400
   }
-  .noaccepted_icon{
-    @apply border-red-400 text-xs text-red-400 border rounded-full ml-1 md:ml-3 px-1.5 flex-none
+  .unapproval{
+    @apply border-red-400 text-red-400
   }
 
   /* ---応募情報---------------------------- */
@@ -120,12 +226,13 @@
   .accept_details_inquiry{
     @apply text-base sm:text-xl text-gray-800 font-semibold row-span-3 col-span-2 break-words
   }
-  .accept_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-yellow-400 hover:bg-gray-400 py-2 shadow-md rounded-sm
+  .accept{
+    @apply text-white bg-yellow-400 hover:bg-gray-400 shadow-md my-5
   }
   .accept_finish_text {
     @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm
   }
+
 
   /* ---ページネーション----------------------------------- */
   .pagination {
@@ -142,77 +249,5 @@
   }
   .pagination >.first,.last{
     @apply w-24 sm:w-32
-  }
-
-  /* ---マイページ-------------------------- */
-  .page_item_area{
-    @apply w-full cursor-pointer flex flex-col mt-3 
-  }
-  .page_item {
-    @apply text-gray-500 text-center border-black mx-auto 
-  }
-  .profile_edit_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
-  }
-  .direct_message_btn {
-    @apply h-10 w-full text-lg text-white font-bold text-center bg-purple-500 hover:bg-purple-400 py-2 rounded-sm focus:outline-none
-  }
-  .tab {
-    @apply text-xl sm:text-2xl text-gray-400 font-bold mr-4 hover:text-black
-  }
-  .tab.now_active{
-    @apply text-black border-b-2 border-blue-200
-  }
-  .child_tab {
-    @apply text-gray-400 text-sm sm:text-lg hover:bg-gray-200 px-1 sm:px-4 py-2
-  }
-  .child_tab.child_now_active{
-    @apply text-black font-bold bg-blue-100
-  }
-
-  /* ---TOP画面----------------------------------- */
-  .top_post_title {
-    @apply text-2xl lg:text-3xl font-bold my-4
-  }
-  .top_post_area {
-    @apply border-gray-300 border-b-2 pb-6 grid justify-items-center
-  }
-  .no_posts {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-400 font-bold text-center py-3 sm:py-5
-  }
-  .top_post_btn {
-    @apply h-10 w-full text-sm sm:text-lg text-white font-bold text-center bg-gray-500 hover:bg-gray-400 py-2 rounded-sm focus:outline-none
-  }
-  .top_link_btn {
-    @apply text-xl text-blue-500 hover:text-blue-300 border-b border-blue-500 hover:border-blue-300
-  }
-  /***** ---_index_swiper---------------------------- *****/
-  .slider1 {
-    @apply h-72 sm:h-96 md:h-120 w-full lg:w-240 mx-auto rounded-md shadow-md
-  }
-  .swiper_post_container {
-    @apply h-full w-full pb-10 flex
-  }
-  .swiper_post_area {
-    @apply w-2/5 md:w-1/3 bg-gray-100 px-2 md:px-7 py-5 md:py-10
-  }
-  .swiper_post_title {
-    @apply text-base sm:text-3xl text-center font-bold
-  }
-  .swiper_post_description {
-    @apply text-sm sm:text-2xl
-  }
-  /***** ---_post_swiper---------------------------- *****/
-  .slider2 {
-    @apply h-80 w-full bg-gray-100
-  }
-  .single_post_area {
-    @apply h-64 w-80 sm:w-96 md:w-80 bg-white mx-auto hover:shadow-lg rounded-md
-  }
-  .swiper-button-prev:after{
-    @apply h-16 w-16 text-transparent bg-left-arrow bg-no-repeat -mr-12
-  }
-  .swiper-button-next:after{
-    @apply h-16 w-16 text-transparent bg-right-arrow bg-no-repeat -ml-12
   }
 }

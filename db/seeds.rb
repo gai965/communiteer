@@ -1,6 +1,6 @@
 require 'faker'
 
-membership = 2
+membership = 6
 posts      = 7
 user       = []
 
@@ -119,16 +119,16 @@ end
 # end
 
 # 応援(ボランティア投稿)
-# (membership+1).times do |n|
-#   posts.times do |i|
-#     Cheer.create!(
-#       cheerable_id:    "#{n+1}",
-#       cheerable_type:  postable_type[0],
-#       targetable_id:   "#{2*i+1}",
-#       targetable_type: "Volunteer"
-#     )
-#   end
-# end
+(membership+1).times do |n|
+  posts.times do |i|
+    Cheer.create!(
+      cheerable_id:    "#{n+1}",
+      cheerable_type:  postable_type[0],
+      targetable_id:   "#{2*i+1}",
+      targetable_type: "Volunteer"
+    )
+  end
+end
 
 # 通知(応援)
 # 7.times do |n|

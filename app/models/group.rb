@@ -5,6 +5,9 @@ class Group < ApplicationRecord
   has_many :volunteers,      as: :postable, dependent: :destroy
   has_many :join_volunteers, as: :joinable
   has_many :cheers,          as: :cheerable
+  has_many :rooms,           as: :selfable
+  has_many :rooms,           as: :pertnerable
+  has_many :chats,           as: :speakable
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
@@ -40,6 +43,7 @@ class Group < ApplicationRecord
       group.base_address = '東京都新宿区西新宿2丁目8-1'
       group.url = 'http://www.communiteer.co.jp/'
       group.group_category = 0
+      group.type = 'Group'
       group.password = 'GroupGuest01'
     end
   end

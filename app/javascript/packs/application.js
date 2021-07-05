@@ -10,6 +10,7 @@ import "channels"
 import '../css/tailwind.css';
 require("../preview");
 require("../profile");
+require("../chat");
 
 Rails.start()
 Turbolinks.start()

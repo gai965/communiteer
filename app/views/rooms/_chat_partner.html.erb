@@ -1,0 +1,27 @@
+
+<div class='h-14 md:w-128 border-b border-gray-200 my-10 mx-7 sm:mx-14 md:mx-auto'>
+  <div class='h-14 flex justify-between'>
+    <div class='flex items-center'>
+    <% if room.selfable_id == @account.id && room.selfable_type == @account.type %> 
+      <img src= <%= room.partnerable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
+      <%= link_to room.partnerable.name, page_path(room.partnerable_id, type: room.partnerable_type), class:'link_truncate' %>
+    <% elsif room.partnerable_id == @account.id && room.partnerable_type == @account.type %> 
+      <img src= <%= room.selfable.image_icon_path%> class='h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' >
+      <%= link_to room.selfable.name, page_path(room.selfable_id, type: room.selfable_type), class:'link_truncate' %>
+    <% end %>
+      <span class='gap_character'>さん</span>
+    </div>
+    <% if room.chat[-1].present? %> 
+      <div class='flex items-center overflow-auto ml-2'>
+        <%= link_to room_path(room.id, room_id:room.id), class:'group' do %>
+          <span class='text-lg font-bold group-hover:text-gray-400'><%= room.chat[-1].message %></span>
+          <% if room.chat[-1].checked == true %> 
+            <span class='checked read'>既読</span>
+          <% elsif room.chat[-1].checked  == false %> 
+            <span class='checked unread'>未読</span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

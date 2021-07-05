@@ -26,6 +26,6 @@ module AcceptsHelper
   end
 
   def approver_verification
-    return true if @account.id == @volunteer.postable_id && @account_type == @volunteer.postable_type
+    return true if @account.id == @volunteer.postable_id &&  @account.type == @volunteer.postable_type
   end
 end
