@@ -11,6 +11,7 @@ import '../css/tailwind.css';
 require("../preview");
 require("../profile");
 require("../chat");
+require("../menu");
 
 Rails.start()
 Turbolinks.start()

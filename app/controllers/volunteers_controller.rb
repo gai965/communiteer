@@ -29,7 +29,7 @@ class VolunteersController < ApplicationController
 
   def show
     @cheer_number = Cheer.where(targetable_id: params[:id]).count
-    if user_signed_in? || group_signed_in?
+    if @account.present?
       @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id,  @account.type)
       @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id,  @account.type, @approval)
       @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id,  @account.type)

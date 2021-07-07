@@ -18,6 +18,19 @@
   .btn{
     @apply h-10 w-full text-lg text-white font-bold text-center py-2 rounded-sm
   }
+  /* ---ヘッダー-------------------------------------- */
+  .header_link {
+    @apply h-full flex place-items-center
+  }
+  .type1 {
+    @apply hover:opacity-40
+  }
+  .type2 {
+    @apply justify-center
+  }
+  .menu_item {
+    @apply h-14 w-60 hover:bg-gray-300
+  }
 
   /* ---TOP画面--------------------------------------- */
   .top_post_title {

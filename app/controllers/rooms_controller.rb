@@ -7,6 +7,11 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(id: params[:room_id])
+    if @room.selfable_id == @account.id && @room.selfable_type == @account.type
+      @partner_name = @room.partnerable.name
+    elsif @room.partnerable_id == @account.id && @room.partnerable_type == @account.type
+      @partner_name = @room.selfable.name
+    end
     @all_chats     = Chat.where(room_id: params[:room_id]).includes(:room)
     @partner_chats = Chat.where(room_id: params[:room_id]).where.not(speakable_id:@account.id, speakable_type:@account.type).includes(:room)
     @partner_chats.where(checked: false).each do |partner_chat|
@@ -20,6 +25,6 @@ class RoomsController < ApplicationController
     if @room.blank?
       @room = Room.create!(selfable_id:@account.id, selfable_type:@account.type , partnerable_id: params[:partner_id], partnerable_type:params[:partner_type])
     end
-    redirect_to room_path(@account.id, room_id:@room.id)
+    redirect_to room_path(@account.id, room_id:@room.id, partner_id:params[:partner_id], partner_type:params[:partner_type])
   end
 end

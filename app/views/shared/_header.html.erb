@@ -1,49 +1,111 @@
 <header>
   <div class='h-14 w-full bg-gray-300 flex justify-between place-items-center'>
     <div class='h-full w-48 md:ml-8 flex place-items-center'>
-      <%= link_to image_tag('logo_image.png', class:'hover:opacity-50'), '/' %>
+      <%= link_to image_tag('logo_image.png', class:'type1'), '/' %>
     </div> 
-    <% if user_signed_in? || group_signed_in? %>
+    <div class='h-14 hidden md:block'>
+    <% if @account.present? %>
       <div class='h-full w-120 md:mr-8 lg:mr-14 flex justify-center'>
-        <%= link_to(root_path, class:'h-full w-1/4 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to(root_path, class:'w-1/4 header_link type1') do %>
           <img src= '/assets/home_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>ホーム</span>
         <% end %>
-        <%= link_to(page_path(@account, type:  @account.type), class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to(page_path(@account, type:  @account.type), class:'w-1/3 header_link type1') do %>
           <img src= <%=$icon_image_path%> class='h-2/5 mr-1' >
           <span class='text-base truncate'>マイページ</span>
         <% end %>
-        <%= link_to(rooms_path, class:'h-full w-1/5 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to(rooms_path, class:'w-1/5 header_link type1') do %>
          <% if unchecked_chat == true %>
             <img src= '/assets/unread_icon.png' class='h-1/3 mb-3' >
           <% end %>
           <img src= '/assets/mailbox_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>DM</span>
         <% end %>
-        <%= link_to(notifications_path, class:'h-full w-1/4 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to(notifications_path, class:'w-1/4 header_link type1') do %>
           <% if unchecked_notification.present? %>
             <img src= '/assets/unread_icon.png' class='h-1/3 mb-3' >
           <% end %>
           <img src= '/assets/notification_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>通知</span>
         <% end %>
-        <%= link_to($logout_link_path, method: :delete, class:'h-full w-1/3 hover:opacity-40 flex place-items-center') do %>
+        <%= link_to($logout_link_path, method: :delete, class:'w-1/3 header_link type1') do %>
           <img src='/assets/logout_icon.png' class='h-2/5 mr-1' >
           <span class='text-base truncate'>ログアウト</span>
         <% end %>
       </div>
     <% else%>
       <div class='h-full w-56 md:mr-10 lg:mr-14 flex justify-center'>
-        <%= link_to(mains_sign_in_choice_path, class:'h-full w-1/2 hover:opacity-40 flex place-items-center') do%>
+        <%= link_to(mains_sign_in_choice_path, class:'w-1/2 header_link type1') do%>
           <img src='/assets/login_icon.png' class='h-2/5 mr-1' >
           <span class='text-base'>ログイン</span>
         <% end %>
-        <%= link_to(mains_sign_up_choice_path, class:'h-full w-1/2 hover:opacity-40 flex place-items-center') do%>
+        <%= link_to(mains_sign_up_choice_path, class:'w-1/2 header_link type1') do%>
           <img src='/assets/registration_icon.png' class='h-2/5 mr-1' >
           <span class='text-base'>新規登録</span>
         <% end %>
       </div> 
-
     <% end %>
+    </div>
+    <div  id='menu-bar' class=' hover:bg-gray-400 mx-2 md:mx-6 px-4 flex flex-col relative block md:hidden'>
+      <div  class='h-14 flex place-items-center'>
+        <img src='/assets/menu_icon.png' class='h-2/5' >
+        <div id='menu-list' class='absolute top-14 right-0 hidden z-40'>
+          <ul class='bg-white border-2 border-gray-700 divide-y-2 divide-gray-700 '>
+          <% if @account.present? %>
+            <li class='menu_item'>
+              <%= link_to(root_path, class:'header_link type2') do %>
+                <img src= '/assets/home_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>ホーム</span>
+              <% end %>
+            </li>
+            <li class='menu_item'>
+              <%= link_to(page_path(@account, type:  @account.type), class:'header_link type2') do %>
+                <img src= <%=$icon_image_path%> class='h-2/5 mr-1' >
+                <span class='text-base'>マイページ</span>
+              <% end %>
+            </li>
+            <li class='menu_item'>
+              <%= link_to(rooms_path, class:'header_link type2') do %>
+                <% if unchecked_chat == true %>
+                  <img src= '/assets/unread_icon.png' class='h-1/3 mb-3' >
+                <% end %>
+                <img src= '/assets/mailbox_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>DM</span>
+              <% end %>
+            </li>
+            <li class='menu_item'>
+              <%= link_to(notifications_path, class:'header_link type2') do %>
+                <% if unchecked_notification.present? %>
+                  <img src= '/assets/unread_icon.png' class='h-1/3 mb-3' >
+                <% end %>
+                <img src= '/assets/notification_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>通知</span>
+              <% end %>
+            </li>
+            <li class='menu_item'>
+              <%= link_to($logout_link_path, class:'header_link type2', method: :delete) do %>
+                <img src='/assets/logout_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>ログアウト</span>
+              <% end %>
+            </li>
+          <% else%>
+            <li class='menu_item'>
+              <%= link_to(mains_sign_in_choice_path, class:'header_link type2') do%>
+                <img src='/assets/login_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>ログイン</span>
+              <% end %>
+            </li>
+            <li class='menu_item'>
+              <%= link_to(mains_sign_up_choice_path, class:'header_link type2') do%>
+                <img src='/assets/registration_icon.png' class='h-2/5 mr-1' >
+                <span class='text-base'>新規登録</span>
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </header>
