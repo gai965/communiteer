@@ -1,5 +1,5 @@
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   if (document.URL.match( '/rooms/' )){
     const chatArea = document.getElementById('chat-area');
     chatArea.scrollTo(0, chatArea.scrollHeight);

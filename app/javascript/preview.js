@@ -1,6 +1,6 @@
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   if (document.URL.match( '/new' ) || document.URL.match( '/edit')) {
     document.getElementById('new_post').addEventListener('change', function(e){
       const file = e.target.files[0]
