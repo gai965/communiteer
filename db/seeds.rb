@@ -44,59 +44,59 @@ membership.times do |n|
 end
 
 # ボランティア投稿
-# title =["地域のゴミ拾いボランティア募集",
-#         "被災地 応援イベントのボランティア募集!"              ,"第2回 近所の大川の大掃除大会開催",
-#         "マラソン大会の運営のお手伝いボランティアスタッフ募集!!" ,"なし収穫ボランティア募集",
-#         "子供キャンプのお手伝いして頂けるボランティア募集中!"   ,"子供達に「食の大切さを伝える」ボランティア募集",
-#         "ハロウィンイベント★スタッフ募集!"                   ,"のんびりお散歩同行！スタッフ募集",
-#         "公園で遊んでいる子供を見守ってくれるボランティアさん募集","【未経験可】演劇イベントのスタッフ募集!!!",
-#         "【動画撮影・編集ボランティア】街を元気に!お店をめぐります","大規模合コンイベントの運営ボランティアスタッフ募集！"]
-# postable_type = ["User","Group"]
-# id            = [1, 2, 3]
-# group_volunteer = []
+title =["地域のゴミ拾いボランティア募集",
+        "被災地 応援イベントのボランティア募集!"              ,"第2回 近所の大川の大掃除大会開催",
+        "マラソン大会の運営のお手伝いボランティアスタッフ募集!!" ,"なし収穫ボランティア募集",
+        "子供キャンプのお手伝いして頂けるボランティア募集中!"   ,"子供達に「食の大切さを伝える」ボランティア募集",
+        "ハロウィンイベント★スタッフ募集!"                   ,"のんびりお散歩同行！スタッフ募集",
+        "公園で遊んでいる子供を見守ってくれるボランティアさん募集","【未経験可】演劇イベントのスタッフ募集!!!",
+        "【動画撮影・編集ボランティア】街を元気に!お店をめぐります","大規模合コンイベントの運営ボランティアスタッフ募集！"]
+postable_type = ["User","Group"]
+id            = [1, 2, 3]
+group_volunteer = []
 
 
-# posts.times do |n|
-#   schedule_time1  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
-#   schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
-#   deadline_time1  = Faker::Time.forward(days: 30, period: :night)
-#   deadline_time2  = Faker::Time.forward(days: 30, period: :night)
-#   place1          = Gimei.address.kanji
-#   place2          = Gimei.address.kanji
-#   people          = Faker::Number.between(from: 1, to: 30)
+posts.times do |n|
+  schedule_time1  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
+  schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
+  deadline_time1  = Faker::Time.forward(days: 30, period: :night)
+  deadline_time2  = Faker::Time.forward(days: 30, period: :night)
+  place1          = Gimei.address.kanji
+  place2          = Gimei.address.kanji
+  people          = Faker::Number.between(from: 1, to: 30)
 
-#   group_volunteer[n] = Volunteer.create!(
-#     title:              title[n],
-#     place:              place1, 
-#     details:            "#{n + 1}", 
-#     schedule:           schedule_time1 , 
-#     start_time:         schedule_time1 , 
-#     end_time:           deadline_time1, 
-#     expenses:           "現地までの移動費", 
-#     conditions:         "特になし", 
-#     application_people: people, 
-#     deadline:           deadline_time1,
-#     postable_id:        "1", 
-#     postable_type:      "Group"
-#   )
+  group_volunteer[n] = Volunteer.create!(
+    title:              "#{title[n]}",
+    place:              "#{place1}", 
+    details:            "#{n + 1}", 
+    schedule:           schedule_time1, 
+    start_time:         schedule_time1, 
+    end_time:           deadline_time1, 
+    expenses:           "現地までの移動費", 
+    conditions:         "特になし", 
+    application_people: people, 
+    deadline:           deadline_time1,
+    postable_id:        "1", 
+    postable_type:      "Group"
+  )
 
-#   volunteer = Volunteer.create!(
-#     title:              title[12 - n],
-#     place:              place2, 
-#     details:            "#{12 - n}", 
-#     schedule:           schedule_time2 , 
-#     start_time:         schedule_time2 , 
-#     end_time:           deadline_time2, 
-#     expenses:           "#{12 - n}", 
-#     conditions:         "#{12 - n}", 
-#     application_people: people, 
-#     deadline:           deadline_time2,
-#     postable_id:        id.sample, 
-#     postable_type:      postable_type.sample
-#   )
-#   group_volunteer[n].image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
-#   volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{12 - n}.jpg")), filename: "sample#{12 - n}.jpg")
-# end
+  volunteer = Volunteer.create!(
+    title:              "#{title[12 - n]}",
+    place:              "#{place2}", 
+    details:            "#{12 - n}", 
+    schedule:           schedule_time2 , 
+    start_time:         schedule_time2 , 
+    end_time:           deadline_time2, 
+    expenses:           "#{12 - n}", 
+    conditions:         "#{12 - n}", 
+    application_people: people, 
+    deadline:           deadline_time2,
+    postable_id:        id.sample, 
+    postable_type:      "#{postable_type.sample}"
+  )
+  group_volunteer[n].image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
+  volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{12 - n}.jpg")), filename: "sample#{12 - n}.jpg")
+end
 
 # ボランティア申し込み
 # (membership+1).times do |n|
