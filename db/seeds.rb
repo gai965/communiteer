@@ -66,11 +66,11 @@ posts.times do |n|
   people          = Faker::Number.between(from: 1, to: 30)
 
   group_volunteer[n] = Volunteer.create!(
-    title:              title[n],
-    place:              place1, 
+    title:              "#{title[n]}",
+    place:              "#{place1}", 
     details:            "#{n + 1}", 
-    schedule:           schedule_time1 , 
-    start_time:         schedule_time1 , 
+    schedule:           schedule_time1, 
+    start_time:         schedule_time1, 
     end_time:           deadline_time1, 
     expenses:           "現地までの移動費", 
     conditions:         "特になし", 
@@ -81,8 +81,8 @@ posts.times do |n|
   )
 
   volunteer = Volunteer.create!(
-    title:              title[12 - n],
-    place:              place2, 
+    title:              "#{title[12 - n]}",
+    place:              "#{place2}", 
     details:            "#{12 - n}", 
     schedule:           schedule_time2 , 
     start_time:         schedule_time2 , 
@@ -92,7 +92,7 @@ posts.times do |n|
     application_people: people, 
     deadline:           deadline_time2,
     postable_id:        id.sample, 
-    postable_type:      postable_type.sample
+    postable_type:      "#{postable_type.sample}"
   )
   group_volunteer[n].image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
   volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{12 - n}.jpg")), filename: "sample#{12 - n}.jpg")
@@ -119,16 +119,16 @@ end
 # end
 
 # 応援(ボランティア投稿)
-(membership+1).times do |n|
-  posts.times do |i|
-    Cheer.create!(
-      cheerable_id:    "#{n+1}",
-      cheerable_type:  postable_type[0],
-      targetable_id:   "#{2*i+1}",
-      targetable_type: "Volunteer"
-    )
-  end
-end
+# (membership+1).times do |n|
+#   posts.times do |i|
+#     Cheer.create!(
+#       cheerable_id:    "#{n+1}",
+#       cheerable_type:  postable_type[0],
+#       targetable_id:   "#{2*i+1}",
+#       targetable_type: "Volunteer"
+#     )
+#   end
+# end
 
 # 通知(応援)
 # 7.times do |n|
