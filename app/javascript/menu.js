@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   if (!(document.URL.match( '/new' ) || document.URL.match( '/edit'))) {
     const menuBar = document.getElementById('menu-bar');
     const menuList= document.getElementById('menu-list');
