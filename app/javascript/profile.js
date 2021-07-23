@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   if (document.URL.match( '/pages/' )) {
     const PageItem     = document.getElementsByClassName('page_item_area');
     const Tabs         = document.getElementsByClassName('tab');

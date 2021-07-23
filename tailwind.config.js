@@ -1,9 +1,5 @@
 module.exports = {
-  purge: [
-    './app/**/*.html.erb',
-    './app/**/*.js.erb',
-    './app/helpers/**/*.rb',
-  ],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {

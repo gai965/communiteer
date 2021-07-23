@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   if (document.URL.match( '/rooms/' )){
     const chatArea = document.getElementById('chat-area');
     chatArea.scrollTo(0, chatArea.scrollHeight);
@@ -30,13 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class='chat myself'>
             <span> ${chat.message} </span>
           </div>`; 
-        if(lastChat == null) {
-          const chatArea = document.getElementById('chat-area');
-          chatArea.insertAdjacentHTML('afterbegin', HTML); 
-        }
-        else{
-          lastChat.insertAdjacentHTML('afterend', HTML); 
-        }
+        lastChat.insertAdjacentHTML('afterend', HTML); 
         formText.value = '';
         const chatArea = document.getElementById('chat-area');
         chatArea.scrollTo(0, chatArea.scrollHeight);
