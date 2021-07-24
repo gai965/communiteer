@@ -1,54 +1,69 @@
 version: 2.1
-
 orbs:
-  ruby: circleci/ruby@3.0.2
-  node: circleci/node@14
-
-# setup
-commands:
-  setup:
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          cache-key: "yarn.lock"
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
     docker:
       - image: circleci/ruby:3.0.2-node
-    steps:
-      - setup
-  test:
-    docker:
-      - image: circleci/ruby:3.0.2-node
         environment:
-          RAILS_ENV: test
-          DATABASE_HOST: 127.0.0.1 
+          - BUNDLER_VERSION: 2.2.23
+          - RAILS_ENV: 'test'
       - image: circleci/mysql:8.0.25
-        name: "db"
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: communiteer_test
-    steps:
-      - setup
-      - run:
-          name: rails db:migrate
-          command: bundle exec rails db:migrate
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      - run:
-          name: Rspec
-          command: bundle exec rspec
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
+    
+    working_directory: ~/communiteer
 
-workflows:
-  version: 2
-  test_and_deploy:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.2.23
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      
+      - run: mv config/database.yml.ci config/database.yml
+      
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+
+      - run:
+          name: Rubocopの実行
+          command: bundle exec rubocop
+
+      - run:
+          name: RSpecの実行
+          command: bundle exec rspec
+      
+      - store_test_results:   
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+      # - run:
+      #   name: bundler install
+      #   command: gem install bundler -v 2.2.23
+      
+      # - run: yarn install
+      
+      # - save_cache:
+      #   paths:
+      #     - ./vendor/bundle
+      #   key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      # - run: yarn test
+
+
+     
