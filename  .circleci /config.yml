@@ -1,0 +1,54 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@3.0.2
+  node: circleci/node@14
+
+# setup
+commands:
+  setup:
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:3.0.2-node
+    steps:
+      - setup
+  test:
+    docker:
+      - image: circleci/ruby:3.0.2-node
+        environment:
+          RAILS_ENV: test
+          DATABASE_HOST: 127.0.0.1 
+      - image: circleci/mysql:8.0.25
+        name: "db"
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: communiteer_test
+    steps:
+      - setup
+      - run:
+          name: rails db:migrate
+          command: bundle exec rails db:migrate
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
