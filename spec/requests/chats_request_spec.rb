@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Chats", type: :request do
-
+RSpec.describe 'Chats', type: :request do
 end

@@ -43,6 +43,6 @@ class JoinVolunteersController < ApplicationController
 
   def set_join_volunteer_info
     @join_volunteer.joinable_id = @account.id
-    @join_volunteer.joinable_type =  @account.type
+    @join_volunteer.joinable_type = @account.type
   end
 end

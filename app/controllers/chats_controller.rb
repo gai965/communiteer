@@ -3,11 +3,12 @@ class ChatsController < ApplicationController
 
   def create
     if params[:message].present?
-      chat = Chat.create(message:params[:message], room_id: params[:room_id], speakable_id: @account.id, speakable_type: @account.type)
-      render json:{ post: chat }
+      chat = Chat.create(message: params[:message], room_id: params[:room_id], speakable_id: @account.id,
+                         speakable_type: @account.type)
+      render json: { post: chat }
     end
   end
-  
+
   def destroy
     chat = Chat.find(params[:id])
     chat.destroy

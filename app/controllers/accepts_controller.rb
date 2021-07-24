@@ -4,7 +4,9 @@ class AcceptsController < ApplicationController
   before_action :set_join_volunteer_info, only: [:show, :create]
 
   def show
-    @room_id = Room.where(selfable_id:@account.id, selfable_type:@account.type).or(Room.where(partnerable_id:@account.id, partnerable_type:@account.type)).pluck(:id)
+    @room_id = Room.where(selfable_id: @account.id,
+                          selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
+                                                                      partnerable_type: @account.type)).pluck(:id)
   end
 
   def create
@@ -19,7 +21,7 @@ class AcceptsController < ApplicationController
   end
 
   private
-  
+
   def set_join_volunteer_info
     @volunteer = Volunteer.find(params[:volunteer_id])
     @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id], joinable_id: params[:id],
