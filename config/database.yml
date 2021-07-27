@@ -51,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: test_tailwind_production
-  username: test_tailwind
+  database: communiteer_production
+  username: root
   password: <%= ENV['TEST_TAILWIND_DATABASE_PASSWORD'] %>
