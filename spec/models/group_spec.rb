@@ -19,6 +19,11 @@ RSpec.describe Group, type: :model do
     end
 
     context '新規登録が失敗する時' do
+      before do
+        @another_group = FactoryBot.build(:group)
+        @another_group.email = @group.email
+      end
+
       it '名前が「空」だと登録できない' do
         @group.name = nil
         @group.valid?
@@ -33,10 +38,8 @@ RSpec.describe Group, type: :model do
 
       it 'メールアドレスが「一意性でない」と登録できない' do
         @group.save
-        another_group = FactoryBot.build(:group)
-        another_group.email = @group.email
-        another_group.valid?
-        expect(another_group.errors.full_messages).to include('メールアドレスはすでに存在します')
+        @another_group.valid?
+        expect(@another_group.errors.full_messages).to include('メールアドレスはすでに存在します')
       end
 
       it 'メールアドレスは「@を含まない」と登録できない' do

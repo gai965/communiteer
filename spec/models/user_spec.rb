@@ -19,6 +19,12 @@ RSpec.describe User, type: :model do
     end
 
     context '新規登録が失敗する時' do
+      before do
+        @another_user = FactoryBot.build(:user)
+        @another_user.name = @user.name
+        @another_user.email = @user.email
+      end
+
       it 'ニックネームが「空」だと登録できない' do
         @user.name = nil
         @user.valid?
@@ -27,10 +33,8 @@ RSpec.describe User, type: :model do
 
       it 'ニックネームが「一意性でない」と登録できない' do
         @user.save
-        another_user = FactoryBot.build(:user)
-        another_user.name = @user.name
-        another_user.valid?
-        expect(another_user.errors.full_messages).to include('ニックネームはすでに存在します')
+        @another_user.valid?
+        expect(@another_user.errors.full_messages).to include('ニックネームはすでに存在します')
       end
 
       it 'メールアドレスが「空」だと登録できない' do
@@ -41,10 +45,8 @@ RSpec.describe User, type: :model do
 
       it 'メールアドレスが「一意性でない」と登録できない' do
         @user.save
-        another_user = FactoryBot.build(:user)
-        another_user.email = @user.email
-        another_user.valid?
-        expect(another_user.errors.full_messages).to include('メールアドレスはすでに存在します')
+        @another_user.valid?
+        expect(@another_user.errors.full_messages).to include('メールアドレスはすでに存在します')
       end
 
       it 'メールアドレスは「@を含まない」と登録できない' do
