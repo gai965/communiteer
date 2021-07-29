@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_login_account, only: [:index, :show, :create]
-  before_action :set_header_info,   only: [:index,:show]
+  before_action :set_header_info,   only: [:index, :show]
 
   def index
     @rooms = Room.where(selfable_id: @account.id,
