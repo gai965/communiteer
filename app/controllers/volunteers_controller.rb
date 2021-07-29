@@ -9,7 +9,7 @@ class VolunteersController < ApplicationController
     @per_volunteer = all_volunteer.page(params[:page]).per(12)
     @all_volunteer_number = all_volunteer.count
   end
-
+  
   def new
     @volunteer = Volunteer.new
   end
