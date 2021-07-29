@@ -33,7 +33,6 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include('ニックネームはすでに存在します')
       end
 
-
       it 'メールアドレスが「空」だと登録できない' do
         @user.email = nil
         @user.valid?
