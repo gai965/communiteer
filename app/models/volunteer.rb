@@ -52,8 +52,9 @@ class Volunteer < ApplicationRecord
   # ----インスタンスメソッド-----------------------------------------------------
 
   # ---ボランティア投稿に画像がない場合「noimage」をつける---------------------
-  def set_volunteer_noimage(image)
-    image.attach(io: File.open($noimage_path), filename: 'noimage.png') if image.blank?
+  def volunteer_noimage(image)
+    noimage_path = File.expand_path('app/assets/images/noimage.png', Rails.root)
+    image.attach(io: File.open(noimage_path), filename: 'noimage.png') if image.blank?
   end
 
   # ---投稿者と閲覧者が同一アカウントか確認-----------------------------------
@@ -63,11 +64,11 @@ class Volunteer < ApplicationRecord
 
   # ---ボランティア投稿に申し込み済か確認-------------------------------------
   def application_verification(volunteer, account_id, account_type, approval)
-    if approval.present?
-      join_volunteer_verification = JoinVolunteer.find_by(joinable_id: account_id, joinable_type: account_type,
-                                                          volunteer_id: volunteer.id)
-      return true if join_volunteer_verification.present?
-    end
+    return unless approval.present?
+
+    join_volunteer_verification = JoinVolunteer.find_by(joinable_id: account_id, joinable_type: account_type,
+                                                        volunteer_id: volunteer.id)
+    return true if join_volunteer_verification.present?
   end
 
   # ---ボランティア投稿に応援済か確認-------------------------------------

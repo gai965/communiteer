@@ -8,10 +8,10 @@ class JoinVolunteer < ApplicationRecord
 
   with_options presence: true do
     validates :name, length: { maximum: 30 }
-    validates :number, numericality: { greater_than: 0}
+    validates :number, numericality: { greater_than: 0 }
   end
 
-  def get_accept_flag
+  def accept_flag
     accept_flag
   end
 

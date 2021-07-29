@@ -11,13 +11,13 @@ class AcceptsController < ApplicationController
 
   def create
     @join_volunteer.create_notification_accept_registration!(@join_volunteer, @account)
-    if @join_volunteer.accept_flag == false
-      @join_volunteer.accept_flag = true
-      if @join_volunteer.save!
-        redirect_to volunteer_accept_path(@join_volunteer.volunteer_id, @join_volunteer.joinable_id,
-                                          type: @join_volunteer.joinable_type)
-      end
-    end
+    return unless @join_volunteer.accept_flag == false
+
+    @join_volunteer.accept_flag = true
+    return unless @join_volunteer.save!
+
+    redirect_to volunteer_accept_path(@join_volunteer.volunteer_id, @join_volunteer.joinable_id,
+                                      type: @join_volunteer.joinable_type)
   end
 
   private

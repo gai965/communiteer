@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_login_account, only: [:index, :show, :create]
+  before_action :set_header_info,   only: [:index,:show]
 
   def index
     @rooms = Room.where(selfable_id: @account.id,
@@ -24,9 +25,8 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.where(selfable_id: @account.id, selfable_type: @account.type, partnerable_id: params[:partner_id],
-                       partnerable_type: params[:partner_type]).or(Room.where(selfable_id: params[:partner_id], selfable_type: params[:partner_type],
-                                                                              partnerable_id: @account.id, partnerable_type: @account.type)).first
+    @room = Room.where(selfable_id: [@account.id, params[:partner_id]], selfable_type: [@account.type, params[:partner_type]],
+                       partnerable_id: [@account.id, params[:partner_id]], partnerable_type: [@account.type, params[:partner_type]]).first
     if @room.blank?
       @room = Room.create!(selfable_id: @account.id, selfable_type: @account.type, partnerable_id: params[:partner_id],
                            partnerable_type: params[:partner_type])

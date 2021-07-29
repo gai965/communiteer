@@ -10,10 +10,10 @@ class CheersController < ApplicationController
   def create
     cheer = Cheer.new(cheerable_id: @account.id, cheerable_type:  @account.type, targetable_id: @volunteer.id,
                       targetable_type: @target_type)
-    if cheer.save!
-      @volunteer.create_notification_cheer_registration!(@volunteer, @account)
-      redirect_to volunteer_path(@volunteer.id)
-    end
+    return unless cheer.save!
+
+    @volunteer.create_notification_cheer_registration!(@volunteer, @account)
+    redirect_to volunteer_path(@volunteer.id)
   end
 
   def destroy

@@ -1,6 +1,7 @@
 class JoinVolunteersController < ApplicationController
   before_action :move_to_top,       only: [:index, :new]
   before_action :set_login_account, only: [:index, :new, :create]
+  before_action :set_header_info,   only: [:index, :new]
   before_action :set_volunteer,     only: [:index, :new, :create]
 
   def index

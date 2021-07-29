@@ -2,11 +2,11 @@ class ChatsController < ApplicationController
   before_action :set_login_account, only: [:create, :destroy]
 
   def create
-    if params[:message].present?
-      chat = Chat.create(message: params[:message], room_id: params[:room_id], speakable_id: @account.id,
-                         speakable_type: @account.type)
-      render json: { post: chat }
-    end
+    return unless params[:message].present?
+
+    chat = Chat.create(message: params[:message], room_id: params[:room_id], speakable_id: @account.id,
+                       speakable_type: @account.type)
+    render json: { post: chat }
   end
 
   def destroy

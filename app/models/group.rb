@@ -37,7 +37,7 @@ class Group < ApplicationRecord
   end
 
   def self.guest
-    group = Group.find_or_create_by!(email: 'group@guest.com') do |group|
+    Group.find_or_create_by!(email: 'group@guest.com') do |group|
       group.name = 'ゲスト団体'
       group.phone_number = '0000000000'
       group.base_address = '東京都新宿区西新宿2丁目8-1'
