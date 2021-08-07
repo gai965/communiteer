@@ -64,3 +64,4 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'impressionist'  # PVのgem
 gem 'kaminari' #ページネーションのgem
+gem "aws-sdk-s3", require: false # aws(s3)の導入
