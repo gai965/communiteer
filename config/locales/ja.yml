@@ -2,17 +2,33 @@ ja:
   activerecord:
     attributes:
       user:
-        name: ニックネーム
-        email:    メールアドレス
-      group:
-        name:  名前
+        name:  ニックネーム
         email: メールアドレス
-        password: パスワード
+      group:
+        name:                  名前
+        email:                 メールアドレス
+        password:              パスワード
         password_confirmation: パスワード（確認用）
+        phone_number:          電話番号
+        base_address:          住所
+        url:                   ホームページアドレス
+        group_category:        カテゴリー
+      volunteer:
+        title: 募集名
+        place:   活動場所
+        details: 内容詳細
+        schedule: 活動日
+        start_time: 開始時間
+        end_time: 終了時間
+        expenses: 必要経費
+        application_people: 募集人数
+        conditions: 応募条件
+        deadline: 募集締切日
+      join_volunteer:
+        name:  名前
         phone_number: 電話番号
-        base_address: 住所
-        url: ホームページアドレス
-        group_category: カテゴリー
+        number: 参加人数
+        inquiry: 問い合わせ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

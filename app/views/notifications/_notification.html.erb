@@ -23,9 +23,9 @@
           <% end %>
         <% end %>
         <% if notification.action == 'join_volunteer' %>
-          <% if notification.linkable.get_accept_flag == true %> 
+          <% if notification.linkable.accept_flag == true %> 
             <span class='checked approval'>承諾済</span>
-          <% elsif notification.linkable.get_accept_flag == false %> 
+          <% elsif notification.linkable.accept_flag == false %> 
             <span class='checked unapproval'>未承諾</span>
           <% end %>
         <% end %> 

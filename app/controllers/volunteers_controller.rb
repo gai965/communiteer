@@ -1,7 +1,8 @@
 class VolunteersController < ApplicationController
-  before_action :move_to_login,     only:  [:new, :edit]
-  before_action :set_login_account, expect:[:new]
-  before_action :set_volunteer,     only:  [:show, :edit, :update, :destroy]
+  before_action :move_to_login,     only:   [:new, :edit]
+  before_action :set_login_account, expect: [:new]
+  before_action :set_header_info,   only:   [:show]
+  before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy]
 
   def index
     all_volunteer = Volunteer.all.order('created_at DESC')
@@ -15,9 +16,9 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.new(volunteer_params)
-    @volunteer.set_volunteer_noimage(@volunteer.image)
+    @volunteer.volunteer_noimage(@volunteer.image)
     @volunteer.postable_id = @account.id
-    @volunteer.postable_type =  @account.type
+    @volunteer.postable_type = @account.type
 
     if @volunteer.valid?
       @volunteer.save
@@ -30,9 +31,9 @@ class VolunteersController < ApplicationController
   def show
     @cheer_number = Cheer.where(targetable_id: params[:id]).count
     if @account.present?
-      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id,  @account.type)
-      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id,  @account.type, @approval)
-      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id,  @account.type)
+      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id, @account.type)
+      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id, @account.type, @approval)
+      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id, @account.type)
     end
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
@@ -63,7 +64,7 @@ class VolunteersController < ApplicationController
 
   def set_volunteer
     @volunteer = Volunteer.find(params[:id])
-    @volunteer.set_volunteer_noimage(@volunteer.image)
+    @volunteer.volunteer_noimage(@volunteer.image)
 
     if user_signed_in?
       @approval = true

@@ -1,6 +1,7 @@
 class JoinVolunteersController < ApplicationController
   before_action :move_to_top,       only: [:index, :new]
   before_action :set_login_account, only: [:index, :new, :create]
+  before_action :set_header_info,   only: [:index, :new]
   before_action :set_volunteer,     only: [:index, :new, :create]
 
   def index
@@ -43,6 +44,6 @@ class JoinVolunteersController < ApplicationController
 
   def set_join_volunteer_info
     @join_volunteer.joinable_id = @account.id
-    @join_volunteer.joinable_type =  @account.type
+    @join_volunteer.joinable_type = @account.type
   end
 end

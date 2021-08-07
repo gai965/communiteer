@@ -1,11 +1,12 @@
 module VolunteersHelper
   def return_volunteer_path
     path = Rails.application.routes.recognize_path(request.referer)
-    if path[:controller] == 'notifications'
+    case path
+    when 'notifications'
       notifications_path
-    elsif path[:controller] == 'accepts' || path[:controller] == 'volunteers'
+    when 'accepts', 'volunteers'
       params[:page]
-    elsif path[:controller] == 'join_volunteers'
+    when 'join_volunteers'
       if params[:page].present?
         params[:page]
       else

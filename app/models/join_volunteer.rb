@@ -3,15 +3,15 @@ class JoinVolunteer < ApplicationRecord
   belongs_to :volunteer
   has_many   :notifications, as: :linkable, dependent: :destroy
 
-  validates :phone_number, format: { with: /\A\d{10,11}\z/, allow_blank: true, message: 'Applies to character restrictions' }
+  validates :phone_number, format: { with: /\A\d{10,11}\z/, allow_blank: true, message: 'は10桁または11桁の半角数字で入力してください' }
   validates :inquiry, length: { maximum: 100 }
 
   with_options presence: true do
     validates :name, length: { maximum: 30 }
-    validates :number, numericality: { greater_than: 0, message: 'of participants must be greater than 0' }
+    validates :number, numericality: { greater_than: 0 }
   end
 
-  def get_accept_flag
+  def accept_flag
     accept_flag
   end
 
