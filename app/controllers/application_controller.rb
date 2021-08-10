@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   def move_to_login
-    redirect_to mains_sign_in_choice_path if @account.present?
+    redirect_to mains_sign_in_choice_path if @account.blank?
   end
 
   def move_to_top
-    redirect_to root_path if @account.present?
+    redirect_to root_path if @account.blank?
   end
 
   private

@@ -1,6 +1,6 @@
 class CheersController < ApplicationController
-  before_action :move_to_top,       only: [:create]
   before_action :set_login_account, only: [:index, :create, :destroy]
+  before_action :move_to_top,       only: [:create]
   before_action :set_volunteer,     only: [:index, :create]
 
   def index

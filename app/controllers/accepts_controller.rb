@@ -1,7 +1,7 @@
 class AcceptsController < ApplicationController
   before_action :move_to_top,             only: [:show]
-  before_action :set_login_account,       only: [:show, :create]
   before_action :set_join_volunteer_info, only: [:show, :create]
+  before_action :set_login_account,       only: [:show, :create]
 
   def show
     @room_id = Room.where(selfable_id: @account.id,

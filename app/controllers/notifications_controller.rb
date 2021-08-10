@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  before_action :move_to_top,       only: [:index]
   before_action :set_login_account, only: [:index]
+  before_action :move_to_top,       only: [:index]
   before_action :set_header_info,   only: [:index]
 
   def index
