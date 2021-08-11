@@ -15,6 +15,7 @@ amazon:
   region: ap-northeast-1
   bucket: communiteer-image
 
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
