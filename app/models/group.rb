@@ -33,7 +33,7 @@ class Group < ApplicationRecord
   end
 
   def image_icon_path
-    '/assets/group_icon.jpg'
+    '/assets/group_icon.png'
   end
 
   def self.guest

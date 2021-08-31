@@ -53,8 +53,8 @@ class Volunteer < ApplicationRecord
 
   # ---ボランティア投稿に画像がない場合「noimage」をつける---------------------
   def volunteer_noimage(image)
-    noimage_path = File.expand_path('app/assets/images/noimage.jpg', Rails.root)
-    image.attach(io: File.open(noimage_path), filename: 'noimage.jpg') if image.blank?
+    noimage_path = File.expand_path('app/assets/images/noimage.png', Rails.root)
+    image.attach(io: File.open(noimage_path), filename: 'noimage.png') if image.blank?
   end
 
   # ---投稿者と閲覧者が同一アカウントか確認-----------------------------------
