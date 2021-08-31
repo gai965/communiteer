@@ -33,15 +33,15 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Watting stand up database
-          command: |
+          command:
             dockerize -wait \
             tcp://127.0.0.1:3306 -timeout 1m
       - run: mv ./config/database.yml.ci ./config/database.yml
       - run:
           name: Database setup
-          command: |
+          command: 
             bundle exec rails db:create db:migrate
-
+            bundle exec rails db:create db:migrate 
       - run:
           name: RuboCop
           command: bundle exec rubocop -a

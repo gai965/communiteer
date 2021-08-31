@@ -52,6 +52,13 @@ title =["地域のゴミ拾いボランティア募集",
         "公園で遊んでいる子供を見守ってくれるボランティアさん募集","【未経験可】演劇イベントのスタッフ募集!!!",
         "【動画撮影・編集ボランティア】街を元気に!お店をめぐります","大規模合コンイベントの運営ボランティアスタッフ募集！"]
 postable_type = ["User","Group"]
+place =["岐阜県高山市丹生川町曽手822-4",
+        "兵庫県養父市八鹿町岩崎423-5",       "福島県田村市都路町岩井沢392-16",
+        "秋田県南秋田郡八郎潟町久保見197-18", "滋賀県甲賀市水口町八田436-7",
+        "和歌山県海草郡紀美野町高畑248-5",    "愛知県小牧市弥生町519-13",
+        "群馬県館林市羽附旭町594-6",         "鳥取県鳥取市栗谷町569-16",
+        "兵庫県赤穂市有年牟礼187-6",         "京都府京都市中京区下古城町69-8",
+        "新潟県見附市戸代新田町797-16",      "三重県鈴鹿市長法寺町589-17"]
 id            = [1, 2, 3]
 group_volunteer = []
 
@@ -61,13 +68,11 @@ posts.times do |n|
   schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
   deadline_time1  = Faker::Time.forward(days: 30, period: :night)
   deadline_time2  = Faker::Time.forward(days: 30, period: :night)
-  place1          = Gimei.address.kanji
-  place2          = Gimei.address.kanji
   people          = Faker::Number.between(from: 1, to: 30)
 
   group_volunteer[n] = Volunteer.create!(
     title:              "#{title[n]}",
-    place:              "#{place1}", 
+    place:              "#{place[n]}", 
     details:            "#{n + 1}", 
     schedule:           schedule_time1, 
     start_time:         schedule_time1, 
@@ -82,7 +87,7 @@ posts.times do |n|
 
   volunteer = Volunteer.create!(
     title:              "#{title[12 - n]}",
-    place:              "#{place2}", 
+    place:              "#{place[12 - n]}", 
     details:            "#{12 - n}", 
     schedule:           schedule_time2 , 
     start_time:         schedule_time2 , 

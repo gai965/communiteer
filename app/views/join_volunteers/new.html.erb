@@ -6,7 +6,7 @@
   <div class='grid place-items-center pt-14'>
     <div class='w-full xs:w-112 sm:w-160 md:w-192 p-4 md:p-8 bg-white rounded-lg shadow-md'>
       <%= link_to(return_joinvolunteer_path, class:'grid justify-items-end place-items-center') do %>
-        <img src='/assets/close_icon.png', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
+        <img src='/assets/close_icon.jpg', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
       <% end %>
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>ボランティア参加</h2>
       <%= form_with model:  @join_volunteer, url: volunteer_join_index_path(@volunteer.id), class: 'mt-2 sm:mt-10', local: true do |f| %>
@@ -15,7 +15,7 @@
           <span class='mandatory_display'>必須</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <img src='/assets/name_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <img src='/assets/name_icon.jpg' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <% if @group_name.present? %>
             <%= f.text_field :name, class:'reg_info_field' %>
           <% else %>
@@ -27,7 +27,7 @@
           <span class='any_display'>任意</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <img src='/assets/mobilephone_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <img src='/assets/mobilephone_icon.jpg' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <% if @group_name.present? %>
             <%= f.text_field :phone_number, class:'reg_info_field' %>
           <% else %>
@@ -39,7 +39,7 @@
           <span class='mandatory_display'>必須</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <img src='/assets/application_people_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <img src='/assets/application_people_icon.jpg' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <%= f.number_field :number, class:'reg_info_field', placeholder:'1'%>
         </div>
         <div class='flex justify-start items-center'>
@@ -47,7 +47,7 @@
           <span class='any_display'>任意</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <img src='/assets/question_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <img src='/assets/question_icon.jpg' class='h-5 w-5 opacity-70 my-auto mr-2'>
           <%= f.text_area :inquiry, class:'reg_info_field', placeholder:'当日は持ち物とかありますか？'%>
         </div>
         <%= f.submit '応募する', class:'registration_btn' %>
