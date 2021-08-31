@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def image_icon_path
-    'user_icon.png'
+    '/assets/user_icon.png'
   end
 
   def self.guest

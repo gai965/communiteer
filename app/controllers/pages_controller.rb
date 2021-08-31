@@ -18,10 +18,10 @@ class PagesController < ApplicationController
     case params[:type]
     when 'User'
       @account_page_info = User.find(params[:id])
-      @account_icon_image = 'user_icon.png'
+      @account_icon_image = '/assets/user_icon.png'
     when 'Group'
       @account_page_info = Group.find(params[:id])
-      @account_icon_image = 'group_icon.png'
+      @account_icon_image = '/assets/group_icon.png'
     end
 
     @account_page_info_type = params[:type]
