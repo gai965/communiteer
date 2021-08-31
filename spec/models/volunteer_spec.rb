@@ -5,7 +5,7 @@ RSpec.describe Volunteer, type: :model do
 
   before do
     @volunteer = FactoryBot.build(:volunteer)
-    @volunteer.image = fixture_file_upload('app/assets/images/noimage.png')
+    @volunteer.image = fixture_file_upload('app/assets/images/noimage.jpg')
   end
 
   describe 'ボランティア募集投稿' do
