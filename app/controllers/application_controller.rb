@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
 
   def set_header_info
     if user_signed_in?
-      @icon_image_path = '/assets/user_icon.png'
+      @icon_image_path = 'user_icon.png'
       @logout_link_path = destroy_user_session_path
     elsif group_signed_in?
-      @icon_image_path = '/assets/group_icon.png'
+      @icon_image_path = 'group_icon.png'
       @logout_link_path = destroy_group_session_path
     end
   end

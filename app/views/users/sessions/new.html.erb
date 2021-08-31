@@ -3,19 +3,19 @@
   <div class='grid place-items-center mx-2 my-auto'>
     <div class='w-11/12 md:w-192 p-4 sm:p-8 md:p-10 bg-white rounded-lg shadow-md'>
       <%= link_to(root_path, class:'grid justify-items-end place-items-center') do %>
-          <img src='/assets/close_icon.png', class='h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'>
+          <% image_tag 'close_icon.png', class:'h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'%>
       <% end %> 
       <h2 class='text-2xl sm:text-3xl font-bold text-center text-gray-800'>ログイン(個人用)</h2>
       <%= form_with model: @user, url: user_session_path, class: 'mt-10',local: true do |f| %>
 
         <div class='label_name'>メールアドレス</div>
         <div class='flex mb-4'>
-          <img src='/assets/mail_icon.png' class='h-5 w-5 opacity-70 my-auto mr-2'>
+          <% image_tag 'mail_icon.png' ,class:'h-5 w-5 opacity-70 my-auto mr-2'%>
           <%= f.email_field :email, class:'reg_info_field', placeholder:'your_addres@email.com', autofocus: true %>
         </div>
         <div class='label_name'>パスワード</div>
         <div class='flex mb-4'>
-          <img src='/assets/password_icon.png' class='h-5 w-5 my-auto mr-2'>
+          <% image_tag 'password_icon.png' ,class:'h-5 w-5 my-auto mr-2'%>
           <%= f.password_field :password, class:'reg_info_field', placeholder:'パスワード', autofocus: true %>
         </div>
         <%= f.submit 'ログイン' , class:'registration_btn' %>
