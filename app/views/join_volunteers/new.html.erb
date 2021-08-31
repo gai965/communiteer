@@ -15,7 +15,7 @@
           <span class='mandatory_display'>必須</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <%= image_tag'name_icon.png' class:'h-5 w-5 opacity-70 my-auto mr-2'%>
+          <%= image_tag'name_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
           <% if @group_name.present? %>
             <%= f.text_field :name, class:'reg_info_field' %>
           <% else %>
@@ -27,7 +27,7 @@
           <span class='any_display'>任意</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <%= image_tag'mobilephone_icon.png' class:'h-5 w-5 opacity-70 my-auto mr-2'%>
+          <%= image_tag'mobilephone_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
           <% if @group_name.present? %>
             <%= f.text_field :phone_number, class:'reg_info_field' %>
           <% else %>
@@ -39,7 +39,7 @@
           <span class='mandatory_display'>必須</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <%= image_tag'application_people_icon.png' class:'h-5 w-5 opacity-70 my-auto mr-2'%>
+          <%= image_tag'application_people_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
           <%= f.number_field :number, class:'reg_info_field', placeholder:'1'%>
         </div>
         <div class='flex justify-start items-center'>
@@ -47,7 +47,7 @@
           <span class='any_display'>任意</span>
         </div>
         <div class='flex mb-1 sm:mb-4'>
-          <%= image_tag'question_icon.png' class:'h-5 w-5 opacity-70 my-auto mr-2'%>
+          <%= image_tag'question_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
           <%= f.text_area :inquiry, class:'reg_info_field', placeholder:'当日は持ち物とかありますか？'%>
         </div>
         <%= f.submit '応募する', class:'registration_btn' %>

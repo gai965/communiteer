@@ -11,36 +11,36 @@
           <span class='text-base truncate'>ホーム</span>
         <% end %>
         <%= link_to(page_path(@account, type:  @account.type), class:'w-1/3 header_link type1') do %>
-          <%= image_tag @icon_image_path class:'h-2/5 mr-1' %>
+          <%= image_tag @icon_image_path, class:'h-2/5 mr-1' %>
           <span class='text-base truncate'>マイページ</span>
         <% end %>
         <%= link_to(rooms_path, class:'w-1/5 header_link type1') do %>
          <% if unchecked_chat == true %>
-            <%= image_tag 'unread_icon.png' class:'h-1/3 mb-3' %>
+            <%= image_tag 'unread_icon.png', class:'h-1/3 mb-3' %>
           <% end %>
-          <%= image_tag 'mailbox_icon.png' class:'h-2/5 mr-1' %>
+          <%= image_tag 'mailbox_icon.png', class:'h-2/5 mr-1' %>
           <span class='text-base truncate'>DM</span>
         <% end %>
         <%= link_to(notifications_path, class:'w-1/4 header_link type1') do %>
           <% if unchecked_notification.present? %>
-            <%= image_tag 'unread_icon.png' class:'h-1/3 mb-3' %>
+            <%= image_tag 'unread_icon.png', class:'h-1/3 mb-3' %>
           <% end %>
-          <%= image_tag 'notification_icon.png' class:'h-2/5 mr-1' %>
+          <%= image_tag 'notification_icon.png', class:'h-2/5 mr-1' %>
           <span class='text-base truncate'>通知</span>
         <% end %>
         <%= link_to(@logout_link_path, method: :delete, class:'w-1/3 header_link type1') do %>
-          <%= image_tag'logout_icon.png' class:'h-2/5 mr-1' %>
+          <%= image_tag'logout_icon.png', class:'h-2/5 mr-1' %>
           <span class='text-base truncate'>ログアウト</span>
         <% end %>
       </div>
     <% else%>
       <div class='h-full w-56 md:mr-10 lg:mr-14 flex justify-center'>
         <%= link_to(mains_sign_in_choice_path, class:'w-1/2 header_link type1') do%>
-          <%= image_tag'login_icon.png' class:'h-2/5 mr-1' %>
+          <%= image_tag'login_icon.png', class:'h-2/5 mr-1' %>
           <span class='text-base'>ログイン</span>
         <% end %>
         <%= link_to(mains_sign_up_choice_path, class:'w-1/2 header_link type1') do%>
-          <%= image_tag 'registration_icon.png' class:'h-2/5 mr-1' %>
+          <%= image_tag 'registration_icon.png', class:'h-2/5 mr-1' %>
           <span class='text-base'>新規登録</span>
         <% end %>
       </div> 
@@ -48,56 +48,56 @@
     </div>
     <div  id='menu-bar' class='w-14 hover:bg-gray-400 mx-2 md:mx-6 px-4 flex flex-col relative block md:hidden'>
       <div  class='h-14 flex place-items-center justify-center'>
-        <%= image_tag 'menu_icon.png' class: 'h-2/5' %>
+        <%= image_tag 'menu_icon.png', class: 'h-2/5' %>
         <div id='menu-list' class='absolute top-14 right-0 hidden z-40'>
           <ul class='bg-white border-2 border-gray-700 divide-y-2 divide-gray-700 '>
           <% if @account.present? %>
             <li class='menu_item'>
               <%= link_to(root_path, class:'header_link type2') do %>
-                <%= image_tag 'home_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag 'home_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>ホーム</span>
               <% end %>
             </li>
             <li class='menu_item'>
               <%= link_to(page_path(@account, type:  @account.type), class:'header_link type2') do %>
-                <%= image_tag @icon_image_path class:'h-2/5 mr-1' %>
+                <%= image_tag @icon_image_path, class:'h-2/5 mr-1' %>
                 <span class='text-base'>マイページ</span>
               <% end %>
             </li>
             <li class='menu_item'>
               <%= link_to(rooms_path, class:'header_link type2') do %>
                 <% if unchecked_chat == true %>
-                  <%= image_tag 'unread_icon.png' class: 'h-1/3 mb-3' %>
+                  <%= image_tag 'unread_icon.png', class: 'h-1/3 mb-3' %>
                 <% end %>
-                <%= image_tag 'mailbox_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag 'mailbox_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>DM</span>
               <% end %>
             </li>
             <li class='menu_item'>
               <%= link_to(notifications_path, class:'header_link type2') do %>
                 <% if unchecked_notification.present? %>
-                  <%= image_tag 'unread_icon.png' class:'h-1/3 mb-3' %>
+                  <%= image_tag 'unread_icon.png', class:'h-1/3 mb-3' %>
                 <% end %>
-                <%= image_tag 'notification_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag 'notification_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>通知</span>
               <% end %>
             </li>
             <li class='menu_item'>
               <%= link_to(@logout_link_path, class:'header_link type2', method: :delete) do %>
-                <%= image_tag'logout_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag'logout_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>ログアウト</span>
               <% end %>
             </li>
           <% else%>
             <li class='menu_item'>
               <%= link_to(mains_sign_in_choice_path, class:'header_link type2') do%>
-                <%= image_tag'login_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag'login_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>ログイン</span>
               <% end %>
             </li>
             <li class='menu_item'>
               <%= link_to(mains_sign_up_choice_path, class:'header_link type2') do%>
-                <%= image_tag'registration_icon.png' class: 'h-2/5 mr-1' %>
+                <%= image_tag'registration_icon.png', class: 'h-2/5 mr-1' %>
                 <span class='text-base'>新規登録</span>
               <% end %>
             </li>

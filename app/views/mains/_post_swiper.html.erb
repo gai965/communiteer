@@ -8,9 +8,9 @@
             <div class='py-1 px-4'>
               <p class='text-2xl font-bold truncate mb-2 group-hover:text-green-400'><%= post.title %></p>
               <div class='flex items-center'>
-                <%= image_tag post.postable.image_icon_path class:'h-6 w-6 opacity-50 mr-1' %>
+                <%= image_tag post.postable.image_icon_path, class:'h-6 w-6 opacity-50 mr-1' %>
                 <span class='text-lg text-gray-600 truncate mr-1'><%= post.postable.contributor_name %></span>
-                <%= image_tag 'destination_icon.png' class:'h-6 w-6 opacity-50 mr-1'%>
+                <%= image_tag 'destination_icon.png', class:'h-6 w-6 opacity-50 mr-1'%>
                 <span class='text-lg text-gray-600 truncate mr-1'><%= post.place%></span>
               </div>
             </div>

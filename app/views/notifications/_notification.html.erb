@@ -1,7 +1,7 @@
 
 <div class='h-14 md:w-128 border-b border-gray-200 my-10 mx-7 sm:mx-14 md:mx-auto'>
   <div class='flex items-center'>
-    <%= image_tag notification.sendable.image_icon_path class:'h-6 w-6 sm:h-8 sm:w-8 sm:mr-1' %>
+    <%= image_tag notification.sendable.image_icon_path, class:'h-6 w-6 sm:h-8 sm:w-8 sm:mr-1' %>
     <div class='w-full flex flex-col'>
       <div class='w-2/3 flex flex-row items-center'>
         <%= link_to notification.sendable.contributor_name, page_path(notification.sendable_id, type: notification.sendable_type), class:'link_truncate'%>
