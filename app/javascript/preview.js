@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ImagePreview = document.getElementById('preview_area');
         const blobImage = document.createElement('img');
         blobImage.setAttribute('id', 'image_preview');
-        blobImage.setAttribute('class', 'image_preview');
+        // blobImage.setAttribute('class', 'image_preview');
         blobImage.setAttribute('src', blob);
         ImagePreview.appendChild(blobImage);
       }
