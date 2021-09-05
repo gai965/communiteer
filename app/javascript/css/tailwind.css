@@ -6,10 +6,6 @@
   
   /*--- 共通 ----------------------------------------- */
 
-  /*「field_with_errorr」によるレイアウト崩れを防ぐ */
-  /* .field_with_errors {
-    @apply contents
-  } */
   /* 未読・既読などの確認アイコンに使用 */
   .checked{
     @apply text-xs border rounded-full ml-1 md:ml-3 px-1.5 flex-none

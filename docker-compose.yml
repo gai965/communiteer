@@ -2,18 +2,18 @@ version: '3'
 services:
   db:
     image: mysql:8.0.25
-    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: root
     ports:
       - "3306:3306"
+    volumes:
+      - ./mysql-confd:/etc/mysql/conf.d
 
   web:
-    depends_on:
-       - db
     build: .
-    command: rails s -p 3000 -b '0.0.0.0'
+    tty: true
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/communiteer
     ports:
@@ -21,3 +21,13 @@ services:
     restart: always
     links:
       - db
+    depends_on:
+      - db
+    environment:
+      TZ: "Asia/Tokyo"
+    networks:
+      - communiteer_link
+
+networks:
+  communiteer_link:
+    external: true

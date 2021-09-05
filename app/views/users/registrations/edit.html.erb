@@ -9,7 +9,7 @@
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>プロフィール編集</h2>
       <%= form_with model: @user, url: user_registration_path, class: 'mt-10',local: true do |f| %>
 
-        <%= render 'shared/error_messages', model: f.object %>  
+          <%# <%= render 'shared/error_messages', model: f.object %>    
 
         <div class='flex justify-start items-center'>
           <div class='label_name'>ニックネーム</div>
@@ -43,7 +43,7 @@
           <%= image_tag 'password_icon.png', class:'h-5 w-5 my-auto mr-2'%>
           <%= f.password_field :password_confirmation, class:'reg_info_field', placeholder:'Password00', autofocus: true %>
         </div>
-        <%= f.submit '変更', class:'registration_btn' %>
+        <%= f.submit '変更', id:'register-submit', class:'registration_btn' %>
         <%= link_to 'もどる', mains_sign_up_choice_path, class:'return_btn' %>
       <% end %>
     </div>

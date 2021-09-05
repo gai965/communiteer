@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const file = e.target.files[0]
       const blob = window.URL.createObjectURL(file);
 
-      const html = (function () {
-        const html = `<style>
-                        .preview{
-                          height: 250px;
-                          width: 250px;
-                        }
-                      </style>`
-        return html;
-      }());
+      // const html = (function () {
+      //   const html = `<style>
+      //                   .preview{
+      //                     height: 250px;
+      //                     width: 250px;
+      //                   }
+      //                 </style>`
+      //   return html;
+      // }());
 
       const imageContent = document.getElementById('image_preview');
       if (imageContent){

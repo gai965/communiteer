@@ -17,7 +17,7 @@
           <%= image_tag'password_icon.png', class:'h-5 w-5 my-auto mr-2'%>
           <%= f.password_field :password, class:'reg_info_field', placeholder:'パスワード', autofocus: true %>
         </div>
-        <%= f.submit 'ログイン' , class:'registration_btn' %>
+        <%= f.submit 'ログイン' , id:'register-submit', class:'registration_btn' %>
         <%= link_to 'もどる', mains_sign_in_choice_path, class:'return_btn' %>
       <% end %>
       <div class='mt-8 text-sm text-center'>

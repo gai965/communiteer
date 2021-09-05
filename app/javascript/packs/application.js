@@ -1,5 +1,4 @@
 import Rails from "@rails/ujs"
-// import Turbolinks from "turbolinks"
 import "channels"
 
 import '../css/tailwind.css';
@@ -9,6 +8,6 @@ require("../preview");
 require("../profile");
 require("../chat");
 require("../menu");
+require("../formeerror");
 
 Rails.start()
-// Turbolinks.start()
