@@ -70,5 +70,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # ホワイトリストの記入
-  config.web_console.whitelisted_ips = '172.19.0.1' 
+  # config.web_console.whitelisted_ips = '172.21.0.1' 
 end
