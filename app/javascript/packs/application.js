@@ -8,6 +8,6 @@ require("../preview");
 require("../profile");
 require("../chat");
 require("../menu");
-require("../formeerror");
+// require("../formerror");
 
 Rails.start()

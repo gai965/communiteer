@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const Registersubmit = document.getElementById('register-submit');
-  console.log(Registersubmit);
+  console.log('入りました');
   if (document.URL.match( '/users' ) || document.URL.match( '/groups')) {
 
       console.log(Registersubmit);

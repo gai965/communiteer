@@ -65,21 +65,21 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
-    aws-eventstream (1.1.1)
-    aws-partitions (1.492.0)
-    aws-sdk-core (3.119.1)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.497.0)
+    aws-sdk-core (3.121.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.46.0)
-      aws-sdk-core (~> 3, >= 3.119.0)
+    aws-sdk-kms (1.48.0)
+      aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.100.0)
-      aws-sdk-core (~> 3, >= 3.119.0)
+    aws-sdk-s3 (1.102.0)
+      aws-sdk-core (~> 3, >= 3.120.0)
       aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.4)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bcrypt_pbkdf (1.1.0)
@@ -104,7 +104,7 @@ GEM
     capistrano-rbenv-vars (0.1.0)
       capistrano (>= 3.0)
       capistrano-rbenv (>= 2.0)
-    capistrano3-puma (5.0.4)
+    capistrano3-puma (5.1.1)
       capistrano (~> 3.7)
       capistrano-bundler
       puma (>= 4.0, < 6.0)
@@ -136,7 +136,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    ffi (1.15.3)
+    ffi (1.15.4)
     gimei (1.0.0)
       romaji
     globalid (0.5.2)
@@ -372,4 +372,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.23
+   2.2.27

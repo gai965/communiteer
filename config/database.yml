@@ -4,7 +4,6 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   password: rootpass
-  # socket:  /var/run/mysqld/mysqld.sock
   socket: /tmp/mysql.sock
   host: db
 
@@ -20,3 +19,8 @@ test:
 production:
   <<: *default
   database: communiteer_production
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host:     <%= Rails.application.credentials.db[:host] %>
+  port:     3306
+  socket: /var/lib/mysql/mysql.sock

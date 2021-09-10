@@ -15,14 +15,8 @@ services:
     depends_on:
       - db
     restart: always
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0' && rails db:migrate"
     volumes:
       - .:/communiteer
     ports:
       - "3000:3000"
-    # networks:
-    #   - communiteer_link
-
-# networks:
-#   communiteer_link:
-#     external: true

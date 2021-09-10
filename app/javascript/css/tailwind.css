@@ -126,7 +126,7 @@
   .label_name {
     @apply text-lg sm:text-xl text-gray-600 uppercase mr-2
   }
-  .image_preview{
+  .preview{
     @apply h-48 sm:h-80 w-48 sm:w-80 mx-auto my-auto
   }
   .reg_info_field {
