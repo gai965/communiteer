@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  var myHeader = XMLHttpRequest.getResponseHeader();
+  var myHeader = document.getElementsByTagName('head')
   console.log(myHeader)
   if (!(document.URL.match( '/new' ) || document.URL.match( '/edit'))) {
     const menuBar = document.getElementById('menu-bar');
