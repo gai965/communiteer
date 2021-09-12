@@ -16,13 +16,13 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 
 namespace :deploy do
-
-  desc 'Migrate reset into database'
-  task :migrate_reset do
-    on roles(:app) do
+  
+  desc 'Runs rake db:migrate if migrations are set'
+  task :migrate => [:set_rails_env] do
+    on primary fetch(:migration_role) do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "db:migrate:reset"
+          execute :rake, "db:migrate"
         end
       end
     end
@@ -40,5 +40,4 @@ namespace :deploy do
   end
 end
 
-after 'deploy:migrate', 'deploy:migrate_reset'
-after 'deploy:migrate_reset', 'deploy:seed'
+# after 'deploy:migrate', 'deploy:seed'
