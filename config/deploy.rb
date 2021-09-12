@@ -17,8 +17,8 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 namespace :deploy do
 
-  desc 'Load seed data into database'
-  task :migrate do
+  desc 'Migrate reset into database'
+  task :migrate_reset do
     on roles(:app) do
       within release_path do
         with rails_env: fetch(:rails_env) do
@@ -40,4 +40,5 @@ namespace :deploy do
   end
 end
 
-after 'deploy:migrate', 'deploy:seed'
+after 'deploy:migrate', 'deploy:migrate_reset'
+after 'deploy:migrate_reset', 'deploy:seed'
