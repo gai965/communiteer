@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  var Header = document.getElementById('header')
+  const Header = document.getElementById('header')
   console.log(Header)
-  if (!Header) {
+  if (Header != null) {
+    console.log('入りました')
     const menuBar = document.getElementById('menu-bar');
     const menuList= document.getElementById('menu-list');
     
