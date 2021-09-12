@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  var myHeader = document.getElementsByTagName('head')
-  console.log(myHeader)
-  if (!(document.URL.match( '/new' ) || document.URL.match( '/edit'))) {
+  var Header = document.getElementById('header')
+  console.log(Header)
+  if (!Header) {
     const menuBar = document.getElementById('menu-bar');
     const menuList= document.getElementById('menu-list');
     
