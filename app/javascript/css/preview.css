@@ -1,0 +1,13 @@
+.preview{
+  height: 320px;
+  width:  320px;
+  margin: auto;
+}
+
+@media screen and (max-width: 640px) {
+  .preview{
+    height: 192px;
+    width:  192px;
+    margin: auto;
+  }
+}
