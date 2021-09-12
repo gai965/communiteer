@@ -7,7 +7,7 @@ import './swiper';
 require("../preview");
 require("../profile");
 require("../chat");
-require("../menu");
-// require("../formerror");
+// require("../menu");
+require("../formerror");
 
 Rails.start()
