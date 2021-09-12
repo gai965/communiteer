@@ -45,7 +45,7 @@
           <%else%>
             <% if @account.present?%>
               <% if @volunteer_contributor_flag == true && @volunteer.deadline_flag == false %>
-                <%= button_to '応募を締め切る', volunteer_path(@volunteer.id), method: :get, class:'deadline_btn' %>
+                <%= button_to '応募を締め切る', volunteer_close_path(@volunteer.id), method: :post, class:'deadline_btn', data: { confirm: '一度締め切ると再募集はできませんがよろしいでしょうか？' } %>
                 <%= button_to '応募者一覧を見る', volunteer_join_index_path(@volunteer.id), method: :get, class:'list_applicants_btn' %>
               <% else %>
                 <% if @volunteer_apply_finish_flag == true %>

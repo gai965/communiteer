@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   # ボランティア投稿ページへのリダイレクト処理
   get '/volunteers', to: 'volunteers#new'
+  post '/volunteers/:id', to: 'volunteers#close', as: 'volunteer_close'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

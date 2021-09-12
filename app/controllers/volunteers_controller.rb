@@ -2,7 +2,7 @@ class VolunteersController < ApplicationController
   before_action :set_login_account, expect: [:new]
   before_action :move_to_login,     only:   [:new, :edit]
   before_action :set_header_info,   only:   [:show]
-  before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy]
+  before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy, :close]
 
   def index
     all_volunteer = Volunteer.all.order('created_at DESC')
@@ -53,6 +53,11 @@ class VolunteersController < ApplicationController
   def destroy
     @volunteer.destroy
     redirect_to root_path
+  end
+
+  def close
+    @volunteer.update(deadline_flag: true)
+    redirect_to action: :show if @volunteer.save
   end
 
   private

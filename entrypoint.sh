@@ -6,6 +6,7 @@ rm -f /myapp/tmp/pids/server.pid
 
 # データベースをマイグレーションする
 rails db:migrate
+rails db:seed
 
 # webpackeによるコンパイル
 rails webpacker:compile
