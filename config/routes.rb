@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'mains#index'
+  # root 'mains#index'
   resources :mains,         only: :index
   resources :notifications, only: :index
   resources :pages,         only: :show
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :cheers         , only: [:index, :create, :destroy]
   end
 
+  get '/',                     to: 'mains#index', as: 'root'
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'
   get '/mains/sign_in_choice', to: 'mains#sign_in_choice'
 
