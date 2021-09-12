@@ -16,6 +16,18 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 
 namespace :deploy do
+
+  desc 'Load seed data into database'
+  task :migrate do
+    on roles(:app) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "db:migrate:reset"
+        end
+      end
+    end
+  end
+
   desc 'Load seed data into database'
   task :seed do
     on roles(:db) do |host|
