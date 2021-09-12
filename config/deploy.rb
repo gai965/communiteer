@@ -14,4 +14,18 @@ set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
 
+
+namespace :deploy do
+  desc 'Load seed data into database'
+  task :seed do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
+end
+
 after 'deploy:migrate', 'deploy:seed'
