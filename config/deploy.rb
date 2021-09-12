@@ -16,27 +16,17 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_module
 
 
 namespace :deploy do
-  
-  desc 'Run rake db:migrate:reset'
-  task :migrate_reset do 
-    on roles(:app) do
-      with rails_env: fetch(:rails_env) do
-        execute :rake, "db:migrate:reset"
-      end
-    end
-  end
-
-  desc 'Load seed data into database'
-  task :seed do
-    on roles(:db) do |host|
+  desc 'Run rake db:migrate:reset & rake db:seed'
+  task :migrate_seed do 
+    on roles(:db) do
       with rails_env: fetch(:rails_env) do
         within current_path do
-          execute :bundle, :exec, :rake, 'db:seed'
+          execute :rake, "db:migrate:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1"
+          execute :rake, 'db:seed'
         end
       end
     end
   end
 end
 
-after 'deploy:assets:backup_manifest', 'deploy:migrate_reset'
-after 'deploy:migrate', 'deploy:seed'
+after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
