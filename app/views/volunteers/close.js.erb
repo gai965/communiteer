@@ -1,0 +1,2 @@
+document.getElementById('button_area_<%= @volunteer.id %>').innerHTML = '<%= escape_javascript(render partial: 'button_area', locals: { volunteer: @volunteer })%>'
+document.getElementById('edit_area_<%= @volunteer.id %>').innerHTML = '<%= escape_javascript(render partial: 'edit_area', locals: { volunteer: @volunteer })%>'

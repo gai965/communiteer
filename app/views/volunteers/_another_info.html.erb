@@ -1,0 +1,19 @@
+<%= link_to(page_path(volunteer.postable_id, type: volunteer.postable_type), class:'hover:opacity-40 mb-2 lg:mb-5 flex place-items-center') do %>
+  <%= image_tag volunteer.postable.image_icon_path, class: 'h-8 lg:h-10 w-8 lg:w-10 mr-2' %>
+  <span class='sm:text-xl lg:text-2xl border-b border-gray-400'><%= volunteer.postable.contributor_name %></span>
+<% end %>
+<div class='opacity-60 flex mb-1'>
+  <%= image_tag 'participation_icon.png', class:'h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'%>
+  <span class='text-sm sm:text-base lg:text-lg'>参加：<%= volunteer.participant_number %></span>
+</div>
+<div class='opacity-60 flex items-center mb-1'>
+  <%= image_tag 'cheering_off_icon.png', class:'h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'%>
+  <span class='text-sm sm:text-base lg:text-lg'>応援：</span>
+  <div id='cheer_info_<%= volunteer.id %>'>
+    <%= render partial: 'cheer_info', locals: { volunteer: volunteer, cheer_number: cheer_number } %>
+  </div>
+</div>
+<div class='opacity-60 flex mb-1'>
+  <%= image_tag 'visit_icon.png', class:'h-5 w-5 lg:h-7 lg:w-7 my-auto mr-1 sm:mr-2'%>
+  <span class='text-sm sm:text-base lg:text-lg'>訪問：<%= volunteer.impressionist_count %></span>
+</div>

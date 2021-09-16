@@ -36,6 +36,10 @@ class Group < ApplicationRecord
     'group_icon.png'
   end
 
+  def already_volunteer_cheered?(volunteer, account)
+    self.cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
+  end
+
   def self.guest
     Group.find_or_create_by!(email: 'group@guest.com') do |group|
       group.name = 'ゲスト団体'

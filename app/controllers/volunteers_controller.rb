@@ -1,7 +1,7 @@
 class VolunteersController < ApplicationController
   before_action :set_login_account, expect: [:new]
   before_action :move_to_login,     only:   [:new, :edit]
-  before_action :set_header_info,   only:   [:show]
+  before_action :set_header_info,   only:   [:index, :show]
   before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy, :close]
 
   def index
@@ -29,12 +29,8 @@ class VolunteersController < ApplicationController
   end
 
   def show
-    @cheer_number = Cheer.where(targetable_id: params[:id]).count
-    if @account.present?
-      @volunteer_contributor_flag = @volunteer.contributor_verification(@volunteer, @account.id, @account.type)
-      @volunteer_apply_finish_flag = @volunteer.application_verification(@volunteer, @account.id, @account.type, @approval)
-      @volunteer_cheer_finish_flag = @volunteer.cheer_verification(@volunteer, @account.id, @account.type)
-    end
+    @cheer = Cheer.where(targetable_id: params[:id])
+    @cheer_number = @cheer.count
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
 
@@ -57,7 +53,6 @@ class VolunteersController < ApplicationController
 
   def close
     @volunteer.update(deadline_flag: true)
-    redirect_to action: :show if @volunteer.save
   end
 
   private

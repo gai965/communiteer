@@ -1,0 +1,5 @@
+<% if cheer_number == 0 %>
+  <span class='text-sm sm:text-base lg:text-lg'> 0 </span>
+<% else %>
+  <%= link_to "#{cheer_number}", volunteer_cheers_path(volunteer.id), class:'text-sm sm:text-base lg:text-lg border-b border-black hover:text-gray-500 hover:border-gray-500'%>
+<% end %>

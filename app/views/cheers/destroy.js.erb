@@ -1,0 +1,2 @@
+document.getElementById('cheer_btn_<%= @volunteer.id %>').innerHTML = '<%= escape_javascript(render partial: 'cheers/cheer', locals: { volunteer: @volunteer })%>'
+document.getElementById('cheer_info_<%= @volunteer.id %>').innerHTML = '<%= escape_javascript(render partial: 'volunteers/cheer_info', locals: { volunteer: @volunteer, cheer_number: @cheer_number })%>'

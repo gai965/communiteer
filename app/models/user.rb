@@ -26,6 +26,10 @@ class User < ApplicationRecord
     'user_icon.png'
   end
 
+  def already_volunteer_cheered?(volunteer, account)
+    self.cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
+  end
+
   def self.guest
     User.find_or_create_by!(email: 'user@guest.com') do |user|
       user.name = 'ゲスト'

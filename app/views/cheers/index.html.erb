@@ -6,7 +6,7 @@
     <div>
       <p class='text-center text-2xl font-bold text-gray-400 border-b-2 border-gray-300 pb-5 my-10 mx-5 sm:mx-10'>応援者一覧</p>
     </div>
-      <%= render partial: 'cheer', collection: @cheers_volunteer, as: 'cheerer' %>
+      <%= render partial: 'cheerer', collection: @cheers_volunteer, as: 'cheerer' %>
       <%= paginate @cheers_volunteer %>  
   </div> 
 </div>

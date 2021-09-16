@@ -1,7 +1,11 @@
-<% provide(:title, cheerer.targetable.volunteer_title) %>  
-
-<div class='h-14 border-b border-gray-200 mx-10 sm:mx-20 my-3 sm:my-5 flex justify-start items-center'>
-  <%= image_tag cheerer.cheerable.image_icon_path, class:'h-6 sm:h-8 w-6 sm:w-8 mr-1 self-center' %>
-  <%= link_to cheerer.cheerable.contributor_name, page_path(cheerer.cheerable_id, type: cheerer.cheerable_type), class:'link_truncate', method: :get %>
-  <span class='gap_character'>さん</span>
-</div>
+<% unless @account.already_volunteer_cheered?(volunteer, @account) %>
+  <%= button_to volunteer_cheers_path(volunteer.id), class:'cheering_on_btn', remote: true do %>
+    <%= image_tag 'cheering_off_icon.png', class:'h-5 w-5 mr-2'%>
+    <span>応援する</span>
+  <% end %>
+<% else %>
+  <%= button_to "/volunteers/#{volunteer.id}/cheers/cheer.id" , method: :delete, class:'cheering_off_btn', remote: true do %>
+    <%= image_tag 'cheering_on_icon.png', class:'h-5 w-5 mr-2'%>
+    <span>応援中</span>
+  <% end %>
+<% end %>

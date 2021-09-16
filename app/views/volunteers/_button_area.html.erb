@@ -1,0 +1,28 @@
+<% if volunteer.deadline_flag == true %>
+  <div class ='p-2 border-4 border-gray-300'>
+    <p class='deadline_text'>募集は終了致しました</p>
+    <p class='deadline_text'>皆様のご応募ありがとうございました</p>
+  </div>
+<%else%>
+  <% if @account.present?%>
+    <% if volunteer.contributor_verification(volunteer, @account) %>
+      <%= button_to '応募を締め切る', volunteer_close_path(volunteer.id), id:'deadline-btn', class:'deadline_btn', data: { confirm: '一度締め切ると取り消しはできませんがよろしいでしょうか？' }, remote: true %> 
+      <%= button_to '応募者一覧を見る', volunteer_join_index_path(volunteer.id), method: :get, class:'list_applicants_btn' %>
+    <% else %>
+      <% if volunteer.application_verification(volunteer, @account, @approval) %>
+        <p class='apply_finish_text'>申込み済</p>
+      <% else %>
+        <% if user_signed_in? %>
+          <%= button_to '応募する', new_volunteer_join_path(volunteer.id), params: {second_pre_page: params[:page]}, method: :get, class:'apply_btn' %>
+        <% elsif @group.group_category == 1 %>
+          <%= button_to '応募する', new_volunteer_join_path(volunteer.id), params: {second_pre_page: params[:page], name: @group.name, phone_number: @group.phone_number},method: :get, class:'apply_btn' %>
+        <% end %>
+      <% end %>
+      <div id='cheer_btn_<%= volunteer.id %>'>
+        <%= render partial: 'cheers/cheer', locals: { volunteer: volunteer } %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= button_to 'ログインして応募する', mains_sign_in_choice_path, method: :get, class:'login_apply_btn' %>
+  <% end %>
+<% end %>
