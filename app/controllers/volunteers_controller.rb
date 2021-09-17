@@ -38,11 +38,10 @@ class VolunteersController < ApplicationController
   end
 
   def update
-    @volunteer.update(volunteer_params)
-    if @volunteer.save
+    if @volunteer.update(volunteer_params)
       redirect_to action: :show
     else
-      redirect_to action: :edit
+      render :edit
     end
   end
 

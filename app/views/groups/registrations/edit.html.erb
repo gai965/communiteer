@@ -9,7 +9,8 @@
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>プロフィール編集</h2>
       <%= form_with model: @group, url: group_registration_path, class: 'mt-2 sm:mt-10',local: true do |f| %>
 
-          <%# <%= render 'shared/error_messages', model: f.object %>   
+        <%= render 'shared/error_messages', model: f.object %>   
+        
         <div class='flex justify-start items-center'>
           <div class='label_name'>名前</div>
           <span class='mandatory_display'>必須</span>

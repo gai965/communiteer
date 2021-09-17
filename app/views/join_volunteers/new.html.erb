@@ -46,9 +46,15 @@
           <div class='label_name'>問い合わせ</div>
           <span class='any_display'>任意</span>
         </div>
-        <div class='flex mb-1 sm:mb-4'>
-          <%= image_tag'question_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
-          <%= f.text_area :inquiry, class:'reg_info_field', placeholder:'当日は持ち物とかありますか？'%>
+        <div>
+          <div class='flex items-center'>
+            <%= image_tag'question_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
+            <%= f.text_area :inquiry, class:'count_target reg_info_field', placeholder:'当日は持ち物とかありますか？'%>
+          </div>
+          <div class='flex justify-end'>
+            <div class='length'>0</div>
+            <div class='limited_number'>/ 500文字</div>
+          </div>
         </div>
         <%= f.submit '応募する', class:'registration_btn' %>
       <% end %>

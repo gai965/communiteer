@@ -4,7 +4,7 @@ class JoinVolunteer < ApplicationRecord
   has_many   :notifications, as: :linkable, dependent: :destroy
 
   validates :phone_number, format: { with: /\A\d{10,11}\z/, allow_blank: true, message: 'は10桁または11桁の半角数字で入力してください' }
-  validates :inquiry, length: { maximum: 100 }
+  validates :inquiry, length: { maximum: 500 }
 
   with_options presence: true do
     validates :name, length: { maximum: 30 }

@@ -9,5 +9,6 @@ require("../preview");
 require("../profile");
 require("../chat");
 require("../menu");
+require("../count");
 
 Rails.start()

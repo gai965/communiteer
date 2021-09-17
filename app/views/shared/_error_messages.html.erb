@@ -3,7 +3,7 @@
   <span class='font-bold text-2xl m-3'>入力不足エラー</span>
   <ul class='m-2'>
     <% model.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <li>・<%= message %></li>
     <% end %>
   </ul>
 </div>
