@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
-  validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
-                                 message: 'は大文字を含む英字と数字を入力してください'
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ , message:'は大文字を含む英字と数字を入力してください'}, on: :create
 
   with_options presence: true, uniqueness: true do
     validates :name
@@ -36,5 +35,17 @@ class User < ApplicationRecord
       user.type = 'User'
       user.password = 'UserGuest01'
     end
+  end
+
+  def update_with_password(params, *options)
+    params.delete(:current_password)
+    if params[:password].blank? && params[:password_confirmation].blank? 
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update(params, *options)
+    clean_up_passwords
+    result
   end
 end

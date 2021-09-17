@@ -12,9 +12,9 @@ class Group < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
   # 半角英数字および大文字を含む
-  validates :password,
-            format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/,
-                      message: 'は大文字を含む英字と数字を入力してください' }
+
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ , message:'は大文字を含む英字と数字を入力してください'}, on: :create
+
   # 「http:」または「https:」を含む(空白も可)
   validates :url,
             format: { with: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/, allow_blank: true,
@@ -50,5 +50,16 @@ class Group < ApplicationRecord
       group.type = 'Group'
       group.password = 'GroupGuest01'
     end
+  end
+
+  def update_with_password(params, *options)
+    params.delete(:current_password)
+    if params[:password].blank? && params[:password_confirmation].blank? 
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+    result = update(params, *options)
+    clean_up_passwords
+    result
   end
 end
