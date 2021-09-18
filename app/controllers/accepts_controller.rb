@@ -1,22 +1,14 @@
 class AcceptsController < ApplicationController
-  before_action :move_to_top,             only: [:show]
-  before_action :set_join_volunteer_info, only: [:show, :create]
-  before_action :set_login_account,       only: [:show, :create]
-
-  def show
-    @room_id = Room.where(selfable_id: @account.id,
-                          selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
-                                                                      partnerable_type: @account.type)).pluck(:id)
-  end
+  before_action :set_join_volunteer_info, only: [:create]
+  before_action :set_login_account,       only: [:create]
 
   def create
     @join_volunteer.create_notification_accept_registration!(@join_volunteer, @account)
     return unless @join_volunteer.accept_flag == false
-
-    @join_volunteer.accept_flag = true
+    
+    @join_volunteer.update!(accept_flag: true)
     return unless @join_volunteer.save!
-
-    redirect_to volunteer_accept_path(@join_volunteer.volunteer_id, @join_volunteer.joinable_id,
+    redirect_to volunteer_join_path(@join_volunteer.volunteer_id, @join_volunteer.joinable_id,
                                       type: @join_volunteer.joinable_type)
   end
 

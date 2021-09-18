@@ -19,9 +19,4 @@ test:
 production:
   <<: *default
   database: communiteer
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  host:     <%= Rails.application.credentials.db[:host] %>
-  port:     3306
-  socket: /var/lib/mysql/mysql.sock
 

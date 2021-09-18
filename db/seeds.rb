@@ -1,11 +1,12 @@
 require 'faker'
 
 membership = 6
-posts      = 7
+posts      = 10
 user       = []
+group       = []
 
 # ユーザ登録
-group = Group.create!(
+group[0] = Group.create!(
   email: "group@guest.com", 
   password: "GroupGuest01", 
   name:  "ゲスト団体",
@@ -44,35 +45,40 @@ user[0] = User.create!(
 # end
 
 # ボランティア投稿
-# title =["地域のゴミ拾いボランティア募集",
-#         "被災地 応援イベントのボランティア募集!"              ,"第2回 近所の大川の大掃除大会開催",
-#         "マラソン大会の運営のお手伝いボランティアスタッフ募集!!" ,"なし収穫ボランティア募集",
-#         "子供キャンプのお手伝いして頂けるボランティア募集中!"   ,"子供達に「食の大切さを伝える」ボランティア募集",
-#         "ハロウィンイベント★スタッフ募集!"                   ,"のんびりお散歩同行！スタッフ募集",
-#         "公園で遊んでいる子供を見守ってくれるボランティアさん募集","【未経験可】演劇イベントのスタッフ募集!!!",
-#         "【動画撮影・編集ボランティア】街を元気に!お店をめぐります","大規模合コンイベントの運営ボランティアスタッフ募集！"]
+title =["地域のゴミ拾いボランティア募集",
+        "被災地 応援イベントのボランティア募集!"              ,"第2回 近所の大川の大掃除大会開催",
+        "マラソン大会の運営のお手伝いボランティアスタッフ募集!!" ,"なし収穫ボランティア募集",
+        "子供キャンプのお手伝いして頂けるボランティア募集中!"   ,"子供達に「食の大切さを伝える」ボランティア募集",
+        "ハロウィンイベント★スタッフ募集!"                   ,"のんびりお散歩同行！スタッフ募集",
+        "公園で遊んでいる子供を見守ってくれるボランティアさん募集","【未経験可】演劇イベントのスタッフ募集!!!",
+        "【動画撮影・編集ボランティア】街を元気に!お店をめぐります","大規模合コンイベントの運営ボランティアスタッフ募集！"]
 # postable_type = ["User","Group"]
 # id            = [1, 2, 3]
 # group_volunteer = []
 
-schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
-deadline_time2  = Faker::Time.forward(days: 30, period: :night)
+posts.times do |n|
+  postable_type = ["User","Group"]
+  schedule_time2  = Faker::Time.between_dates(from: Date.today + 31, to: Date.today + 60, period: :day) 
+  deadline_time2  = Faker::Time.forward(days: 30, period: :night)
 
-volunteer = Volunteer.create!(
-  title:              "テスト投稿",
-  place:              "テスト投稿場所",
-  details:            "0", 
-  schedule:           schedule_time2,
-  start_time:         schedule_time2, 
-  end_time:           deadline_time2, 
-  expenses:           "0", 
-  conditions:         "0", 
-  application_people: 1, 
-  deadline:           deadline_time2,
-  postable_id:        1, 
-  postable_type:      "User"
-)
-volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample0.jpg")), filename: "sample0.jpg")
+  volunteer = Volunteer.create!(
+    title:              "#{title[n]}",
+    place:              "テスト投稿場所#{n}",
+    details:            "0", 
+    schedule:           schedule_time2,
+    start_time:         schedule_time2, 
+    end_time:           deadline_time2, 
+    expenses:           "0", 
+    conditions:         "0", 
+    application_people: 1, 
+    deadline:           deadline_time2,
+    postable_id:        1, 
+    # postable_type:      "#{postable_type[n]}"
+    postable_type:      "User"
+  )
+  volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample0.jpg")), filename: "sample0.jpg")
+end
+
 
 
 # posts.times do |n|
@@ -116,6 +122,22 @@ volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/v
 #   group_volunteer[n].image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
 #   volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{12 - n}.jpg")), filename: "sample#{12 - n}.jpg")
 # end
+
+# ボランティア申し込み
+  # tel    = Faker::Number.number(digits: 11)
+  # people = Faker::Number.between(from: 1, to: 30)
+  # inquiry= Faker::Number.number(digits: 100)
+  # joinvolunteer = JoinVolunteer.create!(
+  #   name:          user[0].name,
+  #   phone_number:  tel,
+  #   number:        people,
+  #   inquiry:       inquiry,
+  #   accept_flag:   false,
+  #   volunteer_id:  2,
+  #   joinable:      user[0]
+  # )
+  # volunteer.participant_number += joinvolunteer.number
+  # volunteer.save
 
 # ボランティア申し込み
 # (membership+1).times do |n|

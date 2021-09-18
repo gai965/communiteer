@@ -11,12 +11,13 @@ class JoinVolunteer < ApplicationRecord
     validates :number, numericality: { greater_than: 0 }
   end
 
-  def accept_flag
-    accept_flag
+  # 参加承諾の有無を確認
+  def already_joinvolunteer_accept?
+    return false if self.accept_flag == false
+    return true
   end
 
-  # ---インスタンスメソッド---------------------------------
-  #----登録時の相手側通知-----------------------------------
+  # 登録時の相手側通知
   def create_notification_join_registration!(join_volunteer, account_info)
     notification = account_info.active_notifications.new(
       post_id: join_volunteer.volunteer.id,
@@ -28,7 +29,7 @@ class JoinVolunteer < ApplicationRecord
     notification.save!
   end
 
-  #----承諾時の相手側通知-----------------------------------
+  # 承諾時の相手側通知
   def create_notification_accept_registration!(join_volunteer, account_info)
     notification = account_info.active_notifications.new(
       post_id: join_volunteer.volunteer.id,

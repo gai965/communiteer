@@ -12,11 +12,11 @@
           <%= link_to 'ボランティア募集', volunteer_path(notification.post_id), class:'link_truncate' %>
           <% if notification.action == 'join_volunteer' %>
             <span class='gap_character'>に</span>
-            <%= link_to '応募', volunteer_accept_path(notification.post_id, notification.sendable_id, type: notification.sendable_type),class:'link_immutable'%>
+            <%= link_to '応募',  volunteer_join_path(notification.post_id, notification.sendable_id, type: notification.sendable_type),class:'link_immutable'%>
             <span class='gap_character'>しました</span>
           <% elsif notification.action == 'accept_volunteer' %>
             <span class='gap_character'>の</span>
-            <%= link_to '参加', volunteer_accept_path(notification.post_id, notification.receiveable_id, type: notification.receiveable_type), class:'link_immutable'%>
+            <%= link_to '参加',  volunteer_join_path(notification.post_id, notification.receiveable_id, type: notification.receiveable_type), class:'link_immutable'%>
             <span class='gap_character'>を了承致しました</span>
           <% elsif notification.action == 'cheer' %>
             <span class='gap_character'>の応援をしてくれました</span>

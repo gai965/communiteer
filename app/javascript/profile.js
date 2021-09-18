@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       function childtabSwitch() {
         document.getElementsByClassName('child_now_active')[0].classList.remove('child_now_active');
         this.classList.add('child_now_active');
+        // console.log(document.getElementsByClassName('now_active')[0].id);
+        // console.log(this.id);
       };
     }
   }

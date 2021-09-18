@@ -1,13 +1,12 @@
 
-
-<div class='h-60 md:h-48 w-80 xs:w-96 sm:w-128 md:w-80 lg:w-96 bg-white rounded-md hover:shadow-md p-4 md:p-6'>
-  <%= link_to volunteer_accept_path(join_info.volunteer_id, join_info.joinable_id, type: join_info.joinable_type) do %>
+<div class='h-60 md:h-48 w-80 xs:w-96 sm:w-128 md:w-80 lg:w-96 bg-white rounded-md hover:shadow-md p-4 md:p-6'>  
+  <%= link_to  volunteer_join_path(join_info.volunteer_id, join_info.joinable_id), method: :get do %>  
     <div class='flex items-center'>
-      <%= image_tag join_info.joinable.image_icon_path class:'h-8 w-8 mr-1' %>
+      <%= image_tag join_info.joinable.image_icon_path, class:'h-8 w-8 mr-1' %>
       <span class='text-2xl font-bold truncate mr-1'><%= join_info.joinable.name%>さん</span>
-      <% if join_info.accept_flag == true %> 
+      <% if join_info.already_joinvolunteer_accept? %> 
         <span class='checked approval'>承諾済</span>
-      <% elsif join_info.accept_flag == false %> 
+      <% else %> 
         <span class='checked unapproval'>未承諾</span>
       <% end %>
     </div>
@@ -16,8 +15,9 @@
       <span class='text-xl truncate'>電話番号：<%= join_info.phone_number%></span>
       <span class='text-xl truncate'>参加人数：<%= join_info.number%></span>
       <div class='h-20 md:h-10 text-xl overflow-y-auto'>
-        <span class=''>問い合わせ：</span>
-        <div class='break-words overflow-visibl'><%= join_info.inquiry%></div>
+        <span class=''>問い合わせ：
+          <div class='break-words overflow-visibl'><%= join_info.inquiry%></div>
+        </span>
       </div>
     </div>
   <% end %>

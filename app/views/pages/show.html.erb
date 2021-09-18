@@ -34,17 +34,24 @@
       </div>
       <div class='h-screen w-full lg:w-176 bg-white flex-1 lg:flex-none hover:shadow-md p-6 md:ml-2'>
         <ul class='cursor-pointer flex pb-5'>
-          <div class='tab now_active'>投稿</div>
-          <li class='tab'>参加</li>
-          <li class='tab'>応援</li>
+          <li id='profile-post' class='tab now_active'>投稿</li>
+          <li id='profile-join' class='tab'>参加</li>
+          <li id='profile-cheer' class='tab'>応援</li>
         </ul>
-        <ul class='border-b cursor-pointer flex justify-start content-center'>
-          <li class='child_tab child_now_active'>すべて</li>
-          <li class='child_tab'>ボランティア</li>
-          <li class='child_tab'>活動場所</li>
-          <li class='child_tab'>イベント</li>
+        <ul class='border-b cursor-pointer flex justify-start content-center mb-6'>
+          <li id='profile-child-all' class='child_tab child_now_active'>すべて</li>
+          <li id='profile-child-volunteer' class='child_tab'>ボランティア</li>
+          <li id='profile-child-place' class='child_tab'>活動場所</li>
+          <li id='profile-child-event' class='child_tab'>イベント</li>
         </ul>
-        <div class='my-5'>
+        <% if @all_post.present? %>
+          <div class='grid justify-items-center grid-cols-1 md:grid-cols-2 gap-y-2 sm:gap-y-4 gap-x-4'>
+            <%= render partial: 'display', collection: @all_post, as:'display' %>
+          </div>
+          <%= paginate @all_post %> 
+        <% else %>
+          <p class='no_posts'>投稿はありません</p>
+        <% end %>
         </div>
       </div>
     </div>

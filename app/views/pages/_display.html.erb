@@ -1,0 +1,13 @@
+<div class='h-40 w-64 md:h-52 bg-white border hover:border-transparent rounded-md shadow hover:shadow-lg group'>
+  <%# <%= link_to volunteer_path(volunteer.id, page: request.original_url) do %>
+  <%= link_to root_path do %>
+    <%= image_tag display.image, class:'h-2/3 w-full group-hover:opacity-70'%>
+    <div class='py-1 px-4'>
+      <p class='text-xl font-bold truncate sm:mb-1 group-hover:text-green-400'><%= display.title %></p>
+      <div class='flex items-center'>
+        <%= image_tag display.postable.image_icon_path, class:'h-5 w-5 sm:h-6 sm:w-6 opacity-50 mr-1' %>
+        <span class='tex-sm sm:text-lg text-gray-600 truncate mr-1'><%= display.postable.contributor_name %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

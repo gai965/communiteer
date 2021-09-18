@@ -27,10 +27,9 @@ class PagesController < ApplicationController
     @account_page_info_type = params[:type]
     @post_volunteer = Volunteer.where(postable_id: @account_page_info.id, postable_type: @account_page_info_type)
     @join_volunteer = JoinVolunteer.where(joinable_id: @account_page_info.id, joinable_type: @account_page_info_type)
-    post_volunteer_number = @post_volunteer.count
-    join_volunteer_number = @join_volunteer.count
-    @all_post_number = post_volunteer_number
-    @all_join_number = join_volunteer_number
+    @all_post = @post_volunteer.page(params[:page]).per(6)
+    @all_post_number = @post_volunteer.count
+    @all_join_number = @join_volunteer.count
     @all_cheer_number = Cheer.where(cheerable_id: @account_page_info.id, cheerable_type: @account_page_info_type).count
   end
 
