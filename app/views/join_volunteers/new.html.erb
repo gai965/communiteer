@@ -6,7 +6,7 @@
   <div class='grid place-items-center pt-14'>
     <div class='w-full xs:w-112 sm:w-160 md:w-192 p-4 md:p-8 bg-white rounded-lg shadow-md'>
       <%= link_to(return_joinvolunteer_path, class:'grid justify-items-end place-items-center') do %>
-        <%= image_tag'close_icon.png', class:'h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'%>
+        <%= image_tag'close_icon.png', class:'close_icon'%>
       <% end %>
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>ボランティア参加</h2>
       <%= form_with model:  @join_volunteer, url: volunteer_join_index_path(@volunteer.id), class: 'mt-2 sm:mt-10', local: true do |f| %>

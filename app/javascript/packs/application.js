@@ -10,5 +10,6 @@ require("../profile");
 require("../chat");
 require("../menu");
 require("../count");
+require("../map");
 
 Rails.start()
