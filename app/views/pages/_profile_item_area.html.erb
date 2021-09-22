@@ -1,0 +1,137 @@
+
+
+<div class='profile_tab profile_display_active'>
+  <div class='profile_child_tab profile_child_active'>
+    <% if @all_post.present? %>
+      <div id='display-post-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @all_post, as:'display' %>
+      </div>
+      <%= paginate @all_post %> 
+    <% else %>
+      <p class='no_posts'>投稿はありません</p>
+    <% end %>
+  </div>
+
+  <div class='profile_child_tab'>
+  <% if @post_volunteer.present? %>
+    <div id='display-post-volunteer' class='profile_item_layout'>
+      <%= render partial: 'profile_item', collection: @post_volunteer, as:'display' %>
+    </div>
+    <%= paginate @post_volunteer %> 
+  <% else %>
+    <p class='no_posts'>投稿はありません</p>
+  <% end %>
+  </div>
+
+  <div class='profile_child_tab'>
+  <% if @post_place.present? %>
+    <div id='display-post-volunteer' class='profile_item_layout'>
+      <%= render partial: 'profile_item', collection: @post_place, as:'display' %>
+    </div>
+    <%= paginate @post_place %> 
+  <% else %>
+    <p class='no_posts'>投稿はありません</p>
+  <% end %>
+  </div>
+
+  <div class='profile_child_tab'>
+  <% if @post_event.present? %>
+    <div id='display-post-volunteer' class='profile_item_layout'>
+      <%= render partial: 'profile_item', collection: @post_event, as:'display' %>
+    </div>
+    <%= paginate @post_event %> 
+  <% else %>
+    <p class='no_posts'>投稿はありません</p>
+  <% end %>
+  </div>
+</div>
+
+
+
+<div class='profile_tab'>
+  <div class='profile_child_tab'>
+    <% if @all_join.present? %>
+      <div id='display-join-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @all_join, as:'display' %>
+      </div>
+      <%= paginate @all_join %> 
+    <% else %>
+      <p class='no_posts'>応募はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @join_volunteer.present? %>
+      <div id='display-join-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @join_volunteer, as:'display' %>
+      </div>
+      <%= paginate @join_volunteer %> 
+    <% else %>
+      <p class='no_posts'>応募はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @join_place.present? %>
+      <div id='display-join-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @join_place, as:'display' %>
+      </div>
+      <%= paginate @join_place %> 
+    <% else %>
+      <p class='no_posts'>応募はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @join_event.present? %>
+      <div id='display-join-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @join_event, as:'display' %>
+      </div>
+      <%= paginate @join_event %> 
+    <% else %>
+      <p class='no_posts'>応募はありません</p>
+    <% end %>
+  </div>
+</div>
+
+
+<div class='profile_tab'>
+  <div class='profile_child_tab'>
+    <% if @all_cheer.present? %>
+      <div id='display-cheer-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @all_cheer, as:'display' %>
+      </div>
+      <%= paginate @all_cheer %> 
+    <% else %>
+        <p class='no_posts'>応援はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @cheer_volunteer.present? %>
+      <div id='display-cheer-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @cheer_volunteer, as:'display' %>
+      </div>
+      <%= paginate @cheer_volunteer %> 
+    <% else %>
+        <p class='no_posts'>応援はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @cheer_place.present? %>
+      <div id='display-cheer-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @cheer_place, as:'display' %>
+      </div>
+      <%= paginate @cheer_place %> 
+    <% else %>
+        <p class='no_posts'>応援はありません</p>
+    <% end %>
+  </div>
+  <div class='profile_child_tab'>
+    <% if @cheer_event.present? %>
+      <div id='display-cheer-all' class='profile_item_layout'>
+        <%= render partial: 'profile_item', collection: @cheer_event, as:'display' %>
+      </div>
+      <%= paginate @cheer_event %> 
+    <% else %>
+        <p class='no_posts'>応援はありません</p>
+    <% end %>
+  </div>
+  
+</div>

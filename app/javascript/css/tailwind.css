@@ -104,6 +104,21 @@
   .child_tab.child_now_active{
     @apply text-black font-bold bg-blue-100
   }
+  .profile_tab {
+    @apply hidden
+  }
+  .profile_display_active {
+    @apply contents
+  }
+  .profile_child_tab{
+    @apply hidden
+  } 
+  .profile_child_active{
+    @apply contents
+  }
+  .profile_item_layout {
+    @apply grid justify-items-center grid-cols-1 md:grid-cols-2 gap-y-2 sm:gap-y-4 gap-x-4
+  }
 
   /* ---DM-------------------------- */
   .page_item_area{
