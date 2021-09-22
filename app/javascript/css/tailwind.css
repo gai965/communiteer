@@ -104,6 +104,21 @@
   .child_tab.child_now_active{
     @apply text-black font-bold bg-blue-100
   }
+  .profile_tab {
+    @apply hidden
+  }
+  .profile_display_active {
+    @apply contents
+  }
+  .profile_child_tab{
+    @apply hidden
+  } 
+  .profile_child_active{
+    @apply contents
+  }
+  .profile_item_layout {
+    @apply grid justify-items-center grid-cols-1 md:grid-cols-2 gap-y-2 sm:gap-y-4 gap-x-4
+  }
 
   /* ---DM-------------------------- */
   .page_item_area{
@@ -247,7 +262,7 @@
 
   /* ---ページネーション----------------------------------- */
   .pagination {
-    @apply h-14 w-full sm:w-160 flex justify-center items-center mx-auto my-3 sm:my-6
+    @apply h-14 w-full sm:w-128 flex justify-center items-center mx-auto my-3 sm:my-6
   }
   .pagination * {
     @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1

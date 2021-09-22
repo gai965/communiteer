@@ -70,7 +70,7 @@
           </div>
         </div>
         <%= f.submit '変更', id:'register-submit', class:'registration_btn' %>
-        <%# <%= link_to 'もどる', mains_sign_up_choice_path, class:'return_btn' %>
+        <%= link_to 'もどる', page_path(@account.id, type: @account.type), class:'return_btn' %>
       <% end %>
     </div>
   </div>

@@ -5,9 +5,8 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy, :close]
 
   def index
-    all_volunteer = Volunteer.all.order('created_at DESC')
-    @per_volunteer = all_volunteer.page(params[:page]).per(12)
-    @all_volunteer_number = all_volunteer.count
+    @per_volunteer = Volunteer.all.order('created_at DESC').page(params[:page]).per(12)
+    @all_volunteer_number = @per_volunteer.count
   end
 
   def new
@@ -58,7 +57,7 @@ class VolunteersController < ApplicationController
 
   def volunteer_params
     params.require(:volunteer).permit(:image, :title, :place, :details, :schedule, :start_time, :end_time, :expenses,
-                                      :application_people, :conditions, :deadline)
+                                      :application_people, :conditions, :deadline, :kind)
   end
 
   def set_volunteer

@@ -1,6 +1,6 @@
 class Groups::RegistrationsController < Devise::RegistrationsController
+  before_action :set_login_account,              only: [:edit]
   before_action :configure_permitted_parameters, only: [:create, :update]
-
   def reject
     redirect_to new_group_registration_path
   end

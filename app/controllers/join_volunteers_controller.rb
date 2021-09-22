@@ -1,8 +1,9 @@
 class JoinVolunteersController < ApplicationController
-  before_action :set_login_account, only: [:index, :new, :create]
-  before_action :move_to_top,       only: [:index, :new]
-  before_action :set_header_info,   only: [:index, :new]
-  before_action :set_volunteer,     only: [:index, :new, :create]
+  before_action :set_login_account, only: [:index, :new, :create, :show]
+  before_action :move_to_top,       only: [:index, :new, :show]
+  before_action :set_header_info,   only: [:index, :new, :show]
+  before_action :set_volunteer,     only: [:index, :new, :create, :show]
+  before_action :set_join_volunteer,     only: [:show]
 
   def index
     all_join_volunteer = JoinVolunteer.where(volunteer_id: params[:volunteer_id])
@@ -20,7 +21,8 @@ class JoinVolunteersController < ApplicationController
 
   def create
     @join_volunteer = JoinVolunteer.new(join_volunteer_params)
-    set_join_volunteer_info
+    @join_volunteer.joinable_id = @account.id
+    @join_volunteer.joinable_type = @account.type
 
     if @join_volunteer.save
       @join_volunteer.create_notification_join_registration!(@join_volunteer, @account)
@@ -30,6 +32,12 @@ class JoinVolunteersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @room_id = Room.where(selfable_id: @account.id,
+      selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
+                                                  partnerable_type: @account.type)).pluck(:id)
   end
 
   private
@@ -42,8 +50,8 @@ class JoinVolunteersController < ApplicationController
     @volunteer = Volunteer.find(params[:volunteer_id])
   end
 
-  def set_join_volunteer_info
-    @join_volunteer.joinable_id = @account.id
-    @join_volunteer.joinable_type = @account.type
+  def set_join_volunteer
+    @join_volunteer = JoinVolunteer.find(params[:id])
   end
+
 end
