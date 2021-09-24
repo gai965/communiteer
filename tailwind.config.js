@@ -14,6 +14,13 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    inset: {
+      0: 0,
+      8: '2rem',
+      10: '2.5rem',
+      '1/10': '10%',
+      '1/20': '5%',
+    },
     extend: {
       spacing: {
         112: '28rem',

@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
           alert('空のメッセージは送れません'); return null;
           }
         const chat = XHR.response.post;
-        console.log(chat)
         const formText = document.getElementById('message'); 
         const time = new Date(chat.updated_at);
         const chatTime = time.getHours().toString().padStart(2, '0')+':'+ time.getMinutes().toString().padStart(2, '0');

@@ -4,11 +4,11 @@
     <div class='w-11/12 md:w-192 p-4 md:p-8 bg-white rounded-lg shadow-md'>
       <% if action_name == 'edit' %>
         <%= link_to(volunteer_path(@volunteer.id), class:'grid justify-items-end place-items-center') do %>
-        <%= image_tag 'close_icon.png', class:'h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'%>
+        <%= image_tag 'close_icon.png', class:'close_icon'%>
         <% end %> 
       <% else %>
         <%= link_to(root_path, class:'grid justify-items-end place-items-center') do %>
-        <%= image_tag 'close_icon.png', class:'h-9 w-9 rounded-full hover:bg-gray-200 py-2 px-2'%>
+        <%= image_tag 'close_icon.png', class:'close_icon'%>
         <% end %> 
       <% end %>
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>ボランティア募集</h2>
