@@ -63,7 +63,9 @@
 <div class='modal_screen hidden'>
   <div class='modal_content'>
     <div class='grid justify-items-end place-items-center'>
-      <%= image_tag 'close_icon.png', class:'close_icon'%> 
+      <%= image_tag 'close_icon.png', class:'close_icon_modal'%>
+      <div id='show-map' class='modal_map'></div>
     </div>
   </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=<%= Rails.application.credentials.google_map_api_key %>" async defer></script>

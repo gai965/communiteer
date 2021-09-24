@@ -224,9 +224,14 @@
     @apply h-full w-full bg-gray-900 bg-opacity-80 z-10 fixed top-0 left-0
   }
   .modal_content{
-    @apply h-4/5 w-4/5 bg-white absolute top-1/10 left-1/10
+    @apply h-4/5 w-4/5 absolute top-1/20 left-1/10
   }
-
+  .modal_map{
+    @apply h-full w-full bg-gray-100 border-2 absolute top-8 sm:top-10 left-0
+  }
+  .close_icon_modal{
+    @apply h-7 w-7 sm:h-9 sm:w-9 rounded-full bg-white hover:bg-gray-300 mt-1  py-1 px-1 sm:py-2 sm:px-2
+  }
 
   /* ---通知画面---------------------------- */
 
