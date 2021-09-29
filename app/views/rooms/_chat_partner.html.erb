@@ -13,7 +13,7 @@
     </div>
     <% if room.chat[-1].present? %> 
       <div class='flex items-center overflow-auto ml-2'>
-        <%= link_to room_path(room.id, room_id:room.id), class:'group' do %>
+        <%= link_to room_chats_path(room.id), class:'group' do %>
           <span class='text-lg font-bold group-hover:text-gray-400'><%= room.chat[-1].message %></span>
           <% if room.chat[-1].checked == true %> 
             <span class='checked read'>既読</span>
