@@ -1,0 +1,7 @@
+<div class='flex items-end justify-start mt-2'>
+  <%= image_tag chat.speakable.image_icon_path, class:'h-6 w-6 mr-2' %>
+  <div class='chat partner'>
+    <span><%= chat.message %></span>
+  </div>
+  <span class='text-sm ml-1'><%= chat.updated_at.strftime('%H:%M') %></span>
+</div>

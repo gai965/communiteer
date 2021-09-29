@@ -1,0 +1,10 @@
+
+<div id='my-chat-<%= chat.id %>' class='flex items-end justify-end mt-2'>
+  <div class='flex flex-col'>
+    <%= link_to '削除', room_chat_path(chat.room_id, chat.id),method: :delete ,class:'chat_destroy', remote: true %>
+    <span class='text-sm mr-1'><%= chat.updated_at.strftime('%H:%M') %></span>
+  </div>
+  <div class='chat myself'>
+    <span><%= chat.message %></span>
+  </div>
+</div>

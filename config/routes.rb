@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+  
   root 'mains#index'
   resources :mains,         only: :index
   resources :notifications, only: :index
   resources :pages,         only: :show
-  resources :rooms,         only: [:index, :show ,:create]
-  resources :chats,         only: [:create, :destroy]
   resources :volunteers do
     resources :join_volunteers, only: [:index, :new, :create, :show], as: 'join' 
     resources :accepts        , only: [:create]
     resources :cheers         , only: [:index, :create, :destroy]
+  end
+  resources :rooms,   only: [:index, :create] do
+    resources :chats, only: [:index, :destroy]
   end
 
   get '/mains/sign_up_choice', to: 'mains#sign_up_choice'

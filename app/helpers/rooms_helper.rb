@@ -6,4 +6,9 @@ module RoomsHelper
     check    = Chat.where(room_id: rooms_id, checked: false).where.not(speakable_id: @account.id, speakable_type: @account.type)
     return true if check.present?
   end
+
+  def speaker_confirmation(chat)
+    return true if chat.speakable_id == @account.id && chat.speakable_type == @account.type
+  end
+
 end

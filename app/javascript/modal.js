@@ -1,27 +1,27 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  const modalDisplay = document.getElementById('modal-display')
-  if (modalDisplay != null) {
-    const modalScreen = document.getElementsByClassName('modal_screen');
-    const closeIconModal = document.getElementsByClassName('close_icon_modal');
-    modalDisplay.addEventListener('click', function(e){
-      modalScreen[0].classList.remove('hidden');
+  const ModalDisplay = document.getElementById('modal-display')
+  if (ModalDisplay != null) {
+    const ModalScreen = document.getElementsByClassName('modal_screen');
+    const CloseIconModal = document.getElementsByClassName('close_icon_modal');
+    ModalDisplay.addEventListener('click', function(e){
+      ModalScreen[0].classList.remove('hidden');
       initMap();
     });
-    closeIconModal[0].addEventListener('click', function(e){
-      modalScreen[0].classList.add('hidden');
+    CloseIconModal[0].addEventListener('click', function(e){
+      ModalScreen[0].classList.add('hidden');
     });
   }
 });
 
 function initMap() {
-  const showMap = document.getElementById('show-map');
+  const Showmap = document.getElementById('show-map');
   const inputAddress = document.getElementById('address').textContent;
   const geocoder = new google.maps.Geocoder();
 
   geocoder.geocode({ address: inputAddress }, function(results, status){
     if (status === 'OK' && results[0]){
-      const map = new google.maps.Map(showMap, {
+      const map = new google.maps.Map(Showmap, {
         center: results[0].geometry.location,
         zoom: 16
       });

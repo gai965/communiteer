@@ -5,9 +5,10 @@ import '../css/tailwind.css';
 import '../css/preview.css';
 import './swiper';
 
+require('jquery');
 require("../preview");
 require("../profile");
-require("../chat");
+// require("../chat");
 require("../menu");
 require("../count");
 require("../map");
