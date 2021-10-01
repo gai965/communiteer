@@ -12,8 +12,8 @@ set :nginx_config_name, "#{fetch(:application)}.conf"
 set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
 
 
-# set :linked_files, fetch(:linked_files, []).push('config/master.key')
-# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
+set :linked_files, fetch(:linked_files, []).push('config/master.key')
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
 
 
 # namespace :deploy do
