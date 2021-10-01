@@ -7,40 +7,40 @@ set :repo_url, 'https://github.com/gai965/communiteer.git'
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :branch, ENV['BRANCH'] || 'master'
 
-# Nginxの設定ファイル名と置き場所を修正
-set :nginx_config_name, "#{fetch(:application)}.conf"
-set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
-
-# append :linked_files, 'config/shared/master.key'
-set :linked_files, fetch(:linked_files, []).push('config/master.key')
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
+# # Nginxの設定ファイル名と置き場所を修正
+# set :nginx_config_name, "#{fetch(:application)}.conf"
+# set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
 
 
-namespace :deploy do
-  desc 'Run rake db:migrate:reset & rake db:seed'
-  task :migrate_seed do 
-    on roles(:db) do
-      with rails_env: fetch(:rails_env) do
-        within current_path do
-          execute :rake, 'db:migrate:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
-          execute :rake, 'db:seed'
-        end
-      end
-    end
-  end
-end
+# set :linked_files, fetch(:linked_files, []).push('config/master.key')
+# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
 
-after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
 
-namespace :deploy do
-  task :restart do
-    on roles(:web), in: :sequence, wait: 5 do
-      within release_path do
-        execute 'sudo systemctl daemon-reload'
-        execute 'sudo systemctl restart puma'
-      end
-    end
-  end
+# namespace :deploy do
+#   desc 'Run rake db:migrate:reset & rake db:seed'
+#   task :migrate_seed do 
+#     on roles(:db) do
+#       with rails_env: fetch(:rails_env) do
+#         within current_path do
+#           execute :rake, 'db:migrate:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
+#           execute :rake, 'db:seed'
+#         end
+#       end
+#     end
+#   end
+# end
 
-  after :finishing, :restart
-end
+# after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
+
+# namespace :deploy do
+#   task :restart do
+#     on roles(:web), in: :sequence, wait: 5 do
+#       within release_path do
+#         execute 'sudo systemctl daemon-reload'
+#         execute 'sudo systemctl restart puma'
+#       end
+#     end
+#   end
+
+#   after :finishing, :restart
+# end
