@@ -1,4 +1,4 @@
-<% if all_chat.speakable_id == @account.id && all_chat.speakable_type == @account.type%> 
+<% if all_chat.speakable_id == @account.id && all_chat.speakable_type == @account.type %> 
   <%= render partial:'my_chat', locals: { chat: all_chat } %>
 <% else %>
   <%= render partial:'partner_chat', locals: { chat: all_chat } %>

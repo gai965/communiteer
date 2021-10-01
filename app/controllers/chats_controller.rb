@@ -1,6 +1,7 @@
 class ChatsController < ApplicationController
   before_action :set_login_account, only: [:index, :destroy]
   before_action :move_to_top,       only: [:index]
+  before_action :cookies_account,   only: [:index]
   before_action :set_header_info,   only: [:index]
 
   def index

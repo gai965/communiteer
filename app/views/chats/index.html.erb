@@ -12,6 +12,7 @@
         <%= f.text_field :message, placeholder: 'メッセージを入力して下さい',id: 'message', data: {room: "#{@room.id}", speakerid:"#{@account.id}", speakertype:"#{@account.type}"}, class: 'w-full focus:shadow-lg px-3 focus:outline-none inline-block'%>
       </div>
     <% end %>
+    
   </div>
 </div>
 <%= render 'shared/footer' %>

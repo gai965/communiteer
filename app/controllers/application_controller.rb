@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
   def set_login_account
     if user_signed_in?
       @account = current_user
+      
     elsif group_signed_in?
       @account = current_group
+      cookies.encrypted[:group_id] = @account.id
     end
   end
 
@@ -24,6 +26,14 @@ class ApplicationController < ActionController::Base
     elsif group_signed_in?
       @icon_image_path = 'group_icon.png'
       @logout_link_path = destroy_group_session_path
+    end
+  end
+
+  def cookies_account
+    if user_signed_in?
+      cookies.encrypted[:user_id] = current_user.id
+    elsif group_signed_in?
+      cookies.encrypted[:group_id] = current_group.id
     end
   end
 end
