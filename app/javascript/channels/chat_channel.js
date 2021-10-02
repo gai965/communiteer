@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         message.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
             if (e.target.value != '') {
-              appRoom.speak(e.target.value, message.dataset.room, message.dataset.speakerid, message.dataset.speakertype);
+              appRoom.speak(message.value, message.dataset.room, message.dataset.speakerid, message.dataset.speakertype, message.dataset.partnerid, message.dataset.partnertype);
               e.target.value = '';
             }else{
               alert('空のメッセージは送信できません');
@@ -61,12 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-
-    $(function(){
-      $('#send').on('click',function(e){
-        console.log('入りました')
-        e.preventDefault();
-      });
-    });
+    const chatSubmit = document.getElementById('chat-submit');
+    chatSubmit.addEventListener('click', function(e) {
+      if (message.value != '') {
+        appRoom.speak(message.value, message.dataset.room, message.dataset.speakerid, message.dataset.speakertype, message.dataset.partnerid, message.dataset.partnertype);
+        message.value = '';
+      }else{
+        alert('空のメッセージは送信できません');
+      }
+      e.preventDefault();
+    })
   }
 });

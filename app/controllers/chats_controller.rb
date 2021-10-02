@@ -7,11 +7,11 @@ class ChatsController < ApplicationController
   def index
     @room = Room.find_by(id: params[:room_id])
     if @room.selfable_id == @account.id && @room.selfable_type == @account.type
-      @partner_name = @room.partnerable.name
+      partner_info(@room.partnerable)
     elsif @room.partnerable_id == @account.id && @room.partnerable_type == @account.type
-      @partner_name = @room.selfable.name
+      partner_info(@room.selfable)
     end
-    @all_chats     = Chat.where(room_id: params[:room_id]).includes(:room)
+    @all_chats    = Chat.where(room_id: params[:room_id]).includes(:room)
     partner_chats = Chat.where(room_id: params[:room_id]).where.not(speakable_id: @account.id,
                                                                      speakable_type: @account.type).includes(:room)
     partner_chats.where(checked: false).each do |partner_chat|
@@ -23,4 +23,13 @@ class ChatsController < ApplicationController
     chat = Chat.find(params[:id])
     ActionCable.server.broadcast('chat_channel', { delete_id: chat.id})
   end
+
+  private 
+
+  def partner_info(partner)
+    @partner_name = partner.name
+    @partner_id   = partner.id
+    @partner_type = partner.type
+  end
+
 end

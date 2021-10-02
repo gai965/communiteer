@@ -8,22 +8,6 @@ class RoomsController < ApplicationController
                                                                     partnerable_type: @account.type)).includes(:chat)
   end
 
-  # def show
-  #   @room = Room.find_by(id: params[:id])
-  #   if @room.selfable_id == @account.id && @room.selfable_type == @account.type
-  #     @partner_name = @room.partnerable.name
-  #   elsif @room.partnerable_id == @account.id && @room.partnerable_type == @account.type
-  #     @partner_name = @room.selfable.name
-  #   end
-  #   @all_chats     = Chat.where(room_id: params[:id]).includes(:room)
-  #   partner_chats = Chat.where(room_id: params[:id]).where.not(speakable_id: @account.id,
-  #                                                                    speakable_type: @account.type).includes(:room)
-  #   partner_chats.where(checked: false).each do |partner_chat|
-  #     partner_chat.update(checked: true)
-  #   end
-  #   @chat = Chat.new
-  # end
-
   def create
     @room = (Room.where(selfable_id:@account.id, selfable_type: @account.type, partnerable_id: params[:partner_id], partnerable_type: params[:partner_type]).or(Room.where(selfable_id:params[:partner_id], selfable_type: params[:partner_type], partnerable_id: @account.id, partnerable_type: @account.type))).first
     if @room.blank?

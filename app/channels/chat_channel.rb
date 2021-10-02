@@ -9,17 +9,22 @@ class ChatChannel < ApplicationCable::Channel
 
   def speak(data)
     chat = Chat.create!(message: data['message'], room_id: data['room_id'], speakable_id: data['speakable_id'], speakable_type: data['speakable_type'])
+    case data['partnertype']
+    when 'User'
+      partner_account = User.find(data['partnerid'])
+    when 'Group'
+      partner_account = Group.find(data['partnerid'])
+    end
     ChatChannel.broadcast_to(current_account,
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
         isCurrent_user: true
     )
-    ChatChannel.broadcast_to(
+    ChatChannel.broadcast_to(partner_account,
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
-        isCurrent_user: true
+        isCurrent_user: false
       )
-    # ActionCable.server.broadcast('chat_channel', { chat: render_chat(chat) })
   end
 
   def delete(data)
@@ -28,12 +33,4 @@ class ChatChannel < ApplicationCable::Channel
     chat.destroy!
   end
 
-  private
-  
-  def render_chat(chat)
-    ApplicationController.render(
-      partial: 'chats/my_chat',
-      locals: { chat: chat }
-    )
-  end
 end

@@ -9,10 +9,11 @@
     </div>
     <%= form_with do |f| %>
       <div class='h-10 w-80 xs:w-112 sm:w-148 md:w-176 lg:w-224 flex my-7'>
-        <%= f.text_field :message, placeholder: 'メッセージを入力して下さい',id: 'message', data: {room: "#{@room.id}", speakerid:"#{@account.id}", speakertype:"#{@account.type}"}, class: 'w-full focus:shadow-lg px-3 focus:outline-none inline-block'%>
+        <%= f.text_field :message, placeholder: 'メッセージを入力して下さい',id: 'message', data: {room: "#{@room.id}", speakerid:"#{@account.id}", speakertype:"#{@account.type}", partnerid:"#{@partner_id}", partnertype:"#{@partner_type}"}, class: 'w-full focus:shadow-lg mr-2 px-3 focus:outline-none inline-block'%>
+        <%# <%= f.hidden_field :room_id, value: @room.id %> 
+        <%= f.submit '送信', id: 'chat-submit', class: 'w-20 text-white font-bold bg-red-500 hover:bg-red-300' %>
       </div>
     <% end %>
-    
   </div>
 </div>
 <%= render 'shared/footer' %>
