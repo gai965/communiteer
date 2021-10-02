@@ -9,12 +9,13 @@ class ChatChannel < ApplicationCable::Channel
 
   def speak(data)
     chat = Chat.create!(message: data['message'], room_id: data['room_id'], speakable_id: data['speakable_id'], speakable_type: data['speakable_type'])
-    case data['partnertype']
+    case data['partner_type']
     when 'User'
-      partner_account = User.find(data['partnerid'])
+      partner_account = User.find(data['partner_id'])
     when 'Group'
-      partner_account = Group.find(data['partnerid'])
+      partner_account = Group.find(data['partner_id'])
     end
+    
     ChatChannel.broadcast_to(current_account,
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
@@ -24,7 +25,7 @@ class ChatChannel < ApplicationCable::Channel
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
         isCurrent_user: false
-      )
+    )
   end
 
   def delete(data)

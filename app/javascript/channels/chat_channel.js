@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       },
 
-      speak: function(message, room, speaker_id, speaker_type) { 
-        return this.perform('speak', { message: message, room_id: room, speakable_id: speaker_id, speakable_type: speaker_type});
+      speak: function(message, room, speaker_id, speaker_type, partner_id, partner_type) { 
+        return this.perform('speak', { message: message, room_id: room, speakable_id: speaker_id, speakable_type: speaker_type, partner_id: partner_id, partner_type: partner_type});
       }
     });
 
