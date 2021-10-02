@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
                               <span>${data['chat'].message}</span>
                             </div>
                             <span class='text-sm ml-1'>${data['chat_time']}</span>
-                          </div>`;}
+                          </div>`;
+          }
           chatArea.insertAdjacentHTML('beforeend', sentence); 
           chatArea.scrollTo(0, chatArea.scrollHeight);
         }else if(data['delete_id']){
