@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }else{
             sentence = `<div class='flex items-end justify-start mt-4'>
                           <%= image_tag ${data['image_path']}, class:'h-6 w-6 mr-2' %>
-                          <img class='h-6 w-6 mr-2' src='/assets/${data['image_path']}'>
+                          <img class='h-6 w-6 mr-2' src='/${data['image_path']}'>
                             <div class='chat partner'>
                               <span>${data['chat'].message}</span>
                             </div>
