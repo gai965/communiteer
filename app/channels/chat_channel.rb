@@ -15,7 +15,6 @@ class ChatChannel < ApplicationCable::Channel
     when 'Group'
       partner_account = Group.find(data['partner_id'])
     end
-    
     ChatChannel.broadcast_to(current_account,
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
@@ -24,6 +23,7 @@ class ChatChannel < ApplicationCable::Channel
     ChatChannel.broadcast_to(partner_account,
         chat: chat,
         chat_time: chat.updated_at.strftime('%H:%M'),
+        image_path:chat.speakable.image_icon_path,
         isCurrent_user: false
     )
   end
