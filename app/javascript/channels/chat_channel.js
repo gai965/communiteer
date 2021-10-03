@@ -50,12 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
           chatArea.insertAdjacentHTML('beforeend', sentence); 
           chatArea.scrollTo(0, chatArea.scrollHeight);
         }else if(data['delete_id']){
-          return this.perform('delete', { id: data['delete_id']});
+          return this.perform('delete', { id: data['delete_id'], partner_id: data['partner_id'], partner_type: data['partner_type']});
         }else if(data['delete_chat']){
-          const myChat = document.getElementById(`my-chat-${data['delete_chat']}`);
-          const partnerChat = document.getElementById(`partner-chat-${data['delete_chat']}`);
-          myChat.remove();
-          partnerChat.remove();
+          if (data['isCurrent_user']==true){
+            const myChat = document.getElementById(`my-chat-${data['delete_chat']}`);
+            myChat.remove();  
+          }else{
+            const partnerChat = document.getElementById(`partner-chat-${data['delete_chat']}`);
+            partnerChat.remove();
+          }
+          // const myChat = document.getElementById(`my-chat-${data['delete_chat']}`);
+          // const partnerChat = document.getElementById(`partner-chat-${data['delete_chat']}`);
+          // myChat.remove();
+          // partnerChat.remove();
         }
       },
 

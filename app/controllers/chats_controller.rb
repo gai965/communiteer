@@ -21,7 +21,12 @@ class ChatsController < ApplicationController
 
   def destroy
     chat = Chat.find(params[:id])
-    ActionCable.server.broadcast('chat_channel', { delete_id: chat.id})
+    if chat.room.selfable_id == @account.id && chat.room.selfable_type == @account.type
+      partner_info(chat.room.partnerable)
+    elsif chat.room.partnerable_id == @account.id && chat.room.partnerable_type == @account.type
+      partner_info(chat.room.selfable)
+    end
+    ActionCable.server.broadcast('chat_channel', { delete_id: chat.id, partner_id: @partner_id, partner_type: @partner_type})
   end
 
   private 
