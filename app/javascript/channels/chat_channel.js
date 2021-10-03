@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>`;
             
           }else{
-            sentence = `<div class='flex items-end justify-start mt-4'>
+            sentence = `<div id='partner-chat-${data['chat'].id}' class='flex items-end justify-start mt-4'>
                           <img class='h-6 w-6 mr-2' src='/${data['image_path']}'>
                             <div class='chat partner'>
                               <span>${data['chat'].message}</span>
@@ -53,7 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
           return this.perform('delete', { id: data['delete_id']});
         }else if(data['delete_chat']){
           const myChat = document.getElementById(`my-chat-${data['delete_chat']}`);
+          const partnerChat = document.getElementById(`partner-chat-${data['delete_chat']}`);
           myChat.remove();
+          partnerChat.remove();
         }
       },
 
