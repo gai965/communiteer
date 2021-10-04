@@ -34,7 +34,6 @@ class ChatChannel < ApplicationCable::Channel
       delete_chat: chat.id,
       isCurrent_user: false
     )
-    # ActionCable.server.broadcast('chat_channel', { delete_chat: chat.id })
     chat.destroy!
   end
   
