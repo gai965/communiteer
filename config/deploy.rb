@@ -2,8 +2,7 @@
 lock '~> 3.16.0'
 
 set :application, 'communiteer'
-set :repo_url, 'https://gai965@github.com/gai965/communiteer.git'
-# set :repo_url, 'http://github.com/gai965/communiteer.git'
+set :repo_url, 'https://github.com/gai965/communiteer.git'
 
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :branch, ENV['BRANCH'] || 'master'
