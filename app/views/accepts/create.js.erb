@@ -1,0 +1,1 @@
+document.getElementById('volunteer-accept-btn-<%= @join_volunteer.id %>').innerHTML = '<%= escape_javascript(render partial: 'accepts/accept_btn', locals: {join: @join_volunteer, post_id: @join_volunteer.volunteer_id})%>'

@@ -18,7 +18,7 @@
           <%= button_to '応募する', new_volunteer_join_path(volunteer.id), params: {second_pre_page: params[:page], name: @group.name, phone_number: @group.phone_number},method: :get, class:'apply_btn' %>
         <% end %>
       <% end %>
-      <div id='cheer_btn_<%= volunteer.id %>'>
+      <div id='cheer-btn-<%= volunteer.id %>'>
         <%= render partial: 'cheers/cheer', locals: { volunteer: volunteer } %>
       </div>
     <% end %>

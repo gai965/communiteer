@@ -1,18 +1,12 @@
 module AcceptsHelper
-  def return_get_path
-    path = Rails.application.routes.recognize_path(request.referer)
-    case path[:controller]
-    when 'notifications'
-      return_path = notifications_path
-    when 'volunteers', 'join_volunteers'
-      return_path = volunteer_join_index_path(@volunteer.id)
-    else
-      return_path = volunteer_join_index_path(@volunteer.id)
-    end
-    return_path
-  end
-
   def approver_verification
     return true if @account.id == @volunteer.postable_id && @account.type == @volunteer.postable_type
+  end
+
+  def accept_get_path(post_id, participant)
+    case params[:controller]
+    when 'join_volunteers'
+      volunteer_accepts_path(post_id, id: participant[:id], type: participant[:type])
+    end
   end
 end

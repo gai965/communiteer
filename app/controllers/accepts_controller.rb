@@ -8,15 +8,11 @@ class AcceptsController < ApplicationController
     
     @join_volunteer.update!(accept_flag: true)
     return unless @join_volunteer.save!
-    redirect_to volunteer_join_path(@join_volunteer.volunteer_id, @join_volunteer.joinable_id,
-                                      type: @join_volunteer.joinable_type)
   end
 
   private
 
   def set_join_volunteer_info
-    @volunteer = Volunteer.find(params[:volunteer_id])
-    @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id], joinable_id: params[:id],
-                                            joinable_type: params[:type])
+    @join_volunteer = JoinVolunteer.find_by(volunteer_id: params[:volunteer_id], joinable_id: params[:id], joinable_type: params[:type])
   end
 end

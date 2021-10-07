@@ -12,7 +12,7 @@ class JoinVolunteer < ApplicationRecord
   end
 
   # 参加承諾の有無を確認
-  def already_joinvolunteer_accept?
+  def already_accept?
     return false if self.accept_flag == false
     return true
   end

@@ -47,12 +47,10 @@
           <span class='accept_details_inquiry'><%= @join_volunteer.inquiry %></span>
         </div>
         <% if approver_verification.present? %>
-          <% if @join_volunteer.already_joinvolunteer_accept? %> 
-            <p class='accept_finish_text'>承諾済み</p>
-          <% else %>
-            <%= button_to '承諾する', volunteer_accepts_path(@join_volunteer.volunteer_id, id: @join_volunteer.joinable_id, type: @join_volunteer.joinable_type), method: :post, class:'btn accept' %> 
-          <% end %>
-            <%= button_to 'ダイレクトメッセージを送る',  rooms_path(partner_id:@join_volunteer.joinable_id ,partner_type: @join_volunteer.joinable_type), method: :post, class:'btn direct_message'  %>
+          <div id='volunteer-accept-btn-<%= @join_volunteer.id %>'>
+            <%= render partial:'accepts/accept_btn', locals: {join: @join_volunteer, post_id: @join_volunteer.volunteer_id } %>
+          </div>
+          <%= button_to 'ダイレクトメッセージを送る',  rooms_path(partner_id:@join_volunteer.joinable_id ,partner_type: @join_volunteer.joinable_type), method: :post, class:'btn direct_message'  %>
         <% end %>
       </div>
     </div>

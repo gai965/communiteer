@@ -1,4 +1,17 @@
 module JoinVolunteersHelper
+  def return_get_path
+    path = Rails.application.routes.recognize_path(request.referer)
+    case path[:controller]
+    when 'notifications'
+      return_path = notifications_path
+    when 'volunteers', 'join_volunteers'
+      return_path = volunteer_join_index_path(@volunteer.id)
+    else
+      return_path = volunteer_join_index_path(@volunteer.id)
+    end
+    return_path
+  end
+
   def return_joinvolunteer_path
     volunteer_path(@volunteer.id, page: params[:second_pre_page])
   end

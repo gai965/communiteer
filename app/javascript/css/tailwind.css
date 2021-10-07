@@ -272,7 +272,7 @@
     @apply text-white bg-yellow-400 hover:bg-gray-400 shadow-md my-5
   }
   .accept_finish_text {
-    @apply h-10 w-full text-lg text-white font-bold text-center my-5 bg-gray-400 py-2 rounded-sm
+    @apply h-10 w-full text-lg text-white font-bold text-center mb-5 mt-8 bg-gray-400 py-2 rounded-sm
   }
 
 

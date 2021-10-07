@@ -1,0 +1,7 @@
+
+
+<% if join.already_accept? %> 
+  <p class='accept_finish_text'>承諾済み</p>
+<% else %>
+  <%= button_to '承諾する', accept_get_path(post_id, id: join.joinable_id, type: join.joinable_type), method: :post, class:'btn accept', remote: true %> 
+<% end %>

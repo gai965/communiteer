@@ -40,11 +40,6 @@ class Group < ApplicationRecord
     self.cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
   end
 
-  def already_joinvolunteer_accept?(a)
-    binding.pry
-    self.exists?(joinable_id: a.joinable_id, joinable_type: a.joinable_type, accept_flag: false)
-  end
-
   def self.guest
     Group.find_or_create_by!(email: 'group@guest.com') do |group|
       group.name = 'ゲスト団体'
