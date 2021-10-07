@@ -1,7 +1,7 @@
 require 'faker'
 
 membership = 6
-posts      = 4
+posts      = 2
 user       = []
 group       = []
 
@@ -76,8 +76,8 @@ posts.times do |n|
     deadline:           deadline_time2,
     kind:               "Volunteer", 
     postable_id:        1, 
-    postable_type:      "#{postable_type[n % 2]}"
-    # postable_type:      "User"
+    # postable_type:      "#{postable_type[n % 2]}"
+    postable_type:      "User"
   )
   volunteer.image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
 end
@@ -127,18 +127,18 @@ end
 # end
 
 # ボランティア申し込み
-  tel    = Faker::Number.number(digits: 11)
-  people = Faker::Number.between(from: 1, to: 30)
-  inquiry= Faker::Number.number(digits: 100)
-  joinvolunteer = JoinVolunteer.create!(
-    name:          user[0].name,
-    phone_number:  tel,
-    number:        people,
-    inquiry:       inquiry,
-    accept_flag:   false,
-    volunteer_id:  2,
-    joinable:      user[0]
-  )
+  # tel    = Faker::Number.number(digits: 11)
+  # people = Faker::Number.between(from: 1, to: 30)
+  # inquiry= Faker::Number.number(digits: 100)
+  # joinvolunteer = JoinVolunteer.create!(
+  #   name:          user[0].name,
+  #   phone_number:  tel,
+  #   number:        people,
+  #   inquiry:       inquiry,
+  #   accept_flag:   false,
+  #   volunteer_id:  2,
+  #   joinable:      user[0]
+  # )
 
 # ボランティア申し込み
 # (membership+1).times do |n|

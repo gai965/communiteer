@@ -1,7 +1,7 @@
 module AcceptsHelper
   def return_get_path
     path = Rails.application.routes.recognize_path(request.referer)
-    case path
+    case path[:controller]
     when 'notifications'
       return_path = notifications_path
     when 'volunteers', 'join_volunteers'

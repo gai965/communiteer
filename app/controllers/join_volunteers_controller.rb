@@ -30,7 +30,12 @@ class JoinVolunteersController < ApplicationController
       @volunteer.save
       redirect_to volunteer_path(@volunteer.id)
     else
-      render :new
+      # binding.pry
+      if @join_volunteer.joinable_type == 'Group'
+        redirect_to new_volunteer_join_path(@volunteer.id, name: @join_volunteer.name, phone_number: @join_volunteer.phone_number), flash: { error: @join_volunteer.errors.full_messages }
+      else
+        redirect_to new_volunteer_join_path(@volunteer.id), flash: { error: @join_volunteer.errors.full_messages }
+      end
     end
   end
 

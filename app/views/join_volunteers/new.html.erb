@@ -10,6 +10,18 @@
       <% end %>
       <h2 class='text-2xl md:text-3xl font-bold text-center text-gray-800'>ボランティア参加</h2>
       <%= form_with model:  @join_volunteer, url: volunteer_join_index_path(@volunteer.id), class: 'mt-2 sm:mt-10', local: true do |f| %>
+        
+        <% if flash[:error].present? %>
+          <div class='bg-red-100 border-2 border-red-500 mb-10 p-2'>
+            <span class='font-bold text-2xl m-3'>入力不足エラー</span>
+            <ul class='m-2'>
+              <% flash[:error].each do |message| %>
+                <li>・<%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class='flex justify-start items-center'>
           <div class='label_name'>名前</div>
           <span class='mandatory_display'>必須</span>
@@ -40,7 +52,7 @@
         </div>
         <div class='flex mb-1 sm:mb-4'>
           <%= image_tag'application_people_icon.png', class:'h-5 w-5 opacity-70 my-auto mr-2'%>
-          <%= f.number_field :number, class:'reg_info_field', placeholder:'1'%>
+          <%= f.number_field :number, class:'reg_info_field', placeholder:'0'%>
         </div>
         <div class='flex justify-start items-center'>
           <div class='label_name'>問い合わせ</div>

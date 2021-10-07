@@ -1,6 +1,6 @@
 
 <div class='h-60 md:h-48 w-80 xs:w-96 sm:w-128 md:w-80 lg:w-96 bg-white rounded-md hover:shadow-md p-4 md:p-6'>  
-  <%= link_to  volunteer_join_path(join_info.volunteer_id, join_info.joinable_id), method: :get do %>  
+  <%= link_to volunteer_join_path(join_info.volunteer_id, join_info.id), method: :get do %>  
     <div class='flex items-center'>
       <%= image_tag join_info.joinable.image_icon_path, class:'h-8 w-8 mr-1' %>
       <span class='text-2xl font-bold truncate mr-1'><%= join_info.joinable.name%>さん</span>
