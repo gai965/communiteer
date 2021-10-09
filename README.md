@@ -1,12 +1,13 @@
 # README
 
 # **こみゅにてぃあ**
-<img width="800" src="https://user-images.githubusercontent.com/72908323/136355869-25e88e94-21a3-4cd7-84fc-b6fc16c0c45f.png"><br>
+<img width="1000" src="https://user-images.githubusercontent.com/72908323/136355869-25e88e94-21a3-4cd7-84fc-b6fc16c0c45f.png"><br>
 
 # 概要
 ## 地域活性化を目的とした情報交換サービス
+https://communiteer-app.com/<br>
 一定の地域内(市町村程度)で個人・団体(社会福祉法人・学校法人など)間のボランティア等の情報を結び地域活性につなげるサービス<br>
-(https://communiteer-app.com/)<br>
+
 
 ## 制作背景
 きっかけは友人ずてで誘われたボランティアにあります。<br>
@@ -48,15 +49,28 @@
  - DM機能
    - DM相手一覧・最新メッセージの表示
    - 既読・未読の表示
-   - メッセージの送信・削除(Actioncable使用)
+   - メッセージの送信・削除(Actioncable)
  - マイページ
    - プロフィール編集
    - DM画面遷移
-   - 投稿・応募・応援の各種表示(javascript使用)
+   - 投稿・応募・応援の各種表示(javascript)
+   - ページネーション
  - 通知
    - 参加・承認・応援の通知
-### 投稿機能
-
+   - 画面遷移リンク
+### 投稿機能(現時点：ボランティア募集のみ)
+ - 投稿
+   - 新規作成
+   - 画像添付・画像プレビュー(javascript)
+   - 画面遷移ボタン
+ - 一覧
+   - 投稿一部動的表示(TOP画面でSwiper使用)
+   - ページネーション
+ - 詳細
+   - 削除・編集
+   - 活動場所地図表示(Google Maps API等使用)
+   - 画面遷移リンク
+   - 参加・応援・訪問数表示
 ## インフラ構成図
 <img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/136638723-8690609c-1d53-45b5-a783-4b3b8f31687e.png">
 
