@@ -108,17 +108,14 @@ https://communiteer-app.com/<br>
 チャットのようにリアルタイム更新でメッセージの送信・削除をできるようにしました。(デモ動画あり)<br>
 
 **5. Google Maps APIの使用**<br>
-活動場所はモーダルを使用して地図表示できるようにしました。(デモ動画あり)<br>
+活動場所はモーダルを使用して地図表示できるようにしました。(デモ動画あり)<br><br>
 
-## デモ動画
-### ActionCableを使用したDMの送信・削除
+### デモ動画
+#### ActionCableを使用したDMの送信・削除
 ![DMデモ動画](https://user-images.githubusercontent.com/72908323/136690293-903b1cae-ac18-4a1c-ab77-af1caad9939d.gif)
 
-### Modleを使用した地図表示
+#### Modleを使用した地図表示
 ![地図デモ動画](https://user-images.githubusercontent.com/72908323/136690332-ead55ebb-c23a-46b4-9d73-486b6e538bb3.gif)
-
-
-
 
 ## インフラ構成図
 <img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/136638723-8690609c-1d53-45b5-a783-4b3b8f31687e.png">
