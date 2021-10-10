@@ -112,7 +112,12 @@ https://communiteer-app.com/<br>
 
 ## デモ動画
 ### ActionCableを使用したDMの送信・削除
-![DMデモ動画](https://user-images.githubusercontent.com/72908323/136689492-1af58a6c-08cd-4df3-9660-1ec8756d43de..gif)
+![DMデモ動画](https://user-images.githubusercontent.com/72908323/136690293-903b1cae-ac18-4a1c-ab77-af1caad9939d.gif)
+
+### Modleを使用した地図表示
+![地図デモ動画](https://user-images.githubusercontent.com/72908323/136690332-ead55ebb-c23a-46b4-9d73-486b6e538bb3.gif)
+
+
 
 
 ## インフラ構成図
