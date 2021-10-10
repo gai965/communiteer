@@ -112,7 +112,7 @@ https://communiteer-app.com/<br>
 
 ## デモ動画
 ### ActionCableを使用したDMの送信・削除
-![Demo1](https://user-images.githubusercontent.com/72908323/136689492-1af58a6c-08cd-4df3-9660-1ec8756d43de.mp4)
+![DMデモ動画](https://user-images.githubusercontent.com/72908323/136689492-1af58a6c-08cd-4df3-9660-1ec8756d43de..gif)
 
 
 ## インフラ構成図
