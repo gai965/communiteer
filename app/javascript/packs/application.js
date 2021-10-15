@@ -8,7 +8,6 @@ import './swiper';
 require('jquery');
 require("../preview");
 require("../profile");
-// require("../chat");
 require("../menu");
 require("../count");
 require("../map");

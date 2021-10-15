@@ -1,10 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  const modalDisplay = document.getElementById('modal-display')
-  if (modalDisplay != null) {
+  const modalMap = document.getElementById('modal-map')
+  if (modalMap != null) {
     const modalScreen = document.getElementsByClassName('modal_screen');
     const closeIconModal = document.getElementsByClassName('close_icon_modal');
-    modalDisplay.addEventListener('click', function(e){
+    modalMap.addEventListener('click', function(e){
       modalScreen[0].classList.remove('hidden');
       initMap();
     });

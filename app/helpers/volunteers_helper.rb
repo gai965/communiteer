@@ -12,6 +12,8 @@ module VolunteersHelper
       else
         root_path
       end
+    when 'pages'
+      request.referer
     else
       root_path
     end

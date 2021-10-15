@@ -120,7 +120,13 @@
     @apply contents
   }
   .profile_item_layout {
-    @apply grid justify-items-center grid-cols-1 md:grid-cols-2 gap-y-2 sm:gap-y-4 gap-x-4
+    @apply grid justify-items-center grid-cols-1 md:grid-cols-2 gap-y-2 sm:gap-y-6 gap-x-4
+  }
+  .list_link {
+    @apply cursor-pointer text-xl text-blue-500 hover:text-blue-300 border-b border-blue-500 hover:border-blue-300
+  }
+  .page_scroll {
+    @apply h-5/6 overflow-auto
   }
 
   /* ---DM-------------------------- */
@@ -223,10 +229,10 @@
   .modal_screen{
     @apply h-full w-full bg-gray-900 bg-opacity-80 z-10 fixed top-0 left-0
   }
-  .modal_content{
+  .content_area{
     @apply h-4/5 w-4/5 absolute top-1/20 left-1/10
   }
-  .modal_map{
+  .modal_content{
     @apply h-full w-full bg-gray-100 border-2 absolute top-8 sm:top-10 left-0
   }
   .close_icon_modal{
@@ -278,18 +284,18 @@
 
   /* ---ページネーション----------------------------------- */
   .pagination {
-    @apply h-14 w-full sm:w-128 flex justify-center items-center mx-auto my-3 sm:my-6
+    @apply h-14 w-full flex justify-center items-center mx-auto my-3 sm:my-6
   }
   .pagination * {
     @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1
   }
   .pagination a:hover {
-    @apply border-4 rounded-full
+    @apply border-4 border-gray-300 rounded-full
   }
   .pagination >.page.current {
     @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
   }
   .pagination >.first,.last{
-    @apply w-24 sm:w-32
+    @apply w-32
   }
 }

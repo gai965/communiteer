@@ -7,24 +7,24 @@ class PagesController < ApplicationController
   before_action :set_page_account,      only: [:show]
 
   def show
-    @post_volunteer  = Volunteer.where(postable_id: @account_page_info.id, postable_type: @account_page_info.type).page(params[:page]).per(6)
+    @post_volunteer  = Volunteer.where(postable_id: @account_page_info.id, postable_type: @account_page_info.type).order('created_at DESC')
     @post_place      = nil
     @post_event      = nil
     @all_post        = @post_volunteer
     @all_post_number = @post_volunteer.count
 
-    @join_volunteer  = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id, joinable_type: @account_page_info.type}).page(params[:page]).per(6)
+    
+    @join_volunteer  = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id, joinable_type: @account_page_info.type}).order('created_at DESC')
     @join_place      = nil
     @join_event      = nil
-    @all_join        = @join_volunteer
+    @all_join        = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id, joinable_type: @account_page_info.type}).order('created_at DESC')
     @all_join_number = @join_volunteer.count
     
-    @cheer_volunteer  = Volunteer.joins(:cheers).where(cheers: { cheerable_id: @account_page_info.id, cheerable_type: @account_page_info.type}).page(params[:page]).per(6)
+    @cheer_volunteer  = Volunteer.joins(:cheers).where(cheers: { cheerable_id: @account_page_info.id, cheerable_type: @account_page_info.type}).order('created_at DESC')
     @cheer_place      = nil
     @cheer_event      = nil  
     @all_cheer        = @cheer_volunteer
     @all_cheer_number = @all_cheer.count
-    
     return unless @account.present?
     @room_id = Room.where(selfable_id: @account.id,
                           selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
