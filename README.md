@@ -118,7 +118,7 @@ https://communiteer-app.com/<br>
 ![地図デモ動画](https://user-images.githubusercontent.com/72908323/136690332-ead55ebb-c23a-46b4-9d73-486b6e538bb3.gif)
 
 ## インフラ構成図
-<img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/137623264-f2cadb95-a842-4486-b5d3-c202a8d62a9e.png">
+<img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/136638723-8690609c-1d53-45b5-a783-4b3b8f31687e.png">
 
 ## ER図
-<img width="908" alt="comuniteer_ER" src="https://user-images.githubusercontent.com/72908323/136638946-be93b882-97cc-44fc-a037-dfa261af9828.png"><br>
+<img width="908" alt="comuniteer_ER" src="https://user-images.githubusercontent.com/72908323/137623264-f2cadb95-a842-4486-b5d3-c202a8d62a9e.png"><br>
