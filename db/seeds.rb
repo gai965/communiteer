@@ -118,6 +118,7 @@ posts.times do |n|
   volunteer[n].image.attach(io: File.open(Rails.root.join("app/assets/images/sample/volunteer/sample#{n}.jpg")), filename: "sample#{n}.jpg")
 end
 
+
 # ボランティア申し込み
 # ゲストユーザ
 tel     = Faker::Number.number(digits: 11)
@@ -159,25 +160,55 @@ id.each do |n|
 end
 
 # 応援(ボランティア投稿)
-# (membership+1).times do |n|
-#   posts.times do |i|
-#     Cheer.create!(
-#       cheerable_id:    "#{n+1}",
-#       cheerable_type:  postable_type[0],
-#       targetable_id:   "#{2*i+1}",
-#       targetable_type: "Volunteer"
-#     )
-#   end
-# end
+
+# ゲストユーザ
+no_post.length.times do |i|
+  Cheer.create!(
+    cheerable_id:    1,
+    cheerable_type:  "User",
+    targetable_id:   no_post[i][:id],
+    targetable_type: "Volunteer"
+  )
+end
+
+# その他ユーザ
+id.each do |n|
+  posts.times do |i|
+    Cheer.create!(
+      cheerable:  user[n],
+      targetable: volunteer[i]
+    )
+  end
+end
+
+
+my_post = Volunteer.where(postable_id: 1, postable_type: 'User')
 
 # 通知(応援)
-# 7.times do |n|
-#   notification = user.active_notifications.new(
-#     post_id:          group_volunteer[n].id,
-#     linkable:         group_volunteer[n],
-#     receiveable_id:   "1",
-#     receiveable_type: "Group",
-#     action:           "cheer"
-#   )
-#   notification.save!
-# end
+id.each do |n|
+  my_post.length.times do |i|
+    notification = user[n].active_notifications.new(
+      post_id:          my_post[i][:id],
+      linkable:         my_post[i],
+      receiveable_id:   1,
+      receiveable_type: "User",
+      action:           "cheer"
+    )
+    notification.save!
+  end
+end
+
+# 通知(ボランティア参加)
+id.each do |n|
+  my_post.length.times do |i|
+    join = JoinVolunteer.find_by(volunteer_id: my_post[i][:id], joinable_id: user[n].id)
+    notification = user[n].active_notifications.new(
+      post_id:          my_post[i][:id],
+      linkable:         join,
+      receiveable_id:   1,
+      receiveable_type: "User",
+      action:           "join_volunteer"
+    )
+    notification.save!
+  end
+end
