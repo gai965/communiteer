@@ -14,6 +14,7 @@ module ApplicationCable
       elsif env['warden'].authenticated?(:group)
         verified_account = Group.find_by(id: cookies.encrypted[:group_id])
       end
+      return verified_account
     end
   end
 end
