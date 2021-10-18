@@ -280,23 +280,4 @@
   .accept_finish_text {
     @apply h-10 w-full text-lg text-white font-bold text-center mb-5 mt-8 bg-gray-400 py-2 rounded-sm
   }
-
-
-  /* ---ページネーション----------------------------------- */
-
-  /* .pagination {
-    @apply h-14 w-full flex justify-center items-center mx-auto my-3 sm:my-6
-  }
-  .pagination * {
-    @apply w-12 sm:w-14 text-lg sm:text-xl text-center font-bold text-gray-500 px-1.5 py-0.5 sm:px-2 sm:py-1
-  }
-  .current {
-    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
-  }
-  .first,.last{
-    @apply w-32
-  }
-  .pagination a:hover {
-    @apply border-4 border-gray-300 rounded-full
-  } */
 }

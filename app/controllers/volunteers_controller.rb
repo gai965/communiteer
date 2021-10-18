@@ -6,7 +6,7 @@ class VolunteersController < ApplicationController
 
   def index
     all_volunteer = Volunteer.all.order('created_at DESC')
-    @per_volunteer = all_volunteer.page(params[:page]).per(1)
+    @per_volunteer = all_volunteer.page(params[:page]).per(12)
     @all_volunteer_number = all_volunteer.count
   end
 

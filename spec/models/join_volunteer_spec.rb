@@ -72,9 +72,9 @@ RSpec.describe JoinVolunteer, type: :model do
       end
 
       it '問い合わせが「100文字超える」と登録できない' do
-        @join_volunteer.inquiry = Faker::Number.number(digits: 101)
+        @join_volunteer.inquiry = Faker::Number.number(digits: 501)
         @join_volunteer.valid?
-        expect(@join_volunteer.errors.full_messages).to include('問い合わせは100文字以内で入力してください')
+        expect(@join_volunteer.errors.full_messages).to include('問い合わせは500文字以内で入力してください')
       end
     end
   end
