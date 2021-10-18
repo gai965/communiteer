@@ -3,7 +3,7 @@ module JoinVolunteersHelper
     path = Rails.application.routes.recognize_path(request.referer)
     case path[:controller]
     when 'notifications'
-      notifications_path
+      request.referer
     when 'volunteers', 'join_volunteers'
       volunteer_join_index_path(@volunteer.id)
     else
