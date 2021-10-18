@@ -13,7 +13,7 @@ class Group < ApplicationRecord
 
   # 半角英数字および大文字を含む
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ , message:'は大文字を含む英字と数字を入力してください'}, on: :create
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'は大文字を含む英字と数字を入力してください' }, on: :create
 
   # 「http:」または「https:」を含む(空白も可)
   validates :url,
@@ -37,7 +37,7 @@ class Group < ApplicationRecord
   end
 
   def already_volunteer_cheered?(volunteer, account)
-    self.cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
+    cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
   end
 
   def self.guest
@@ -54,7 +54,7 @@ class Group < ApplicationRecord
 
   def update_with_password(params, *options)
     params.delete(:current_password)
-    if params[:password].blank? && params[:password_confirmation].blank? 
+    if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end

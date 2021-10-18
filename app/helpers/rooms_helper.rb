@@ -10,5 +10,4 @@ module RoomsHelper
   def speaker_confirmation(chat)
     return true if chat.speakable_id == @account.id && chat.speakable_type == @account.type
   end
-
 end

@@ -1,7 +1,7 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
     identified_by :current_account
-    
+
     def connect
       self.current_account = find_verified_account
     end
@@ -15,6 +15,5 @@ module ApplicationCable
         verified_account = Group.find_by(id: cookies.encrypted[:group_id])
       end
     end
-
   end
 end

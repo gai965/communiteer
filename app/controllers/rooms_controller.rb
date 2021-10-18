@@ -9,10 +9,13 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = (Room.where(selfable_id:@account.id, selfable_type: @account.type, partnerable_id: params[:partner_id], partnerable_type: params[:partner_type]).or(Room.where(selfable_id:params[:partner_id], selfable_type: params[:partner_type], partnerable_id: @account.id, partnerable_type: @account.type))).first
+    @room = Room.where(selfable_id: @account.id, selfable_type: @account.type, partnerable_id: params[:partner_id],
+                       partnerable_type: params[:partner_type]).or(Room.where(selfable_id: params[:partner_id], selfable_type: params[:partner_type],
+                                                                              partnerable_id: @account.id, partnerable_type: @account.type)).first
     if @room.blank?
-      @room = Room.create!(selfable_id: @account.id, selfable_type: @account.type, partnerable_id: params[:partner_id],partnerable_type: params[:partner_type])
+      @room = Room.create!(selfable_id: @account.id, selfable_type: @account.type, partnerable_id: params[:partner_id],
+                           partnerable_type: params[:partner_type])
     end
-    redirect_to  room_chats_path(@room.id)
+    redirect_to room_chats_path(@room.id)
   end
 end

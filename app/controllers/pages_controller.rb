@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   protect_from_forgery
-  
+
   before_action :set_login_account,     only: [:show]
   before_action :set_header_info,       only: [:show]
   before_action :set_profile_edit_path, only: [:show]
@@ -13,19 +13,22 @@ class PagesController < ApplicationController
     @all_post        = @post_volunteer
     @all_post_number = @post_volunteer.count
 
-    
-    @join_volunteer  = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id, joinable_type: @account_page_info.type}).order('created_at DESC')
+    @join_volunteer  = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id,
+                                                                                  joinable_type: @account_page_info.type }).order('created_at DESC')
     @join_place      = nil
     @join_event      = nil
-    @all_join        = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id, joinable_type: @account_page_info.type}).order('created_at DESC')
+    @all_join        = Volunteer.joins(:join_volunteers).where(join_volunteers: { joinable_id: @account_page_info.id,
+                                                                                  joinable_type: @account_page_info.type }).order('created_at DESC')
     @all_join_number = @join_volunteer.count
-    
-    @cheer_volunteer  = Volunteer.joins(:cheers).where(cheers: { cheerable_id: @account_page_info.id, cheerable_type: @account_page_info.type}).order('created_at DESC')
+
+    @cheer_volunteer  = Volunteer.joins(:cheers).where(cheers: { cheerable_id: @account_page_info.id,
+                                                                 cheerable_type: @account_page_info.type }).order('created_at DESC')
     @cheer_place      = nil
-    @cheer_event      = nil  
+    @cheer_event      = nil
     @all_cheer        = @cheer_volunteer
     @all_cheer_number = @all_cheer.count
     return unless @account.present?
+
     @room_id = Room.where(selfable_id: @account.id,
                           selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
                                                                       partnerable_type: @account.type)).pluck(:id)

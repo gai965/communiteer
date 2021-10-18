@@ -3,7 +3,7 @@ class JoinVolunteersController < ApplicationController
   before_action :move_to_top,       only: [:index, :new, :show]
   before_action :set_header_info,   only: [:index, :new, :show]
   before_action :set_volunteer,     only: [:index, :new, :create, :show]
-  before_action :set_join_volunteer,     only: [:show]
+  before_action :set_join_volunteer, only: [:show]
 
   def index
     all_join_volunteer = JoinVolunteer.where(volunteer_id: params[:volunteer_id])
@@ -29,19 +29,18 @@ class JoinVolunteersController < ApplicationController
       @volunteer.participant_number += @join_volunteer.number
       @volunteer.save
       redirect_to volunteer_path(@volunteer.id)
+    elsif @join_volunteer.joinable_type == 'Group'
+      redirect_to new_volunteer_join_path(@volunteer.id, name: @join_volunteer.name, phone_number: @join_volunteer.phone_number),
+                  flash: { error: @join_volunteer.errors.full_messages }
     else
-      if @join_volunteer.joinable_type == 'Group'
-        redirect_to new_volunteer_join_path(@volunteer.id, name: @join_volunteer.name, phone_number: @join_volunteer.phone_number), flash: { error: @join_volunteer.errors.full_messages }
-      else
-        redirect_to new_volunteer_join_path(@volunteer.id), flash: { error: @join_volunteer.errors.full_messages }
-      end
+      redirect_to new_volunteer_join_path(@volunteer.id), flash: { error: @join_volunteer.errors.full_messages }
     end
   end
 
   def show
     @room_id = Room.where(selfable_id: @account.id,
-      selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
-                                                  partnerable_type: @account.type)).pluck(:id)
+                          selfable_type: @account.type).or(Room.where(partnerable_id: @account.id,
+                                                                      partnerable_type: @account.type)).pluck(:id)
   end
 
   private
@@ -57,5 +56,4 @@ class JoinVolunteersController < ApplicationController
   def set_join_volunteer
     @join_volunteer = JoinVolunteer.find(params[:id])
   end
-
 end

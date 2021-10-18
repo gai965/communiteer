@@ -13,8 +13,9 @@ class JoinVolunteer < ApplicationRecord
 
   # 参加承諾の有無を確認
   def already_accept?
-    return false if self.accept_flag == false
-    return true
+    return false if accept_flag == false
+
+    true
   end
 
   # 登録時の相手側通知

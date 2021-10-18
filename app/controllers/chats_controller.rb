@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
     end
     @all_chats    = Chat.where(room_id: params[:room_id]).includes(:room)
     partner_chats = Chat.where(room_id: params[:room_id]).where.not(speakable_id: @account.id,
-                                                                     speakable_type: @account.type).includes(:room)
+                                                                    speakable_type: @account.type).includes(:room)
     partner_chats.where(checked: false).each do |partner_chat|
       partner_chat.update(checked: true)
     end
@@ -26,15 +26,14 @@ class ChatsController < ApplicationController
     elsif chat.room.partnerable_id == @account.id && chat.room.partnerable_type == @account.type
       partner_info(chat.room.selfable)
     end
-    ActionCable.server.broadcast('chat_channel', { delete_id: chat.id, partner_id: @partner_id, partner_type: @partner_type})
+    ActionCable.server.broadcast('chat_channel', { delete_id: chat.id, partner_id: @partner_id, partner_type: @partner_type })
   end
 
-  private 
+  private
 
   def partner_info(partner)
     @partner_name = partner.name
     @partner_id   = partner.id
     @partner_type = partner.type
   end
-
 end

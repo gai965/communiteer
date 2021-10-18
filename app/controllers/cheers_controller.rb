@@ -12,6 +12,7 @@ class CheersController < ApplicationController
     cheer = Cheer.new(cheerable_id: @account.id, cheerable_type:  @account.type, targetable_id: @volunteer.id,
                       targetable_type: @target_type)
     return unless cheer.save!
+
     @cheer_number = Cheer.where(targetable_id: @volunteer.id).count
     @volunteer.create_notification_cheer_registration!(@volunteer, @account)
   end

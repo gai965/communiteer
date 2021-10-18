@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', as: :sendable, dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', as: :receiveable, dependent: :destroy
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ , message:'は大文字を含む英字と数字を入力してください'}, on: :create
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'は大文字を含む英字と数字を入力してください' }, on: :create
 
   with_options presence: true, uniqueness: true do
     validates :name
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def already_volunteer_cheered?(volunteer, account)
-    self.cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
+    cheers.exists?(cheerable_id: account.id, cheerable_type: account.type, targetable_id: volunteer.id, targetable_type: 'Volunteer')
   end
 
   def self.guest
@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   def update_with_password(params, *options)
     params.delete(:current_password)
-    if params[:password].blank? && params[:password_confirmation].blank? 
+    if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end

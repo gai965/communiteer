@@ -5,7 +5,7 @@ class AcceptsController < ApplicationController
   def create
     @join_volunteer.create_notification_accept_registration!(@join_volunteer, @account)
     return unless @join_volunteer.accept_flag == false
-    
+
     @join_volunteer.update!(accept_flag: true)
     return unless @join_volunteer.save!
   end
