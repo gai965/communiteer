@@ -3,6 +3,7 @@ import "channels"
 
 import '../css/tailwind.css';
 import '../css/preview.css';
+import '../css/pagination.css';
 import './swiper';
 
 require('jquery');
