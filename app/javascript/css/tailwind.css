@@ -292,7 +292,7 @@
   .pagination a:hover {
     @apply border-4 border-gray-300 rounded-full
   }
-  .pagination >.current {
+  .pagination >.page {
     @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
   }
   .first,.last{
