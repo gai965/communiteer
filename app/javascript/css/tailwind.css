@@ -283,6 +283,14 @@
 
 
   /* ---ページネーション----------------------------------- */
+
+  .current {
+    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
+  }
+  .first,.last{
+    @apply w-32
+  }
+
   .pagination {
     @apply h-14 w-full flex justify-center items-center mx-auto my-3 sm:my-6
   }
@@ -292,10 +300,5 @@
   .pagination a:hover {
     @apply border-4 border-gray-300 rounded-full
   }
-  .current {
-    @apply border-4 border-gray-500 rounded-full ml-2 sm:ml-3 py-1 sm:py-2
-  }
-  .first,.last{
-    @apply w-32
-  }
+  
 }
