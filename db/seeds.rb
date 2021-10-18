@@ -124,7 +124,7 @@ end
 tel     = Faker::Number.number(digits: 11)
 no_post = Volunteer.where.not(postable_id: 1, postable_type: 'User')
 
-no_post.length.times do |i|
+(no_post.length / 2).times do |i|
   people = Faker::Number.between(from: 1, to: 10)
   joinvolunteer = JoinVolunteer.create!(
     name:          user[0].name,
@@ -140,8 +140,7 @@ no_post.length.times do |i|
 end
 
 # その他ユーザ
-id  = [3, 4, 5, 6]
-id.each do |n|
+(3..6).each do |n|
   tel      = Faker::Number.number(digits: 11)
   posts.times do |i|
     people = Faker::Number.between(from: 1, to: 10)
@@ -172,7 +171,7 @@ no_post.length.times do |i|
 end
 
 # その他ユーザ
-id.each do |n|
+(3..6).each do |n|
   posts.times do |i|
     Cheer.create!(
       cheerable:  user[n],
@@ -185,7 +184,7 @@ end
 my_post = Volunteer.where(postable_id: 1, postable_type: 'User')
 
 # 通知(応援)
-id.each do |n|
+(3..6).each do |n|
   my_post.length.times do |i|
     notification = user[n].active_notifications.new(
       post_id:          my_post[i][:id],
@@ -199,7 +198,7 @@ id.each do |n|
 end
 
 # 通知(ボランティア参加)
-id.each do |n|
+(3..6).each do |n|
   my_post.length.times do |i|
     join = JoinVolunteer.find_by(volunteer_id: my_post[i][:id], joinable_id: user[n].id)
     notification = user[n].active_notifications.new(
