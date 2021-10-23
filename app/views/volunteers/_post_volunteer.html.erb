@@ -1,6 +1,6 @@
 
 <div class='h-64 w-80 xs:w-96 sm:w-128 md:w-80 lg:w-96 bg-white rounded-md hover:shadow-md group'>
-  <%= link_to volunteer_path(volunteer.id, page: request.original_url) do %>
+  <%= link_to volunteer_path(volunteer.id) do %>
     <%= image_tag volunteer.image, class:'h-2/3 w-full group-hover:opacity-70'%>
     <div class='py-1 px-4'>
       <p class='text-2xl font-bold truncate mb-2 group-hover:text-green-400'><%= volunteer.title %></p>

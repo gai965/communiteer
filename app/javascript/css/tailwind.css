@@ -186,6 +186,15 @@
   .return_mini_btn {
     @apply w-64 text-base text-white uppercase flex justify-center bg-gray-500 rounded-sm mx-auto py-2 mt-10 focus:outline-none hover:bg-gray-400 hover:shadow-none
   }
+
+  /* ---投稿一覧画面------------------------ */
+  .search_input {
+    @apply h-10 w-40 sm:w-72 md:w-96 pl-2 border-b-2  focus:shadow focus:outline-none focus:border-gray-400
+  }
+  .search_btn {
+    @apply h-9 w-14 font-semibold bg-gray-400 hover:bg-opacity-60 cursor-pointer
+  }
+
   /* ---投稿詳細画面------------------------ */
 
   .apply_btn {

@@ -4,14 +4,21 @@
 
 <div class='w-full bg-gray-200 font-sans'>
   <div class='grid place-items-center pt-14 pb-5'>
-    <div>
-      <div class='border-b-2 border-gray-600 mb-8 pb-2'>
-        <p class='text-2xl font-bold'>総数：<%= @all_volunteer_number %>件</p>
+    <div class='h-screen md:w-176 lg:w-224 xl:w-11/12'>
+      <div class='flex justify-between items-center border-b-2 border-gray-600 mb-8 pb-2'>
+        <div id='list-number'>
+          <%= render partial: 'volunteer_number', locals: { count: @all_volunteer.count } %> 
+        </div>
+        <%= form_with(url: search_volunteers_path, method: :post, remote: true) do |f| %>
+          <%= f.text_field :keyword, placeholder: '投稿名で検索する', class: 'search_input' %>
+          <%= f.submit '検索', class: 'search_btn' %>
+        <% end %>
       </div>
-      <div class='grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-4 md:gap-x-10'>
-        <%= render partial:'post_volunteer', collection: @per_volunteer , as: 'volunteer' %> 
+      <div class='h-5/6 overflow-auto'>
+        <div id='volunteer-list' class='grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-4 md:gap-x-10'>
+          <%= render partial:'post_volunteer', collection: @all_volunteer , as: 'volunteer' %> 
+        </div>
       </div>
-      <%= paginate @per_volunteer , window: 1 %>
     </div>
   </div>
 </div>

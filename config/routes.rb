@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :join_volunteers, only: [:index, :new, :create, :show], as: 'join' 
     resources :accepts        , only: [:create]
     resources :cheers         , only: [:index, :create, :destroy]
+    collection do
+      post 'search'
+    end
   end
   resources :rooms,   only: [:index, :create] do
     resources :chats, only: [:index, :destroy]
