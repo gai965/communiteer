@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :cheers         , only: [:index, :create, :destroy]
     collection do
       post 'search'
+      post 'detail'
     end
   end
   resources :rooms,   only: [:index, :create] do

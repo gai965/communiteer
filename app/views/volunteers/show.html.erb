@@ -15,7 +15,7 @@
         <div class='h-full grid grid-rows-2 sm:grid-rows-4 grid-cols-1'>
           <%= image_tag @volunteer.image, class:'h-56 sm:h-full w-full my-auto mx-auto row-span-2 rounded-lg'%>
           <div id='another_info_<%= @volunteer.id %>' class='my-3 lg:my-6 mx-2'>
-            <%= render partial: 'another_info', locals: { volunteer: @volunteer, cheer_number: @cheer_number } %>
+            <%= render partial: 'another_info', locals: { volunteer: @volunteer, cheer_number: @cheer.count } %>
           </div>
           <div id='button_area_<%= @volunteer.id %>' class='my-auto'>
             <%= render partial: 'button_area', locals: { volunteer: @volunteer } %>

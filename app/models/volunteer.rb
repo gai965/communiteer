@@ -54,15 +54,50 @@ class Volunteer < ApplicationRecord
 
   # ----インスタンスメソッド-----------------------------------------------------
 
-  # ---サーチ機能---
-  def self.search(search)
+  # ---サーチ機能(投稿名のみ)---
+  def self.search(title)
     items = Volunteer.all.order('created_at DESC')
-    if search != ""
-      split_keyword = search.split(/[[:blank:]]+/)
-      split_keyword.each do |keyword|  # 分割したキーワードごとに検索
+    if title != ""
+      split_keyword = title.split(/[[:blank:]]+/)
+      split_keyword.each do |keyword|
         next if keyword == "" 
         items = items.where('title LIKE(?)', "%#{keyword}%")
       end
+    end
+    return items
+  end
+
+  # ---サーチ機能(詳細)---
+  def self.detail(title, schedule, people, place, deadline)
+    items = Volunteer.all.order('created_at DESC')
+    if title != ''
+      split_title = title.split(/[[:blank:]]+/) 
+      split_title.each do |keyword| 
+        next if keyword == '' 
+        items = items.where('title LIKE(?)', "%#{keyword}%")
+      end
+    end
+    
+    if schedule != ''
+      items = items.where('schedule >= ?', schedule)
+    end
+
+    if people != ''
+      items = items.where('application_people >= ?', people)
+    end
+    
+    if place != ''
+      split_place = place.split(/[[:blank:]]+/) 
+      split_place.each do |keyword|
+        next if keyword == "" 
+        items = items.where('place LIKE(?)', "%#{keyword}%")
+      end
+    end
+
+    if deadline == 'recruitment'
+      items = items.where(deadline_flag: false)
+    elsif deadline == 'deadline'
+      items = items.where(deadline_flag: true)
     end
     return items
   end

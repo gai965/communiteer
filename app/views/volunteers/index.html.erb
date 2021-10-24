@@ -9,15 +9,62 @@
         <div id='list-number'>
           <%= render partial: 'volunteer_number', locals: { count: @all_volunteer.count } %> 
         </div>
-        <%= form_with(url: search_volunteers_path, method: :post, remote: true) do |f| %>
-          <%= f.text_field :keyword, placeholder: '投稿名で検索する', class: 'search_input' %>
-          <%= f.submit '検索', class: 'search_btn' %>
-        <% end %>
+        <div class='flex items-center'>
+          <%= form_with(url: search_volunteers_path, method: :post, remote: true) do |f| %>
+            <%= f.text_field :title_keyword, placeholder: '投稿名で検索する', class: 'search_input' %>
+            <%= f.submit '検索', class: 'search_btn' %>
+          <% end %>
+          <div>
+            <div id='modal'>
+              <div class='h-9 w-14 bg-gray-400 ml-1 mb-0.5 flex justify-center items-center hover:bg-opacity-60 cursor-pointer'>
+                <p class='font-semibold'>詳細</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class='h-5/6 overflow-auto'>
         <div id='volunteer-list' class='grid justify-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10 gap-x-4 md:gap-x-10'>
           <%= render partial:'post_volunteer', collection: @all_volunteer , as: 'volunteer' %> 
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='modal_screen hidden'>
+  <div class='content_area_mini'> 
+    <div class='grid justify-items-end place-items-center'>
+      <%= image_tag 'close_icon.png', class:'close_icon_modal'%>
+      <div class='h-full w-full bg-gray-100 border-2 p-4 sm:p-8 absolute top-8 sm:top-10 left-0'>
+        <h2 class='text-2xl sm:text-3xl font-bold text-center text-gray-800 border-b-2 pb-1 mb-2'>詳細検索</h2>
+        <%= form_with(url: detail_volunteers_path, method: :post, remote: true) do |f| %>
+          <p class='text-lg font-bold'>投稿名</p>
+          <%= f.text_field :title_keyword, class: 'search_input_full' %>
+          <p class='text-lg font-bold'>活動日</p>
+          <%= f.date_field :schedule_keyword, class:'search_input_full' %> 
+          <p class='text-lg font-bold'>応募人数</p>
+          <%= f.number_field :people_keyword, class:'search_input_full', min:'0'%>
+          <p class='text-lg font-bold'>活動場所</p>
+          <%= f.text_field :place_keyword, class:'search_input_full'%>
+          <p class='text-lg font-bold'>募集中の有無</p>
+          <div class='flex items-center'>
+            <div class='flex justify-between items-center mr-2'>
+              <%= f.radio_button :deadline_keyword, :both, class:'radio_button',checked: true %>
+              <%= f.label :deadline_keyword, '全て', value: :both, class:'text-lg'%>
+            </div>
+            <div class='flex justify-between items-center mr-2'>
+              <%= f.radio_button :deadline_keyword, :recruitment, class:'radio_button' %>
+              <%= f.label :deadline_keyword, '募集中のみ', value: :recruitment %>
+            </div>
+            <div class='flex justify-between items-center mr-2'>
+              <%= f.radio_button :deadline_keyword, :deadline, class:'radio_button' %>
+              <%= f.label :deadline_keyword, '締切済のみ', value: :deadline %>
+            </div>
+          </div>
+          <%# <%= f.submit '検索', class: 'search_btn_full' %> 
+          <%= f.submit '検索', id:'search_btn',class: 'h-9 w-full font-semibold bg-gray-400 mt-10 hover:bg-opacity-60 cursor-pointer' %>
+        <% end %>
       </div>
     </div>
   </div>

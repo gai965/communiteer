@@ -1,0 +1,2 @@
+document.getElementById('list-number').innerHTML = '<%= escape_javascript(render partial: 'volunteer_number', locals: { count: @per_volunteer.count })%>'
+document.getElementById('volunteer-list').innerHTML = '<%= escape_javascript(render partial:'post_volunteer', collection: @per_volunteer , as: 'volunteer')%>'
