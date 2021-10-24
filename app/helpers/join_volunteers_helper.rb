@@ -27,6 +27,6 @@ module JoinVolunteersHelper
 
   def volunteer_root_path_get
     volunteer_root_path = Volunteer.select(:id).find(params[:volunteer_id])
-    volunteer_path(volunteer_root_path.id, page: request.original_url)
+    volunteer_path(volunteer_root_path.id)
   end
 end

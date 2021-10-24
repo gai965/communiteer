@@ -5,13 +5,9 @@ module VolunteersHelper
     when 'notifications'
       notifications_path
     when 'accepts', 'volunteers'
-      params[:page]
+      volunteers_path
     when 'join_volunteers'
-      if params[:page].present?
-        params[:page]
-      else
-        root_path
-      end
+      request.referer
     when 'pages'
       request.referer
     else

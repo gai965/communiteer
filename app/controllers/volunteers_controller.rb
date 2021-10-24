@@ -5,9 +5,7 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer,     only:   [:show, :edit, :update, :destroy, :close]
 
   def index
-    all_volunteer = Volunteer.all.order('created_at DESC')
-    @per_volunteer = all_volunteer.page(params[:page]).per(12)
-    @all_volunteer_number = all_volunteer.count
+    @all_volunteer = Volunteer.all.order('created_at DESC')
   end
 
   def new
@@ -30,7 +28,6 @@ class VolunteersController < ApplicationController
 
   def show
     @cheer = Cheer.where(targetable_id: params[:id])
-    @cheer_number = @cheer.count
     impressionist(@volunteer, nil, unique: [:session_hash])
   end
 
@@ -52,6 +49,15 @@ class VolunteersController < ApplicationController
 
   def close
     @volunteer.update(deadline_flag: true)
+  end
+
+  def search
+    @per_volunteer = Volunteer.search(params[:title_keyword])
+  end
+
+  def detail
+    @per_volunteer = Volunteer.detail(params[:title_keyword], params[:schedule_keyword], params[:people_keyword], params[:place_keyword],
+                                      params[:deadline_keyword])
   end
 
   private

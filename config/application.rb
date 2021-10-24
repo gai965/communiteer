@@ -26,5 +26,8 @@ module TestTailwind
 
     # エラー時「field_with_errors」が読み込まれないようにする 
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+
+    # from_withを非同期にする
+    config.action_view.form_with_generates_remote_forms = true
   end
 end

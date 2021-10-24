@@ -1,7 +1,7 @@
 require 'faker'
 
 membership = 6
-posts      = 1
+posts      = 7
 user       = []
 group      = []
 volunteer  = []
