@@ -51,55 +51,60 @@ class Volunteer < ApplicationRecord
     errors.add(:start_time, 'は終了時間より早い時間を入力してください') if start_time > end_time
   end
 
-
-  # ----インスタンスメソッド-----------------------------------------------------
+  # ----クラスメソッド-----------------------------------------------------
 
   # ---サーチ機能(投稿名のみ)---
   def self.search(title)
     items = Volunteer.all.order('created_at DESC')
-    if title != ""
+    if title != ''
       split_keyword = title.split(/[[:blank:]]+/)
       split_keyword.each do |keyword|
-        next if keyword == "" 
+        next if keyword == ''
+
         items = items.where('title LIKE(?)', "%#{keyword}%")
       end
     end
-    return items
+    items
   end
 
   # ---サーチ機能(詳細)---
-  def self.detail(title, schedule, people, place, deadline)
+  def self.detail(*box)
     items = Volunteer.all.order('created_at DESC')
-    if title != ''
-      split_title = title.split(/[[:blank:]]+/) 
-      split_title.each do |keyword| 
-        next if keyword == '' 
-        items = items.where('title LIKE(?)', "%#{keyword}%")
+    box.each_with_index do |value, i|
+      case i
+      when 0
+        items = sieve1(items, value, 'title LIKE(?)')
+      when 1
+        items = sieve2(items, value, 'schedule >= ?')
+      when 2
+        items = sieve2(items, value, 'application_people >= ?')
+      when 3
+        items = sieve1(items, value, 'place LIKE(?)')
+      when 4
+        case value
+        when 'recruitment'
+          items = items.where(deadline_flag: false)
+        when 'deadline'
+          items = items.where(deadline_flag: true)
+        end
       end
     end
-    
-    if schedule != ''
-      items = items.where('schedule >= ?', schedule)
-    end
+    items
+  end
 
-    if people != ''
-      items = items.where('application_people >= ?', people)
-    end
-    
-    if place != ''
-      split_place = place.split(/[[:blank:]]+/) 
-      split_place.each do |keyword|
-        next if keyword == "" 
-        items = items.where('place LIKE(?)', "%#{keyword}%")
-      end
-    end
+  def self.sieve1(items, value, conditions)
+    split_value = value.split(/[[:blank:]]+/)
+    split_value.each do |keyword|
+      next if keyword == ''
 
-    if deadline == 'recruitment'
-      items = items.where(deadline_flag: false)
-    elsif deadline == 'deadline'
-      items = items.where(deadline_flag: true)
+      items = items.where(conditions, "%#{keyword}%")
     end
-    return items
+    items
+  end
+
+  def self.sieve2(items, value, conditions)
+    items = items.where(conditions, value) if value != ''
+    items
   end
 
   # ---ボランティア投稿に画像がない場合「noimage」をつける---

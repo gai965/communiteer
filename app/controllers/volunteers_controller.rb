@@ -54,9 +54,10 @@ class VolunteersController < ApplicationController
   def search
     @per_volunteer = Volunteer.search(params[:title_keyword])
   end
-  
+
   def detail
-    @per_volunteer = Volunteer.detail(params[:title_keyword], params[:schedule_keyword], params[:people_keyword], params[:place_keyword], params[:deadline_keyword])
+    @per_volunteer = Volunteer.detail(params[:title_keyword], params[:schedule_keyword], params[:people_keyword], params[:place_keyword],
+                                      params[:deadline_keyword])
   end
 
   private
