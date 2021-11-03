@@ -13,7 +13,7 @@ server '54.249.174.89',
    deploy_to: '/var/www/communiteer',
    ssh_options: {
       user: "ec2-user",
-      keys: %w(~/.ssh/authorized_keys),
+      keys: %w(~/.ssh/communiteer-app.pem),
       forward_agent: true,
       auth_methods: %w(publickey password)
   } 
