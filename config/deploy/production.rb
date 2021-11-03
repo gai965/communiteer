@@ -10,7 +10,7 @@
 server '54.249.174.89',
    user: "ec2-user",
    roles: %w{web db app},
-   set :deploy_to, '/var/www/communiteer',
+   deploy_to: '/var/www/communiteer',
    ssh_options: {
       user: "ec2-user",
       keys: %w(~/.ssh/communiteer-app.pem),
