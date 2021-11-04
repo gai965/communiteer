@@ -30,7 +30,7 @@ https://communiteer-app.com/<br>
  - Rubocop（コード解析ツール）
  - RSpec（テスト）
 ### インフラ
- - AWS(IAM/VPC/EC2/RDS/S3/Route53/ACM/ALB)
+ - AWS(IAM/VPC/EC2/RDS/S3/Route53/ACM/ALB/Cloudfront)
  - Nginx
  - Puma
 ### 開発環境
@@ -39,6 +39,7 @@ https://communiteer-app.com/<br>
  - Docker/Docker-compose
  - CircleCI
  - Capistrano
+ - Terraform（インフラのコード管理）
 
 ## 機能一覧
 ### 基本機能
@@ -83,7 +84,6 @@ https://communiteer-app.com/<br>
    - 承諾ボタン
    - DM画面遷移
 ### 共通機能
- - ページネーション
  - もどるボタン(TOP画面・詳細ページ・一覧ページ遷移等)
  - レスポンシブ対応<br>
 
@@ -118,7 +118,7 @@ https://communiteer-app.com/<br>
 ![地図デモ動画](https://user-images.githubusercontent.com/72908323/136690332-ead55ebb-c23a-46b4-9d73-486b6e538bb3.gif)
 
 ## インフラ構成図
-<img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/136638723-8690609c-1d53-45b5-a783-4b3b8f31687e.png">
+<img width="876" alt="communiteer_インフラ構成図" src="https://user-images.githubusercontent.com/72908323/140261873-4f2af53e-774e-4498-93ac-3145a0e04eb5.png">
 
 ## ER図
 <img width="908" alt="comuniteer_ER" src="https://user-images.githubusercontent.com/72908323/137623264-f2cadb95-a842-4486-b5d3-c202a8d62a9e.png"><br>
