@@ -30,7 +30,7 @@ namespace :deploy do
   end
 end
 
-# after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
+after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
 
 # namespace :deploy do
 #   task :restart do
