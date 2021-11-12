@@ -31,16 +31,3 @@ namespace :deploy do
 end
 
 after 'deploy:assets:backup_manifest', 'deploy:migrate_seed'
-
-# namespace :deploy do
-#   task :restart do
-#     on roles(:web), in: :sequence, wait: 5 do
-#       within release_path do
-#         execute 'sudo systemctl daemon-reload'
-#         execute 'sudo systemctl restart puma'
-#       end
-#     end
-#   end
-
-#   after :finishing, :restart
-# end
